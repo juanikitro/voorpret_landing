@@ -33,8 +33,21 @@ componentes para actualizar la web.**
 
 | Archivo | Qué contiene |
 |---|---|
-| `src/data/paquetes.ts` | Las propuestas: nombre, temporada, qué incluye, recorrido, ilustración |
+| `src/data/paquetes.ts` | Las propuestas: nombre, temporada, qué incluye, recorrido, ilustración o foto |
 | `src/data/sitio.ts` | WhatsApp, redes, legajo, ubicación, textos del proceso y de confianza |
+| `src/data/imagenes.ts` | La foto del hero y la intensidad del grade de marca |
+
+### Ilustraciones o fotos
+
+La página arranca con **ilustraciones vectoriales generadas por código**: no
+descargan nada y todos los destinos comparten la misma dirección visual.
+
+Cada una se puede reemplazar por una **foto real de a una**, sin tocar el
+diseño: la foto hereda el encuadre, el grade de marca y la trama de puntos.
+Poner `null` de vuelta trae la ilustración. Es reversible siempre.
+
+👉 Medidas, nombres de archivo y prompts listos para copiar:
+[`docs/imagenes.md`](docs/imagenes.md)
 
 ### Agregar o cambiar una propuesta
 
@@ -45,7 +58,7 @@ comentados ahí mismo. Tres reglas:
 - `demo: true` marca contenido inventado para la demo. Borralo o reemplazalo
   antes de publicar.
 - `imagen: null` usa la ilustración generada. Para poner una foto real, ver
-  [`public/images/paquetes/README.md`](public/images/paquetes/README.md).
+  [`docs/imagenes.md`](docs/imagenes.md).
 
 ### Cambiar el número de WhatsApp
 
@@ -59,13 +72,32 @@ una vez los 10 puntos de contacto de la página.
 
 | # | Qué | Dónde |
 |---|---|---|
-| 1 | **Logo real** de Voorpret (hoy hay un placeholder geométrico) | `public/brand/` — ver README ahí |
-| 2 | **Validar el legajo 16130** con el dueño | `src/data/sitio.ts` |
-| 3 | **Reemplazar los 6 paquetes con `demo: true`** por propuestas reales | `src/data/paquetes.ts` |
-| 4 | **Imagen para compartir** el link (og.jpg, 1200 × 630) | `public/brand/og.jpg` |
-| 5 | **Fotos reales** de las salidas, sobre todo de la grupal a Perú | `public/images/paquetes/` |
-| 6 | **Dominio final** en `canonical`, `og:url` y el JSON-LD | `index.html` |
-| 7 | Confirmar la **dirección del local** si se quiere publicar calle y número | hoy sólo dice "25 de Mayo, Buenos Aires" a propósito |
+| 1 | **Validar el legajo 16130** con el dueño | `src/data/sitio.ts` |
+| 2 | **Reemplazar los 6 paquetes con `demo: true`** por propuestas reales | `src/data/paquetes.ts` |
+| 3 | **Imagen para compartir** el link (og.jpg, 1200 × 630) | `public/brand/og.jpg` |
+| 4 | **Fotos** del hero y los destinos | `docs/imagenes.md` |
+| 5 | **Dominio final** en `canonical`, `og:url` y el JSON-LD | `index.html` |
+| 6 | Confirmar la **dirección del local** si se quiere publicar calle y número | hoy sólo dice "25 de Mayo, Buenos Aires" a propósito |
+
+✅ El **logo original** ya está integrado (transparente, con favicon aparte).
+
+---
+
+## Volver a una versión anterior
+
+El repo tiene puntos de restauración con tag:
+
+| Tag | Qué es |
+|---|---|
+| `v1-ilustrado` | Todo con ilustraciones vectoriales, logo provisorio |
+| `v2-logo-real` | Logo original integrado + sistema de fotos listo (ilustraciones activas) |
+
+```bash
+git checkout v1-ilustrado
+```
+
+Para volver a la última versión: `git checkout master`. Para recuperar sólo un
+archivo de un tag: `git checkout v1-ilustrado -- src/components/Hero.tsx`.
 
 ### Lo que deliberadamente NO está
 
@@ -87,8 +119,9 @@ reseñas reales y con permiso de los viajeros, se pone en `true` y se cargan.
 ```
 src/
   data/
-    paquetes.ts        ← contenido de las propuestas (único lugar a editar)
+    paquetes.ts        ← contenido de las propuestas (el archivo a editar)
     sitio.ts           ← contacto, redes, textos institucionales
+    imagenes.ts        ← foto del hero + intensidad del grade
   lib/
     whatsapp.ts        ← armado de los enlaces wa.me
     hooks.ts           ← revelados, parallax, movimiento reducido
@@ -98,9 +131,16 @@ src/
     Cotizador.tsx      ← la consulta general de 3 datos
     ...
   styles/global.css    ← tokens de color, tipografía, trama y animaciones
-public/
-  brand/               ← logo y og:image
-  images/paquetes/     ← fotos reales cuando se carguen
+
+public/                ← SÓLO lo que se sirve al navegador
+  brand/               ← logo webp + favicons
+  images/hero/         ← foto del hero cuando se cargue
+  images/paquetes/     ← fotos de los destinos cuando se carguen
+
+assets-fuente/         ← no se publica: originales del logo y el trazado svg
+docs/
+  imagenes.md          ← medidas, nombres y prompts de las imágenes
+  marca.md             ← qué se hizo con el logo y cómo reemplazarlo
 ```
 
 ## Notas técnicas

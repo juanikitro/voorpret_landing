@@ -1,5 +1,6 @@
 import { useId } from 'react'
 import type { Arte } from '../data/paquetes'
+import { gradeMarca } from '../data/imagenes'
 
 /* ============================================================================
    ARTE DESTINO
@@ -166,6 +167,8 @@ function Detalle({ tipo, color }: { tipo: NonNullable<Arte['detalle']>; color: s
 type Props = {
   arte: Arte
   imagen?: string | null
+  /** `object-position` de la foto. No afecta a la ilustración. */
+  foco?: string
   alt?: string
   className?: string
   /** Intensifica el sol y la trama cuando el destino está activo */
@@ -176,6 +179,7 @@ type Props = {
 export default function ArteDestino({
   arte,
   imagen,
+  foco,
   alt = '',
   className = '',
   activo = false,
@@ -186,7 +190,8 @@ export default function ArteDestino({
   const idTrama = `trama-${uid}`
   const idGrad = `grad-${uid}`
 
-  // Foto real: mismo encuadre y mismo tratamiento que la ilustración
+  // Foto real: hereda el encuadre, el grade y la trama de la ilustración, así
+  // fotos e ilustraciones pueden convivir sin que se note el parche.
   if (imagen) {
     return (
       <div className={`relative overflow-hidden bg-ciruela ${className}`}>
@@ -195,18 +200,27 @@ export default function ArteDestino({
           alt={alt}
           loading={prioridad ? 'eager' : 'lazy'}
           decoding="async"
-          width={1000}
-          height={620}
+          width={1600}
+          height={1000}
           className="size-full object-cover"
+          style={{ objectPosition: foco ?? 'center' }}
         />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 mix-blend-soft-light"
-          style={{ background: `linear-gradient(175deg, ${arte.cielo.join(', ')})`, opacity: 0.55 }}
+          style={{
+            background: `linear-gradient(172deg, ${arte.cielo.join(', ')})`,
+            opacity: gradeMarca,
+          }}
         />
         <div
           aria-hidden="true"
-          className="trama pointer-events-none absolute inset-0 text-tinta opacity-25 mix-blend-multiply"
+          className="trama pointer-events-none absolute inset-0 text-tinta opacity-20 mix-blend-multiply"
+        />
+        {/* Base oscura: los chips del recorrido se apoyan siempre sobre algo */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-tinta/70 to-transparent"
         />
       </div>
     )

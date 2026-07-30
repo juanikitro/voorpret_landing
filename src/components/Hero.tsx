@@ -1,5 +1,7 @@
 import { FlechaAbajo, FlechaDer, Pin } from './Iconos'
 import { sitio } from '../data/sitio'
+import { gradeMarca, heroFoto, heroSolDeTrama } from '../data/imagenes'
+import type { Foto } from '../data/imagenes'
 import { useAlMontar } from '../lib/hooks'
 
 /* ============================================================================
@@ -85,6 +87,89 @@ function Horizonte({ quieto }: { quieto: boolean }) {
   )
 }
 
+/* ============================================================================
+   FONDO FOTOGRÁFICO
+   ----------------------------------------------------------------------------
+   Cuando hay foto, se aplican tres cosas encima, en este orden:
+   1. Grade de marca: teñido violeta arriba / ámbar abajo. Hace que fotos de
+      orígenes distintos parezcan de la misma producción.
+   2. Velos de contraste: garantizan que el titular se lea sobre CUALQUIER
+      foto. Diagonal en escritorio (el texto vive a la izquierda), vertical en
+      celular (el texto vive al centro).
+   3. Trama de puntos: firma la foto con el lenguaje impreso de la marca.
+   ========================================================================== */
+function FondoFoto({ foto, quieto }: { foto: Foto; quieto: boolean }) {
+  return (
+    <div className="absolute inset-0 -z-20 overflow-hidden bg-ciruela">
+      <picture>
+        {foto.alta && <source media="(max-width: 639px)" srcSet={foto.alta} />}
+        <img
+          src={foto.ancha}
+          alt={foto.alt}
+          width={2400}
+          height={1400}
+          fetchPriority="high"
+          decoding="async"
+          className="size-full object-cover"
+          style={{
+            objectPosition: foto.foco ?? 'center 60%',
+            ...(quieto
+              ? null
+              : {
+                  transform: 'scale(1.08) translate3d(0, calc(var(--pantallas, 0) * 54px), 0)',
+                  willChange: 'transform',
+                }),
+          }}
+        />
+      </picture>
+
+      {/* 1 — Grade de marca */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 mix-blend-soft-light"
+        style={{
+          opacity: gradeMarca,
+          background:
+            'linear-gradient(168deg, #6B1C93 0%, #2A0D3C 42%, #8A3A2A 78%, #F3C126 100%)',
+        }}
+      />
+      <div aria-hidden="true" className="absolute inset-0 bg-ciruela/18 mix-blend-multiply" />
+
+      {/* 2 — Velos de contraste */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 sm:hidden"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(20,15,12,0.78) 0%, rgba(42,13,60,0.60) 34%, rgba(42,13,60,0.72) 66%, rgba(20,15,12,0.92) 100%)',
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 hidden sm:block"
+        style={{
+          background:
+            'linear-gradient(96deg, rgba(20,15,12,0.94) 0%, rgba(42,13,60,0.80) 34%, rgba(42,13,60,0.34) 62%, rgba(42,13,60,0.10) 100%)',
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ciruela/90 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-tinta via-tinta/45 to-transparent"
+      />
+
+      {/* 3 — Firma impresa */}
+      <div
+        aria-hidden="true"
+        className="trama absolute inset-0 text-tinta opacity-[0.18] mix-blend-multiply"
+      />
+    </div>
+  )
+}
+
 export default function Hero({ quieto }: { quieto: boolean }) {
   // La entrada se dispara un frame después del montaje para que se vea animar
   const listo = useAlMontar() ? 'true' : 'false'
@@ -95,6 +180,7 @@ export default function Hero({ quieto }: { quieto: boolean }) {
       className="grano relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-ciruela pt-[68px] sm:pt-[84px]"
     >
       {/* Sol de trama: el punto de fuga emocional, detrás de la tipografía */}
+      {heroSolDeTrama && (
       <div
         aria-hidden="true"
         className="pointer-events-none absolute right-[-10vw] top-[1vh] -z-10 sm:right-[-6vw] sm:top-[2vh] lg:right-[4vw]"
@@ -109,8 +195,10 @@ export default function Hero({ quieto }: { quieto: boolean }) {
           <div className="absolute inset-[34%] rounded-full bg-sol/90 blur-[2px]" />
         </div>
       </div>
+      )}
 
-      <Horizonte quieto={quieto} />
+      {/* Foto si está declarada en data/imagenes.ts; si no, la ilustración */}
+      {heroFoto ? <FondoFoto foto={heroFoto} quieto={quieto} /> : <Horizonte quieto={quieto} />}
 
       {/* ——— Contenido ——— */}
       <div className="contenedor relative z-10 flex flex-1 flex-col justify-center py-10 sm:py-16">

@@ -29,7 +29,7 @@ export default function Footer() {
 
       <div className="contenedor relative grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Marca />
+          <Marca alto="h-12" />
           <p className="mt-5 max-w-[30ch] text-[0.875rem] leading-relaxed text-papel/60">
             Agencia de viajes en {sitio.ubicacion}. Salidas grupales, viajes internacionales,
             escapadas y paquetes a medida desde {sitio.desde}.

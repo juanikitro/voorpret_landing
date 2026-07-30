@@ -1,38 +1,51 @@
 /**
- * Lockup de marca: isotipo + wordmark tipográfico.
- * Para cambiar el logo, ver public/brand/README.md
+ * Lockup de marca: el logo original de Voorpret (globo + avión + wordmark)
+ * más la bajada de sucursal, que el logo no incluye.
+ *
+ * El archivo ya trae el wordmark, así que acá NO se vuelve a escribir
+ * "VOORPRET" con tipografía: se evita el doble wordmark.
+ * Ver public/brand/README.md para los formatos disponibles.
  */
-const ARCHIVO_LOGO = '/brand/voorpret-logo.svg'
+const LOGO = '/brand/voorpret-logo.webp'
 
 type Props = {
-  /** false si el archivo de logo ya trae el wordmark incluido */
-  wordmark?: boolean
+  /** Muestra "25 de Mayo / Buenos Aires" al lado del logo */
+  sucursal?: boolean
+  /** Clases de alto. El ancho se deduce de la relación del archivo. */
+  alto?: string
   className?: string
+  /** true sobre fondos oscuros */
   claro?: boolean
+  prioridad?: boolean
 }
 
-export default function Marca({ wordmark = true, className = '', claro = true }: Props) {
+export default function Marca({
+  sucursal = true,
+  alto = 'h-11 sm:h-14',
+  className = '',
+  claro = true,
+  prioridad = false,
+}: Props) {
   return (
-    <span className={`flex items-center gap-2.5 ${className}`}>
+    <span className={`flex items-center gap-3 ${className}`}>
       <img
-        src={ARCHIVO_LOGO}
+        src={LOGO}
         alt="Voorpret"
-        width={44}
-        height={44}
-        className="size-9 shrink-0 sm:size-11"
-        fetchPriority="high"
+        width={888}
+        height={632}
+        className={`${alto} w-auto shrink-0`}
+        fetchPriority={prioridad ? 'high' : 'auto'}
+        decoding="async"
       />
-      {wordmark && (
-        <span className="hidden leading-none sm:block">
+      {sucursal && (
+        <span className="hidden items-center gap-3 lg:flex">
           <span
-            className="block font-display text-[1.32rem] font-extrabold tracking-[-0.045em]"
-            style={{ fontVariationSettings: "'wdth' 108" }}
-          >
-            VOORPRET
-          </span>
+            className={`h-8 w-px shrink-0 ${claro ? 'bg-papel/25' : 'bg-tinta/25'}`}
+            aria-hidden="true"
+          />
           <span
-            className={`etiqueta mt-[3px] block text-[0.5625rem] tracking-[0.24em] ${
-              claro ? 'text-papel/55' : 'text-tinta/55'
+            className={`etiqueta text-[0.5625rem] tracking-[0.2em] ${
+              claro ? 'text-papel/60' : 'text-tinta/60'
             }`}
           >
             25 de Mayo

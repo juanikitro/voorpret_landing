@@ -43,7 +43,14 @@ export type Paquete = {
   nota?: string
   destacado?: boolean
   demo?: boolean
+  /** Ruta de la foto. `null` usa la ilustración generada (`arte`). */
   imagen: string | null
+  /**
+   * Qué parte de la foto no se puede perder al recortar (`object-position`).
+   * Ej: 'center 35%' para que no se corte una cumbre; '65% center' para
+   * mantener algo que está a la derecha. Sólo aplica si hay `imagen`.
+   */
+  foco?: string
   arte: Arte
 }
 

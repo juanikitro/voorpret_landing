@@ -90,7 +90,12 @@ function Banda({
                 : 'w-[58px] opacity-80 group-hover:opacity-100 sm:w-[74px] sm:group-hover:w-[104px]'
             }`}
           >
-            <ArteDestino arte={p.arte} imagen={p.imagen} className="aspect-16/10 w-full" />
+            <ArteDestino
+              arte={p.arte}
+              imagen={p.imagen}
+              foco={p.foco}
+              className="aspect-16/10 w-full"
+            />
           </span>
 
           <span
@@ -122,6 +127,7 @@ function Banda({
               <ArteDestino
                 arte={p.arte}
                 imagen={p.imagen}
+                foco={p.foco}
                 alt={`${p.nombre} — ${p.recorrido.join(', ')}`}
                 activo={abierta}
                 /* 16/10 ≈ la relación del lienzo (1000×620): así casi no recorta */
