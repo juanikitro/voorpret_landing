@@ -1,0 +1,198 @@
+import { FlechaAbajo, FlechaDer, Pin } from './Iconos'
+import { sitio } from '../data/sitio'
+import { useAlMontar } from '../lib/hooks'
+
+/* ============================================================================
+   HERO — el amanecer antes del viaje
+   La composición es un cartel: tipografía dominante, sol de trama y un
+   horizonte en capas que se separa al scrollear (parallax por CSS var).
+   ========================================================================== */
+
+/** Cada capa se mueve a distinta velocidad: profundidad sin JS por frame. */
+function Horizonte({ quieto }: { quieto: boolean }) {
+  const capa = (v: number) =>
+    quieto ? undefined : { transform: `translate3d(0, calc(var(--pantallas, 0) * ${v}px), 0)` }
+
+  return (
+    <svg
+      className="absolute inset-x-0 bottom-0 h-[62vh] w-full sm:h-[58vh]"
+      viewBox="0 0 1440 620"
+      preserveAspectRatio="xMidYMax slice"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="h-cielo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#2A0D3C" stopOpacity="0" />
+          <stop offset="45%" stopColor="#5A1280" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#E8613C" stopOpacity="0.9" />
+        </linearGradient>
+        <pattern id="h-puntos" width="16" height="16" patternUnits="userSpaceOnUse">
+          <circle cx="3" cy="3" r="2.3" fill="#F3C126" />
+        </pattern>
+        {/* Banda suave: la trama entra y sale sin cantos duros */}
+        <linearGradient id="h-fade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#fff" stopOpacity="0" />
+          <stop offset="26%" stopColor="#fff" stopOpacity="0.6" />
+          <stop offset="62%" stopColor="#fff" stopOpacity="0" />
+        </linearGradient>
+        <mask id="h-mask">
+          <rect width="1440" height="620" fill="url(#h-fade)" />
+        </mask>
+      </defs>
+
+      <rect width="1440" height="620" fill="url(#h-cielo)" />
+      <rect width="1440" height="620" fill="url(#h-puntos)" mask="url(#h-mask)" opacity="0.4" />
+
+      {/* Cordillera lejana — cumbres separadas y asimétricas, no dientes de sierra */}
+      <g style={capa(72)}>
+        <path
+          fill="#46156B"
+          d="M0 358 L140 316 L252 330 L402 224 L520 296 L612 280 L762 198 L902 298 L1014 284 L1152 230 L1292 304 L1382 290 L1440 310 L1440 620 L0 620 Z"
+        />
+      </g>
+      {/* Sierra media */}
+      <g style={capa(44)}>
+        <path
+          fill="#2F0C44"
+          d="M0 418 C 180 390 302 430 462 406 C 622 382 702 424 862 402 C 1022 380 1152 424 1292 404 C 1362 394 1402 410 1440 402 L1440 620 L0 620 Z"
+        />
+      </g>
+      {/* Lomas cercanas */}
+      <g style={capa(20)}>
+        <path
+          fill="#221913"
+          d="M0 502 C 200 450 400 514 580 484 C 760 454 900 510 1090 486 C 1270 464 1370 504 1440 484 L1440 620 L0 620 Z"
+        />
+      </g>
+      {/* Llano y ruta que se pierde en el horizonte — la promesa del viaje */}
+      <g style={capa(6)}>
+        <path
+          fill="#1E1712"
+          d="M0 558 C 300 542 600 568 900 552 C 1152 539 1302 560 1440 550 L1440 620 L0 620 Z"
+        />
+        <path fill="#140F0C" d="M534 620 L690 486 L706 486 L886 620 Z" />
+        <path
+          stroke="#F3C126"
+          strokeWidth="4.5"
+          strokeDasharray="20 26"
+          strokeLinecap="round"
+          opacity="0.55"
+          fill="none"
+          d="M698 492 L706 620"
+        />
+      </g>
+    </svg>
+  )
+}
+
+export default function Hero({ quieto }: { quieto: boolean }) {
+  // La entrada se dispara un frame después del montaje para que se vea animar
+  const listo = useAlMontar() ? 'true' : 'false'
+
+  return (
+    <section
+      id="inicio"
+      className="grano relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-ciruela pt-[68px] sm:pt-[84px]"
+    >
+      {/* Sol de trama: el punto de fuga emocional, detrás de la tipografía */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[-10vw] top-[1vh] -z-10 sm:right-[-6vw] sm:top-[2vh] lg:right-[4vw]"
+        style={quieto ? undefined : { transform: 'translate3d(0, calc(var(--pantallas, 0) * -120px), 0)' }}
+      >
+        <div className={`relative ${quieto ? '' : 'anim-flota'}`}>
+          <div className="size-[46vw] max-w-[540px] rounded-full bg-violeta/30 blur-[70px] sm:size-[44vw]" />
+          <div
+            className={`trama-disco absolute inset-[6%] text-sol ${quieto ? '' : 'anim-deriva'}`}
+          />
+          {/* Núcleo sólido: el sol tiene centro, no es solo textura */}
+          <div className="absolute inset-[34%] rounded-full bg-sol/90 blur-[2px]" />
+        </div>
+      </div>
+
+      <Horizonte quieto={quieto} />
+
+      {/* ——— Contenido ——— */}
+      <div className="contenedor relative z-10 flex flex-1 flex-col justify-center py-10 sm:py-16">
+        <p
+          className="etiqueta rev flex flex-wrap items-center gap-x-3 gap-y-1 text-sol"
+          data-visible={listo}
+          style={{ '--rev-d': '120ms' } as React.CSSProperties}
+        >
+          <Pin className="size-3.5 shrink-0" />
+          {/* Cada dato va en su propio span: los nodos de texto sueltos no
+              respetan el gap del flex y quedarían pegados en móvil. */}
+          <span>{sitio.ubicacion}</span>
+          <span className="hidden text-papel/30 sm:inline">/</span>
+          <span>Agencia de viajes desde {sitio.desde}</span>
+          <span className="hidden text-papel/30 sm:inline">/</span>
+          <span>Legajo {sitio.legajo}</span>
+        </p>
+
+        <h1 className="mt-5 sm:mt-7" data-visible={listo}>
+          <span className="display-ancho block text-[clamp(2.85rem,12.5vw,8.4rem)]">
+            <span className="rev-linea" style={{ '--rev-d': '220ms' } as React.CSSProperties}>
+              <span>Vos ya te</span>
+            </span>
+            <span className="rev-linea" style={{ '--rev-d': '320ms' } as React.CSSProperties}>
+              <span>lo estás</span>
+            </span>
+            <span className="rev-linea text-sol" style={{ '--rev-d': '420ms' } as React.CSSProperties}>
+              <span>imaginando.</span>
+            </span>
+          </span>
+        </h1>
+
+        <div
+          className="rev mt-7 max-w-[46ch] sm:mt-9"
+          data-visible={listo}
+          style={{ '--rev-d': '640ms' } as React.CSSProperties}
+        >
+          <p className="font-serif text-[1.35rem] leading-[1.28] text-papel sm:text-[1.7rem]">
+            Nosotros nos encargamos de todo lo demás.
+          </p>
+          <p className="mt-4 text-[0.975rem] leading-relaxed text-papel/72 sm:text-[1.0625rem]">
+            Comparamos alternativas reales, organizamos cada tramo y te acompañamos desde la primera
+            charla hasta que volvés. Vos elegí a dónde.
+          </p>
+        </div>
+
+        <div
+          className="rev mt-9 flex flex-wrap items-center gap-3 sm:mt-11 sm:gap-4"
+          data-visible={listo}
+          style={{ '--rev-d': '780ms' } as React.CSSProperties}
+        >
+          <a href="#propuestas" className="btn btn-solido">
+            Ver propuestas
+            <FlechaDer />
+          </a>
+          <a href="#consulta" className="btn btn-linea">
+            Contame tu viaje
+          </a>
+        </div>
+      </div>
+
+      {/* ——— Pie del hero: sello y tagline heredada ——— */}
+      <div className="contenedor relative z-10 flex items-end justify-between gap-6 pb-7 sm:pb-9">
+        <a
+          href="#propuestas"
+          className="group flex items-center gap-2.5 text-papel/55 transition-colors hover:text-sol"
+          aria-label="Ir a las propuestas"
+        >
+          <span className="grid size-9 place-items-center rounded-full border border-current transition-transform duration-500 ease-[var(--ease-anticipa)] group-hover:translate-y-1">
+            <FlechaAbajo className="size-3.5" />
+          </span>
+          <span className="etiqueta">Bajá, hay siete</span>
+        </a>
+
+        <p className="etiqueta hidden text-right text-papel/45 sm:block">
+          Tu viaje
+          <br />
+          comienza acá
+        </p>
+      </div>
+
+      <div aria-hidden="true" className="grano-capa" />
+    </section>
+  )
+}
