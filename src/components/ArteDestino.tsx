@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { useId, useState } from 'react'
 import type { Arte } from '../data/paquetes'
 import { gradeMarca } from '../data/imagenes'
 
@@ -190,9 +190,13 @@ export default function ArteDestino({
   const idTrama = `trama-${uid}`
   const idGrad = `grad-${uid}`
 
+  // Si la foto no existe o está mal nombrada, cae a la ilustración.
+  // Así nunca queda una imagen rota mientras se cargan los archivos.
+  const [fotoFallo, setFotoFallo] = useState(false)
+
   // Foto real: hereda el encuadre, el grade y la trama de la ilustración, así
   // fotos e ilustraciones pueden convivir sin que se note el parche.
-  if (imagen) {
+  if (imagen && !fotoFallo) {
     return (
       <div className={`relative overflow-hidden bg-ciruela ${className}`}>
         <img
@@ -204,6 +208,7 @@ export default function ArteDestino({
           height={1000}
           className="size-full object-cover"
           style={{ objectPosition: foco ?? 'center' }}
+          onError={() => setFotoFallo(true)}
         />
         <div
           aria-hidden="true"

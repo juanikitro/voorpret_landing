@@ -4,10 +4,9 @@
    ► Para agregar, editar o quitar una propuesta, tocá SOLO este archivo.
    ► `demo: true`  → contenido inventado para la demo. Reemplazar o borrar
      antes de publicar. La única propuesta con datos reales es `peru`.
-   ► `imagen`      → null usa la ilustración generada (`arte`). Si cargás una
-     foto real en /public/images/paquetes/ y ponés la ruta acá
-     (ej: '/images/paquetes/peru.jpg'), la foto reemplaza la ilustración
-     sin tocar el diseño. Ver /public/images/paquetes/README.md
+   ► FOTOS         → no se declaran acá. Cada paquete busca automáticamente
+     /images/paquetes/<id>.webp cuando `usarFotos` está activo en
+     src/data/imagenes.ts. Ver docs/imagenes.md
    ► NUNCA publicamos precios: toda acción lleva a consultar por WhatsApp.
    ========================================================================== */
 
@@ -43,12 +42,19 @@ export type Paquete = {
   nota?: string
   destacado?: boolean
   demo?: boolean
-  /** Ruta de la foto. `null` usa la ilustración generada (`arte`). */
-  imagen: string | null
+  /**
+   * Normalmente no hace falta: la foto se busca sola en
+   * /images/paquetes/<id>.webp
+   *
+   * Sólo usalo para excepciones:
+   *   imagen: '/images/paquetes/otra-foto.webp'  → esa foto en particular
+   *   imagen: null                              → forzar la ilustración
+   */
+  imagen?: string | null
   /**
    * Qué parte de la foto no se puede perder al recortar (`object-position`).
    * Ej: 'center 35%' para que no se corte una cumbre; '65% center' para
-   * mantener algo que está a la derecha. Sólo aplica si hay `imagen`.
+   * mantener algo que está a la derecha. Sólo aplica si hay foto.
    */
   foco?: string
   arte: Arte
@@ -78,7 +84,6 @@ export const paquetes: Paquete[] = [
     ],
     nota: 'Cupos limitados. Escribinos y te pasamos el detalle completo del itinerario y las condiciones.',
     destacado: true,
-    imagen: null,
     arte: {
       // Andes al atardecer: una cumbre dominante (silueta tipo Huayna Picchu)
       cielo: ['#28093A', '#8A28B0', '#EE7A46'],
@@ -129,7 +134,6 @@ export const paquetes: Paquete[] = [
     ],
     nota: 'Armamos la combinación de hotel y categoría según lo que buscás. Contanos fechas y cantidad de pasajeros.',
     demo: true,
-    imagen: null,
     arte: {
       // Sol bajando sobre el mar, palmeras en contraluz
       cielo: ['#4A1270', '#E8613C', '#F9CE5A'],
@@ -161,7 +165,6 @@ export const paquetes: Paquete[] = [
       'Asistencia al viajero',
     ],
     demo: true,
-    imagen: null,
     arte: {
       // Cielo que se aclara hacia el horizonte: la ciudad recorta en contraluz
       cielo: ['#5A1280', '#C287E4', '#F4E3CB'],
@@ -207,7 +210,6 @@ export const paquetes: Paquete[] = [
     ],
     nota: 'También lo armamos como viaje nacional a medida, con auto propio o combinado con Cataratas.',
     demo: true,
-    imagen: null,
     arte: {
       // Estratos de color apilados: el guiño al Cerro de los Siete Colores
       cielo: ['#5A1280', '#E8613C', '#F7D96B'],
@@ -239,7 +241,6 @@ export const paquetes: Paquete[] = [
     ],
     nota: 'Es el tipo de viaje donde más se nota tener a alguien que ya lo armó otras veces.',
     demo: true,
-    imagen: null,
     arte: {
       // Cono simétrico y torii: silueta reconocible sin caer en el cliché
       cielo: ['#2E0E44', '#B24A80', '#F0A15E'],
@@ -274,7 +275,6 @@ export const paquetes: Paquete[] = [
       'Asistencia al viajero',
     ],
     demo: true,
-    imagen: null,
     arte: {
       // Dunas cálidas: las pirámides recortan oscuras sobre la arena
       cielo: ['#7B1BA8', '#E8613C', '#F7CE5E'],
@@ -303,7 +303,6 @@ export const paquetes: Paquete[] = [
       'Asistencia al viajero',
     ],
     demo: true,
-    imagen: null,
     arte: {
       // Morros redondeados sobre la bahía
       cielo: ['#3E0F5C', '#B2447A', '#F7C95E'],

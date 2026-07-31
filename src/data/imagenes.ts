@@ -1,26 +1,32 @@
 /* ============================================================================
-   IMÁGENES — el único archivo que hay que tocar para pasar a fotos
+   IMÁGENES
    ----------------------------------------------------------------------------
-   Mientras `heroFoto` sea `null`, el hero sigue usando la ilustración
-   vectorial generada por código. En cuanto le pongas una ruta, el hero pasa a
-   fotografía sin tocar ni un componente.
+   Para pasar de ilustraciones a fotos hay UN solo interruptor: `usarFotos`.
 
-   Las fotos de cada paquete se declaran en `paquetes.ts` (campo `imagen`).
+   1. Guardá las fotos con el nombre exacto que dice docs/imagenes.md
+   2. Corré:  npm run imagenes
+   3. Poné `usarFotos = true` acá abajo
 
-   ► Especificaciones, nombres de archivo y prompts listos para copiar:
-     public/images/README.md
+   Las fotos que falten siguen mostrando la ilustración: nunca queda una
+   imagen rota. Volver atrás es poner `usarFotos = false`.
    ========================================================================== */
 
+/** Ya está la foto del hero. */
+export const usarFotoHero = true
+
+/** Poné true cuando tengas las 7 fotos de los destinos en public/images/paquetes/ */
+export const usarFotosPaquetes = false
+
 export type Foto = {
-  /** Imagen para pantallas anchas. Relación 16:9 aprox. */
+  /** Imagen para pantallas anchas */
   ancha: string
-  /** Recorte vertical para celulares (3:4). Si falta, se usa `ancha`. */
+  /** Recorte vertical para celulares. Si falta, se usa `ancha`. */
   alta?: string
-  /** Describí la escena, no la marca. Se lee en lectores de pantalla. */
+  /** Describí la escena, no la marca. Lo leen los lectores de pantalla. */
   alt: string
   /**
-   * Zona de la foto que nunca se debe recortar, en formato `object-position`.
-   * Ej: 'center 65%' baja el encuadre; '30% center' lo corre a la izquierda.
+   * Zona que nunca se debe recortar, en formato `object-position`.
+   * `center 30%` sube el encuadre, `70% center` lo corre a la derecha.
    */
   foco?: string
 }
@@ -29,30 +35,42 @@ export type Foto = {
    HERO
    -------------------------------------------------------------------------- */
 
-/**
- * `null` → ilustración vectorial (estado actual, ver Hero.tsx).
- *
- * Para pasar a foto, descomentá el bloque de abajo y borrá el `null`:
- *
- * export const heroFoto: Foto | null = {
- *   ancha: '/images/hero/atardecer-ancha.webp',
- *   alta: '/images/hero/atardecer-alta.webp',
- *   alt: 'Cordillera al atardecer con un camino que se pierde en el horizonte',
- *   foco: 'center 62%',
- * }
- */
-export const heroFoto: Foto | null = null
+export const heroFoto: Foto = {
+  ancha: '/images/hero/hero-ancha.webp',
+  // Recorte vertical nativo para celular. Mientras no exista, el celular usa
+  // `ancha` recortada al centro (queda bien: la ruta está centrada).
+  // alta: '/images/hero/hero-alta.webp',
+  alt: 'Ruta de montaña al atardecer, con la cordillera y el cielo violeta en el horizonte',
+  foco: 'center 58%',
+}
 
 /**
  * El sol de trama se mantiene por encima de la foto: es la firma de la marca
- * y lo que evita que el hero parezca un banner de stock cualquiera.
- * Ponelo en false sólo si la foto elegida ya tiene un sol muy marcado.
+ * y lo que evita que el hero parezca un banner de stock.
+ * Ponelo en false si la foto ya tiene un sol marcado arriba a la derecha.
  */
 export const heroSolDeTrama = true
 
 /**
- * Intensidad del "grade" de marca sobre las fotos (0 a 1).
- * Es el teñido violeta/ámbar que hace que fotos de orígenes distintos
- * parezcan de la misma producción. Bajalo si las fotos ya vienen cálidas.
+ * Intensidad del teñido violeta/ámbar sobre las fotos (0 a 1). Es lo que hace
+ * que fotos de orígenes distintos parezcan de la misma producción.
+ * Bajalo si las fotos ya vienen muy cálidas.
  */
-export const gradeMarca = 0.42
+export const gradeMarca = 0.3
+
+/* --------------------------------------------------------------------------
+   PAQUETES
+   -------------------------------------------------------------------------- */
+
+/**
+ * Resuelve qué imagen le toca a un paquete.
+ *
+ * - `override` con una ruta → usa esa
+ * - `override` en `null`    → fuerza la ilustración, aunque haya foto
+ * - sin `override`          → busca /images/paquetes/<id>.webp
+ */
+export function fotoPaquete(id: string, override?: string | null): string | null {
+  if (override) return override
+  if (override === null) return null
+  return usarFotosPaquetes ? `/images/paquetes/${id}.webp` : null
+}

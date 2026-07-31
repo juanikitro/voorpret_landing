@@ -57,8 +57,8 @@ comentados ahí mismo. Tres reglas:
 - **Nunca se publican precios.** Todo lleva a consultar por WhatsApp.
 - `demo: true` marca contenido inventado para la demo. Borralo o reemplazalo
   antes de publicar.
-- `imagen: null` usa la ilustración generada. Para poner una foto real, ver
-  [`docs/imagenes.md`](docs/imagenes.md).
+- **La foto no se declara acá.** Cada paquete busca solo
+  `/images/paquetes/<id>.webp`. Ver [`docs/imagenes.md`](docs/imagenes.md).
 
 ### Cambiar el número de WhatsApp
 
@@ -75,11 +75,12 @@ una vez los 10 puntos de contacto de la página.
 | 1 | **Validar el legajo 16130** con el dueño | `src/data/sitio.ts` |
 | 2 | **Reemplazar los 6 paquetes con `demo: true`** por propuestas reales | `src/data/paquetes.ts` |
 | 3 | **Imagen para compartir** el link (og.jpg, 1200 × 630) | `public/brand/og.jpg` |
-| 4 | **Fotos** del hero y los destinos | `docs/imagenes.md` |
+| 4 | **Las 7 fotos de destinos** (el hero ya está) | `docs/imagenes.md` |
 | 5 | **Dominio final** en `canonical`, `og:url` y el JSON-LD | `index.html` |
 | 6 | Confirmar la **dirección del local** si se quiere publicar calle y número | hoy sólo dice "25 de Mayo, Buenos Aires" a propósito |
 
 ✅ El **logo original** ya está integrado (transparente, con favicon aparte).
+✅ La **foto del hero** ya está integrada. Faltan las 7 de destinos → [`docs/imagenes.md`](docs/imagenes.md)
 
 ---
 

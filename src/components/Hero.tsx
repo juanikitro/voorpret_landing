@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import { FlechaAbajo, FlechaDer, Pin } from './Iconos'
 import { sitio } from '../data/sitio'
-import { gradeMarca, heroFoto, heroSolDeTrama } from '../data/imagenes'
+import { gradeMarca, heroFoto, heroSolDeTrama, usarFotoHero } from '../data/imagenes'
 import type { Foto } from '../data/imagenes'
 import { useAlMontar } from '../lib/hooks'
 
@@ -98,7 +99,15 @@ function Horizonte({ quieto }: { quieto: boolean }) {
       celular (el texto vive al centro).
    3. Trama de puntos: firma la foto con el lenguaje impreso de la marca.
    ========================================================================== */
-function FondoFoto({ foto, quieto }: { foto: Foto; quieto: boolean }) {
+function FondoFoto({
+  foto,
+  quieto,
+  onFallo,
+}: {
+  foto: Foto
+  quieto: boolean
+  onFallo: () => void
+}) {
   return (
     <div className="absolute inset-0 -z-20 overflow-hidden bg-ciruela">
       <picture>
@@ -110,6 +119,7 @@ function FondoFoto({ foto, quieto }: { foto: Foto; quieto: boolean }) {
           height={1400}
           fetchPriority="high"
           decoding="async"
+          onError={onFallo}
           className="size-full object-cover"
           style={{
             objectPosition: foto.foco ?? 'center 60%',
@@ -173,6 +183,9 @@ function FondoFoto({ foto, quieto }: { foto: Foto; quieto: boolean }) {
 export default function Hero({ quieto }: { quieto: boolean }) {
   // La entrada se dispara un frame después del montaje para que se vea animar
   const listo = useAlMontar() ? 'true' : 'false'
+  // Si la foto del hero no está cargada todavía, vuelve la ilustración
+  const [fotoFallo, setFotoFallo] = useState(false)
+  const conFoto = usarFotoHero && !fotoFallo
 
   return (
     <section
@@ -197,8 +210,12 @@ export default function Hero({ quieto }: { quieto: boolean }) {
       </div>
       )}
 
-      {/* Foto si está declarada en data/imagenes.ts; si no, la ilustración */}
-      {heroFoto ? <FondoFoto foto={heroFoto} quieto={quieto} /> : <Horizonte quieto={quieto} />}
+      {/* Foto si usarFotos está activo y el archivo existe; si no, ilustración */}
+      {conFoto ? (
+        <FondoFoto foto={heroFoto} quieto={quieto} onFallo={() => setFotoFallo(true)} />
+      ) : (
+        <Horizonte quieto={quieto} />
+      )}
 
       {/* ——— Contenido ——— */}
       <div className="contenedor relative z-10 flex flex-1 flex-col justify-center py-10 sm:py-16">

@@ -4,6 +4,7 @@ import type { Categoria, Paquete } from '../data/paquetes'
 import ArteDestino from './ArteDestino'
 import { FlechaDer, Mas, Tilde, WhatsApp } from './Iconos'
 import { linkPaquete } from '../lib/whatsapp'
+import { fotoPaquete } from '../data/imagenes'
 import { useRevelar } from '../lib/hooks'
 
 /* ============================================================================
@@ -92,7 +93,7 @@ function Banda({
           >
             <ArteDestino
               arte={p.arte}
-              imagen={p.imagen}
+              imagen={fotoPaquete(p.id, p.imagen)}
               foco={p.foco}
               className="aspect-16/10 w-full"
             />
@@ -126,7 +127,7 @@ function Banda({
             <div className="relative overflow-hidden rounded-sm border border-papel/15">
               <ArteDestino
                 arte={p.arte}
-                imagen={p.imagen}
+                imagen={fotoPaquete(p.id, p.imagen)}
                 foco={p.foco}
                 alt={`${p.nombre} — ${p.recorrido.join(', ')}`}
                 activo={abierta}

@@ -1,195 +1,184 @@
-# Brief de imágenes — Voorpret
+# Prompts para generar las imágenes
 
-El sitio funciona **hoy** con ilustraciones vectoriales generadas por código.
-Cada imagen que agregues reemplaza una ilustración, de a una, sin tocar el
-diseño. Podés migrar en cualquier orden y volver atrás cuando quieras.
-
-Son **9 imágenes**: 2 del hero (misma escena, dos encuadres) y 7 de destinos.
+Copiar y pegar. Nada más.
 
 ---
 
-## 1. Cómo generarlas en ChatGPT
+## El ritual (igual para todas)
 
-### El truco de la consistencia
+ChatGPT **no puede guardar archivos en tu disco**: te da la imagen y vos la
+descargás. Así que para cada imagen son tres pasos:
 
-Lo que hace que un set se vea como **una producción** y no como un collage de
-stock es que todas compartan hora, paleta y tratamiento.
+1. Pegá el prompt en ChatGPT.
+2. Descargá la imagen y guardala en `public/images/paquetes/` con el **nombre
+   exacto** que dice cada bloque. Podés dejarla en PNG o JPG, no importa.
+3. Cuando tengas todas, corré una sola vez:
 
-1. Abrí **un solo chat** y generá primero el hero horizontal.
-2. Para cada imagen siguiente, en **ese mismo chat**, escribí:
-
-   > Same photographic treatment, same colour palette and same time of day as
-   > the previous image. Now generate this, as a landscape image:
-   >
-   > *(y pegás el prompt del destino)*
-
-ChatGPT mantiene el estilo dentro de la conversación. Si abrís un chat nuevo
-para cada imagen, te van a quedar nueve fotos que no parecen del mismo lugar.
-
-### Medidas
-
-ChatGPT genera en estos tamaños. No pidas otros, los recorta mal:
-
-| Pedile | Medida | Para |
-|---|---|---|
-| *"as a landscape image"* | 1536 × 1024 | Hero horizontal y los 7 destinos |
-| *"as a portrait image"* | 1024 × 1536 | Sólo el recorte vertical del hero |
-
-1536 px de ancho alcanza: el sitio le aplica encima un grade de color y una
-trama de puntos que disimulan cualquier blandura. Si querés más definición para
-el hero, pasalo por un upscaler 2× antes de convertir.
-
-### Una por mensaje
-
-Pedí **una imagen por mensaje**: si le pedís varias juntas baja la calidad de
-todas. Si alguna sale con gente o con carteles, respondé
-*"regenerate without any people or signage"* en lugar de reescribir el prompt.
-
----
-
-## 2. Los prompts
-
-### Hero — horizontal
-
-> A wide cinematic landscape photograph at early dusk: an empty two-lane
-> asphalt road runs from the bottom of the frame toward the horizon, where
-> layered Andean mountain ridges recede into violet atmospheric haze. The sky
-> is a deep violet and magenta gradient at the top, warming to amber just above
-> the ridgeline, with a low sun glow hidden behind the mountains. Dry
-> high-altitude scrubland on both sides of the road. Photorealistic, shot on
-> 35mm film, soft natural contrast, not oversaturated. No people, no vehicles,
-> no road signs, no text.
-
-→ `public/images/hero/atardecer-ancha.webp`
-
-### Hero — vertical
-
-El mismo prompt, agregando al final:
-
-> Vertical portrait composition: the road occupies the lower third and the
-> dramatic sky fills the upper two thirds.
-
-→ `public/images/hero/atardecer-alta.webp`
-
-⚠️ Si el hero te queda con un sol muy marcado **arriba a la derecha**, poné
-`heroSolDeTrama = false` en [`src/data/imagenes.ts`](../src/data/imagenes.ts),
-o van a quedar dos soles.
-
----
-
-### Perú → `paquetes/peru.webp`
-
-> A wide cinematic landscape photograph of the Machu Picchu stone terraces at
-> golden hour, with the Huayna Picchu peak rising behind them and layered
-> Andean ridges receding into violet haze in the distance. Warm raking sunlight
-> across the ancient stone walls, low clouds drifting between the peaks. Deep
-> violet sky above, warm amber light near the horizon. Photorealistic, shot on
-> 35mm film. No people, no text.
-
-### Caribe → `paquetes/caribe.webp`
-
-> A wide cinematic photograph of a Caribbean beach at sunset: silhouetted palm
-> trees lean over calm shallow water that the low sun has turned amber, with a
-> bright reflection streaking across the surface toward the camera. Deep violet
-> sky at the top fading to gold at the horizon. Empty white sand in the
-> foreground. Photorealistic, shot on 35mm film. No people, no boats, no text.
-
-### Europa → `paquetes/europa.webp`
-
-> A wide cinematic photograph of a European old-town skyline at dusk, seen from
-> across a calm river: domes, bell towers and tiled rooftops silhouetted
-> against a pale amber horizon under a deep violet sky, warm lights beginning
-> to glow in the windows, soft atmospheric haze over the water. Photorealistic,
-> shot on 35mm film. No people in the foreground, no text, no signage.
-
-### Norte argentino → `paquetes/norte.webp`
-
-> A wide cinematic photograph of the Quebrada de Humahuaca in northern
-> Argentina at golden hour: striped multicoloured rock hills with layered
-> ochre, rust, cream and violet strata, tall cardón cacti silhouetted in the
-> foreground, deep violet sky above, warm amber light raking across the
-> hillsides. Photorealistic, shot on 35mm film. No people, no text.
-
-### Japón → `paquetes/japon.webp`
-
-> A wide cinematic photograph of Mount Fuji at dusk, seen framed beyond a
-> traditional wooden torii gate: the symmetrical snow-capped cone in the
-> distance, a deep violet and magenta sky with a pale golden band just above
-> the horizon, low mist over the foreground. Photorealistic, shot on 35mm film.
-> No people, no text.
-
-### Egipto → `paquetes/egipto.webp`
-
-> A wide cinematic photograph of the pyramids of Giza at golden hour: warm
-> rippled sand dunes in the foreground, the pyramids silhouetted in the middle
-> distance, long shadows raking across the sand, deep violet sky above fading
-> to amber near the horizon, desert atmospheric haze. Photorealistic, shot on
-> 35mm film. No people, no camels, no text.
-
-### Brasil → `paquetes/brasil.webp`
-
-> A wide cinematic photograph of Rio de Janeiro at sunset seen from a hillside:
-> rounded granite peaks silhouetted over the bay, the low sun reflecting off
-> the water, silhouetted palm fronds framing the left edge of the frame, deep
-> violet sky fading to gold near the horizon. Photorealistic, shot on 35mm
-> film. No people, no text.
-
----
-
-### Para compartir el link
-
-No hace falta generar nada nuevo: recortá el **hero horizontal** a
-**1200 × 630** y guardalo como `public/brand/og.jpg`.
-
----
-
-## 3. Antes de subirlas
-
-1. **Convertí a WebP** en [squoosh.app](https://squoosh.app) → formato WebP,
-   calidad **78-82**.
-2. **Peso objetivo**: hero hasta 320 kB, destinos hasta 200 kB cada uno. Si
-   pesa más, bajá la calidad antes que la medida.
-3. **Nombre exacto** el de las flechas de arriba. El de cada destino es el `id`
-   del paquete en `paquetes.ts`.
-
-### Por qué conviene que NO vengan sobresaturadas
-
-El sitio les aplica encima un **grade de marca** (teñido violeta arriba, ámbar
-abajo) más la trama de puntos: ése es el color de marca. Si las fotos ya vienen
-muy cargadas de color, se suman los dos efectos y quedan irreales. Si te pasa,
-bajá `gradeMarca` en [`src/data/imagenes.ts`](../src/data/imagenes.ts).
-
----
-
-## 4. Cómo activarlas
-
-### El hero
-
-En [`src/data/imagenes.ts`](../src/data/imagenes.ts), reemplazá el `null`:
-
-```ts
-export const heroFoto: Foto | null = {
-  ancha: '/images/hero/atardecer-ancha.webp',
-  alta: '/images/hero/atardecer-alta.webp',
-  alt: 'Cordillera al atardecer con un camino que se pierde en el horizonte',
-  foco: 'center 62%',
-}
+```bash
+npm run imagenes
 ```
 
-### Un destino
+Ese comando las convierte a WebP, las achica a la medida justa, guarda los
+originales en `assets-fuente/imagenes-originales/` y te dice qué falta. Si un
+nombre no coincide, te avisa cuál usar.
 
-En [`src/data/paquetes.ts`](../src/data/paquetes.ts), en ese paquete:
+> **Hacelas todas en la misma conversación de ChatGPT, una atrás de la otra.**
+> Mantiene el estilo consistente entre imágenes, que es justamente lo que hace
+> que un set parezca una producción y no un collage.
 
-```ts
-imagen: '/images/paquetes/peru.webp',
-foco: 'center 40%',   // opcional
+---
+
+## ✅ El hero ya está
+
+`hero-ancha.webp` — la que generaste (la ruta de montaña al atardecer) ya está
+integrada y funcionando. No hace falta tocar nada.
+
+**Opcional**, si querés un recorte vertical propio para celular en lugar del
+recorte automático:
+
+```
+Generá una versión VERTICAL (formato retrato, más alto que ancho) de esta misma
+escena: la misma ruta de montaña al atardecer, la misma cordillera y el mismo
+cielo. Composición vertical: mucho cielo arriba y la ruta ocupando el tercio
+inferior, entrando desde abajo del encuadre hacia el punto de fuga. Fotografía
+realista, sin personas, sin vehículos, sin carteles y sin ningún texto.
 ```
 
-`foco` usa la sintaxis de `object-position`, para cuando el recorte te come algo
-importante: `center 30%` sube el encuadre, `70% center` lo corre a la derecha.
-Si no lo ponés, centra.
+Guardala como `hero-alta.png` en `public/images/hero/`, corré `npm run imagenes`
+y después descomentá la línea `alta:` en
+[`src/data/imagenes.ts`](../src/data/imagenes.ts).
 
-### Volver atrás
+---
 
-Poné `null` de nuevo y vuelve la ilustración. Las ilustraciones no se borran:
-quedan como respaldo permanente.
+## Los 7 destinos
+
+Todas van a `public/images/paquetes/`.
+
+### 1 · `peru.png`
+
+```
+Fotografía realista de las terrazas de piedra de Machu Picchu con el pico del
+Huayna Picchu al fondo, a la hora dorada. Luz rasante y cálida sobre las
+piedras, cadenas de montañas andinas superponiéndose hacia el fondo y
+perdiéndose en una neblina violácea, nubes bajas dramáticas. Cielo violeta
+profundo arriba que se vuelve ámbar cálido cerca del horizonte. Plano general
+panorámico cinematográfico, horizonte bajo. Sin personas, sin carteles, sin
+marcas de agua y sin ningún texto en la imagen. Formato horizontal.
+```
+
+### 2 · `caribe.png`
+
+```
+Fotografía realista de una playa del Caribe al atardecer. Palmeras en contraluz
+inclinadas sobre agua turquesa en calma, que el sol bajo vuelve dorada. Reflejo
+del sol quebrándose sobre el agua hacia la cámara. Cielo violeta profundo arriba
+que se vuelve dorado cerca del horizonte. Plano general panorámico
+cinematográfico, horizonte bajo, arena en primer plano. Sin personas, sin
+sombrillas, sin sillas, sin carteles y sin ningún texto en la imagen. Formato
+horizontal.
+```
+
+### 3 · `europa.png`
+
+```
+Fotografía realista del casco histórico de una ciudad europea al anochecer,
+vista desde el otro lado de un río. Cúpulas y campanarios recortados en
+contraluz contra un horizonte ámbar pálido, bajo un cielo violeta profundo.
+Luces cálidas encendidas en algunas ventanas, neblina atmosférica suave, reflejo
+de la ciudad sobre el agua. Plano general panorámico cinematográfico. Sin
+personas en primer plano, sin autos, sin carteles y sin ningún texto en la
+imagen. Formato horizontal.
+```
+
+### 4 · `norte.png`
+
+```
+Fotografía realista de la Quebrada de Humahuaca en el norte argentino a la hora
+dorada. Cerros de roca con estratos de colores en capas: ocre, óxido, terracota
+y violeta. Cardones altos recortados en contraluz en primer plano. Cielo violeta
+profundo arriba que se vuelve ámbar cerca del horizonte, aire seco y limpio de
+altura. Plano general panorámico cinematográfico. Sin personas, sin vehículos,
+sin carteles y sin ningún texto en la imagen. Formato horizontal.
+```
+
+### 5 · `japon.png`
+
+```
+Fotografía realista del monte Fuji al anochecer, visto a través de un portal
+torii tradicional. El cono nevado simétrico al fondo, el torii recortado en
+contraluz a un costado del encuadre. Cielo violeta profundo y magenta con una
+franja dorada pálida sobre el horizonte, niebla baja en primer plano. Plano
+general panorámico cinematográfico. Sin personas, sin carteles y sin ningún
+texto en la imagen. Formato horizontal.
+```
+
+### 6 · `egipto.png`
+
+```
+Fotografía realista de las pirámides de Giza a la hora dorada. Dunas de arena
+onduladas y cálidas en primer plano, el sol bajo proyectando sombras largas
+sobre la arena. Cielo violeta profundo arriba que se vuelve ámbar cerca del
+horizonte, neblina de calor del desierto. Plano general panorámico
+cinematográfico, horizonte bajo. Sin personas, sin camellos, sin turistas, sin
+carteles y sin ningún texto en la imagen. Formato horizontal.
+```
+
+### 7 · `brasil.png`
+
+```
+Fotografía realista de Río de Janeiro al atardecer, vista desde un morro. Cerros
+de granito redondeados recortados en contraluz sobre la bahía, reflejo del sol
+quebrándose en el agua. Hojas de palmera en contraluz enmarcando el borde
+izquierdo del encuadre. Cielo violeta profundo que se vuelve dorado cerca del
+horizonte. Plano general panorámico cinematográfico. Sin personas, sin carteles,
+sin marcas de agua y sin ningún texto en la imagen. Formato horizontal.
+```
+
+---
+
+## Cuando tengas las 7
+
+```bash
+npm run imagenes
+```
+
+Y en [`src/data/imagenes.ts`](../src/data/imagenes.ts):
+
+```ts
+export const usarFotosPaquetes = true
+```
+
+Listo. **No hace falta tocar nada más**: cada paquete busca su foto por el
+nombre del archivo. Si falta alguna, ese destino sigue mostrando su ilustración
+— nunca queda una imagen rota.
+
+---
+
+## Si algo no queda como querés
+
+| Problema | Solución |
+|---|---|
+| La foto se ve muy violeta, se pierde | Bajá `gradeMarca` en `src/data/imagenes.ts` (está en `0.3`; probá `0.2` o `0`) |
+| Se ve poco de la marca, parece stock | Subí `gradeMarca` a `0.45` |
+| El recorte corta algo importante | Agregá `foco: 'center 35%'` a ese paquete en `paquetes.ts`. Sube el encuadre; `70% center` lo corre a la derecha |
+| Quedan dos soles en el hero | `heroSolDeTrama = false` en `imagenes.ts` |
+| Una foto no me gusta | Borrá el `.webp` de `public/images/paquetes/` y vuelve la ilustración de ese destino |
+| Quiero volver a todo ilustrado | `usarFotoHero = false` y `usarFotosPaquetes = false` |
+
+## Por qué los prompts repiten siempre lo mismo
+
+Las tres cosas que se repiten no son relleno, son lo que hace que el set se vea
+coherente:
+
+- **Hora dorada / atardecer** en todas: unifica la luz.
+- **Cielo violeta arriba, ámbar en el horizonte**: es la paleta de la marca, así
+  las fotos ya nacen en el color del sitio y necesitan menos corrección.
+- **Sin personas y sin texto**: las caras generadas por IA envejecen mal, y
+  cualquier texto inventado dentro de una imagen se lee como error.
+
+## Más adelante: fotos propias
+
+Cuando tengas fotos reales de las salidas, reemplazá estas con el mismo nombre y
+volvé a correr `npm run imagenes`. Las fotos propias valen más que cualquier
+imagen generada: son la prueba de que los viajes existen. Si aparecen viajeros
+reconocibles, pedí autorización antes de publicar.
