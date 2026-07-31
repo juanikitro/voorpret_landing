@@ -82,12 +82,11 @@ una vez los 10 puntos de contacto de la página.
 | 1 | **Validar el legajo 16130** con el dueño | `src/data/sitio.ts` |
 | 2 | **Reemplazar los 6 paquetes con `demo: true`** por propuestas reales | `src/data/paquetes.ts` |
 | 3 | **Imagen para compartir** el link (og.jpg, 1200 × 630) | `public/brand/og.jpg` |
-| 4 | **El sol del hero** (`sol.png`) — es el único asset que falta | `docs/imagenes.md` |
-| 5 | **Dominio final** en `canonical`, `og:url` y el JSON-LD | `index.html` |
-| 6 | Confirmar la **dirección del local** si se quiere publicar calle y número | hoy sólo dice "25 de Mayo, Buenos Aires" a propósito |
+| 4 | **Dominio final** en `canonical`, `og:url` y el JSON-LD | `index.html` |
+| 5 | Confirmar la **dirección del local** si se quiere publicar calle y número | hoy sólo dice "25 de Mayo, Buenos Aires" a propósito |
 
 ✅ El **logo original** ya está integrado (transparente, con favicon aparte).
-✅ La **foto del hero** (ancha y vertical) y las **7 fotos de destinos** ya están integradas.
+✅ Las **9 imágenes** están integradas: hero ancha y vertical, el sol y los 7 destinos.
 
 ---
 
@@ -144,8 +143,8 @@ src/
 
 public/                ← SÓLO lo que se sirve al navegador
   brand/               ← logo webp + favicons
-  images/hero/         ← foto del hero cuando se cargue
-  images/paquetes/     ← fotos de los destinos cuando se carguen
+  images/hero/         ← hero ancha, hero vertical y el sol
+  images/paquetes/     ← las 7 fotos + su miniatura de 320 px
 
 assets-fuente/         ← no se publica: originales del logo y el trazado svg
 docs/

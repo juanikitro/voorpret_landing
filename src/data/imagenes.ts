@@ -62,10 +62,10 @@ export type SolHeroConfig = {
  */
 export const solHero: SolHeroConfig | null = {
   imagen: '/images/hero/sol.webp',
-  x: 63,
-  y: 44,
-  tamano: 52,
-  opacidad: 0.72,
+  x: 64,
+  y: 46,
+  tamano: 66,
+  opacidad: 0.88,
 }
 
 /**

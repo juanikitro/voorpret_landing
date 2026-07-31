@@ -28,13 +28,19 @@ nombre no coincide, te avisa cuál usar.
 
 ---
 
-## ✅ El hero ya está
+## ✅ Todo integrado
 
-`hero-ancha.webp` — la que generaste (la ruta de montaña al atardecer) ya está
-integrada y funcionando. No hace falta tocar nada.
+Las **9 imágenes** están cargadas y activas: hero ancha, hero vertical, el sol y
+los 7 destinos. Esta guía queda como referencia para cuando haya que rehacer o
+reemplazar alguna — por ejemplo al pasar a fotos propias de las salidas.
 
-**Opcional**, si querés un recorte vertical propio para celular en lugar del
-recorte automático:
+Los prompts que se usaron, abajo.
+
+---
+
+## El hero → `hero-ancha.png` + `hero-alta.png`
+
+El recorte vertical es la misma escena en formato retrato, para celular:
 
 ```
 Generá una versión VERTICAL (formato retrato, más alto que ancho) de esta misma
@@ -44,16 +50,15 @@ inferior, entrando desde abajo del encuadre hacia el punto de fuga. Fotografía
 realista, sin personas, sin vehículos, sin carteles y sin ningún texto.
 ```
 
-Guardala como `hero-alta.png` en `public/images/hero/`, corré `npm run imagenes`
-y después descomentá la línea `alta:` en
-[`src/data/imagenes.ts`](../src/data/imagenes.ts).
+Van a `public/images/hero/`. El vertical se declara en el campo `alta` de
+`heroFoto`, en [`src/data/imagenes.ts`](../src/data/imagenes.ts).
 
 ---
 
-## Falta: el sol del hero → `sol.png`
+## ✅ El sol del hero ya está
 
-El sol se compone **encima** de la foto como luz aditiva. Va a
-`public/images/hero/`.
+`sol.webp` está integrado. El sol se compone **encima** de la foto como luz
+aditiva. Este es el prompt que lo generó, por si hay que rehacerlo:
 
 ```
 Imagen cuadrada sobre fondo NEGRO PURO (#000000) absoluto, sin ningún otro
@@ -86,9 +91,9 @@ En `solHero` dentro de [`src/data/imagenes.ts`](../src/data/imagenes.ts):
 
 | Campo | Qué hace |
 |---|---|
-| `x`, `y` | Posición en % del hero. Hoy `63 / 44`: a la derecha del titular |
-| `tamano` | Ancho en % del hero. Hoy `52` |
-| `opacidad` | Cuánta luz suma. Hoy `0.72` |
+| `x`, `y` | Posición en % del hero. Hoy `64 / 46`: a la derecha del titular, apoyado en la sierra |
+| `tamano` | Ancho en % del hero. Hoy `66` |
+| `opacidad` | Cuánta luz suma. Hoy `0.88` |
 
 El sol **no se muestra en celular**: ahí el titular está centrado y ocupa todo
 el ancho, no hay lado libre. Y si el archivo no existe, el hero se ve como
@@ -182,21 +187,17 @@ sin marcas de agua y sin ningún texto en la imagen. Formato horizontal.
 
 ---
 
-## Cuando tengas las 7
+## Si reemplazás alguna
+
+Dejá el archivo nuevo con el mismo nombre y corré:
 
 ```bash
 npm run imagenes
 ```
 
-Y en [`src/data/imagenes.ts`](../src/data/imagenes.ts):
-
-```ts
-export const usarFotosPaquetes = true
-```
-
-Listo. **No hace falta tocar nada más**: cada paquete busca su foto por el
-nombre del archivo. Si falta alguna, ese destino sigue mostrando su ilustración
-— nunca queda una imagen rota.
+**No hace falta tocar código**: cada paquete busca su foto por el nombre del
+archivo. Si falta alguna, ese destino muestra su ilustración — nunca queda una
+imagen rota.
 
 ---
 
