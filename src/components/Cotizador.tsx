@@ -1,15 +1,15 @@
 import { useMemo, useState } from 'react'
 import { sitio } from '../data/sitio'
-import { linkConsulta, mensajeConsulta } from '../lib/whatsapp'
+import { linkConsulta } from '../lib/whatsapp'
 import { useRevelar } from '../lib/hooks'
 import { FlechaDer, WhatsApp } from './Iconos'
+import ShapeGrid from './ShapeGrid'
 
 /* ============================================================================
    COTIZADOR
    ----------------------------------------------------------------------------
    Tres datos, los mínimos para que la respuesta del otro lado sirva. Sin
-   email, sin teléfono, sin "acepto recibir novedades". El usuario ve el
-   mensaje exacto antes de abrir WhatsApp: nada se envía solo.
+   email, sin teléfono, sin "acepto recibir novedades".
    ========================================================================== */
 
 const DESTINOS = ['Perú', 'Caribe', 'Europa', 'Brasil', 'Norte argentino', 'Japón', 'Todavía no sé']
@@ -58,7 +58,6 @@ export default function Cotizador() {
   const ref = useRevelar<HTMLDivElement>()
 
   const consulta = { destino, pasajeros, cuando }
-  const mensaje = useMemo(() => mensajeConsulta(consulta), [destino, pasajeros, cuando])
   const link = useMemo(() => linkConsulta(consulta), [destino, pasajeros, cuando])
 
   const abrir = (e: React.FormEvent) => {
@@ -73,19 +72,17 @@ export default function Cotizador() {
       className="grano relative overflow-hidden bg-sol text-tinta"
       aria-labelledby="titulo-consulta"
     >
-      <div
-        aria-hidden="true"
-        className="trama-grande pointer-events-none absolute inset-0 text-tinta opacity-[0.09]"
-      />
+      <div aria-hidden="true" className="absolute inset-0 z-0 opacity-35">
+        <ShapeGrid speed={0.1} squareSize={27} direction="down" />
+      </div>
 
-      <div ref={ref} className="contenedor relative py-20 sm:py-28 lg:py-32">
+      <div ref={ref} className="contenedor relative z-10 py-20 sm:py-28 lg:py-32">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1fr)] lg:gap-16">
           {/* Discurso */}
           <div className="flex flex-col">
-            <p className="etiqueta rev text-tinta/60">Empecemos</p>
             <h2
               id="titulo-consulta"
-              className="rev display-ancho mt-4 text-[clamp(2.5rem,9vw,5.2rem)]"
+              className="rev display-ancho text-[clamp(2.5rem,9vw,5.2rem)]"
               style={{ '--rev-d': '80ms' } as React.CSSProperties}
             >
               Contame
@@ -219,24 +216,6 @@ export default function Cotizador() {
                 onElegir={setCuando}
                 etiquetaGrupo="Fechas sugeridas"
               />
-            </div>
-
-            {/* Vista previa honesta del mensaje */}
-            <div className="mt-8 rounded-sm bg-tinta p-4 sm:p-5">
-              <p className="etiqueta flex items-center gap-2 text-papel/50">
-                <WhatsApp className="size-3.5" />
-                Se va a abrir este mensaje
-              </p>
-              <p
-                aria-live="polite"
-                className="mt-3 rounded-lg rounded-tl-none bg-papel/[0.09] p-3.5 text-[0.9375rem] leading-relaxed text-papel"
-              >
-                {mensaje}
-              </p>
-              <p className="mt-3 text-[0.75rem] leading-snug text-papel/45">
-                Se abre WhatsApp con el texto ya cargado. No se envía hasta que lo mandes vos, y podés
-                editarlo antes.
-              </p>
             </div>
 
             <button type="submit" className="btn btn-solido mt-6 w-full justify-center !border-tinta">

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { SolHeroConfig } from '../data/imagenes'
+import type { SolHeroConfig, SolHeroPosicion } from '../data/imagenes'
 
 /* ============================================================================
    SOL DEL HERO
@@ -34,28 +34,45 @@ export default function SolHero({
   const [fallo, setFallo] = useState(false)
   if (fallo) return null
 
+  const estilo = (posicion: SolHeroPosicion) => ({
+    left: `${posicion.x}%`,
+    top: `${posicion.y}%`,
+    width: `${posicion.tamano}%`,
+    opacity: posicion.opacidad,
+    marginLeft: `-${posicion.tamano / 2}%`,
+    translate: '0 -50%',
+  })
+
+  const claseBase = `pointer-events-none absolute max-w-none select-none mix-blend-screen ${
+    quieto ? '' : 'anim-sol'
+  }`
+
   return (
-    <img
-      src={config.imagen}
-      alt=""
-      aria-hidden="true"
-      tabIndex={-1}
-      draggable={false}
-      decoding="async"
-      onError={() => setFallo(true)}
-      /* Oculto en celular: ahí el titular está centrado y ocupa todo el ancho,
-         no hay lado libre donde poner el sol sin que quede detrás del texto. */
-      className={`pointer-events-none absolute hidden max-w-none select-none mix-blend-screen sm:block ${
-        quieto ? '' : 'anim-sol'
-      }`}
-      style={{
-        left: `${config.x}%`,
-        top: `${config.y}%`,
-        width: `${config.tamano}%`,
-        opacity: config.opacidad,
-        marginLeft: `-${config.tamano / 2}%`,
-        translate: '0 -50%',
-      }}
-    />
+    <>
+      {config.movil && (
+        <img
+          src={config.imagen}
+          alt=""
+          aria-hidden="true"
+          tabIndex={-1}
+          draggable={false}
+          decoding="async"
+          onError={() => setFallo(true)}
+          className={`${claseBase} sm:hidden`}
+          style={estilo(config.movil)}
+        />
+      )}
+      <img
+        src={config.imagen}
+        alt=""
+        aria-hidden="true"
+        tabIndex={-1}
+        draggable={false}
+        decoding="async"
+        onError={() => setFallo(true)}
+        className={`${claseBase} hidden sm:block`}
+        style={estilo(config)}
+      />
+    </>
   )
 }

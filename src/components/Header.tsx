@@ -56,7 +56,7 @@ export default function Header() {
       >
         <div className="contenedor flex h-[68px] items-center justify-between gap-4 sm:h-[84px]">
           <a href="#inicio" className="rounded-sm" aria-label="Voorpret — inicio">
-            <Marca prioridad />
+            <Marca sucursal={false} prioridad />
           </a>
 
           <nav aria-label="Secciones" className="hidden items-center gap-1 lg:flex">
@@ -108,12 +108,8 @@ export default function Header() {
           aria-modal="true"
           aria-label="Menú de navegación"
         >
-          <div
-            aria-hidden="true"
-            className="trama-grande pointer-events-none absolute inset-0 text-violeta opacity-30"
-          />
           <div className="contenedor relative flex h-[68px] shrink-0 items-center justify-between">
-            <Marca />
+            <Marca sucursal={false} />
             <button
               ref={cerrarRef}
               type="button"

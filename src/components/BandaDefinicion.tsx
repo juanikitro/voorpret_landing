@@ -1,5 +1,6 @@
 import { definicion } from '../data/sitio'
 import { useRevelar } from '../lib/hooks'
+import DotGrid from './DotGrid'
 
 const CINTA = [
   'Salidas grupales acompañadas',
@@ -39,10 +40,7 @@ export default function BandaDefinicion() {
 
       {/* Definición */}
       <section className="grano relative overflow-hidden bg-papel text-tinta">
-        <div
-          aria-hidden="true"
-          className="trama pointer-events-none absolute inset-0 text-tinta/70 opacity-[0.13]"
-        />
+        <DotGrid className="pointer-events-none absolute inset-0 text-tinta/70 opacity-[0.13]" />
 
         <div ref={ref} className="contenedor relative grid gap-10 py-20 sm:py-28 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16 lg:py-36">
           <div>

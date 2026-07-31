@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { FlechaAbajo, FlechaDer, Pin } from './Iconos'
+import { FlechaDer } from './Iconos'
 import SolHero from './SolHero'
-import { sitio } from '../data/sitio'
 import { gradeMarca, heroFoto, heroSolDeTrama, solHero, usarFotoHero } from '../data/imagenes'
 import type { Foto } from '../data/imagenes'
 import { useAlMontar } from '../lib/hooks'
@@ -176,11 +175,6 @@ function FondoFoto({
         className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-tinta via-tinta/45 to-transparent"
       />
 
-      {/* 3 — Firma impresa */}
-      <div
-        aria-hidden="true"
-        className="trama absolute inset-0 text-tinta opacity-[0.18] mix-blend-multiply"
-      />
     </div>
   )
 }
@@ -224,22 +218,7 @@ export default function Hero({ quieto }: { quieto: boolean }) {
 
       {/* ——— Contenido ——— */}
       <div className="contenedor relative z-10 flex flex-1 flex-col justify-center py-10 sm:py-16">
-        <p
-          className="etiqueta rev flex flex-wrap items-center gap-x-3 gap-y-1 text-sol"
-          data-visible={listo}
-          style={{ '--rev-d': '120ms' } as React.CSSProperties}
-        >
-          <Pin className="size-3.5 shrink-0" />
-          {/* Cada dato va en su propio span: los nodos de texto sueltos no
-              respetan el gap del flex y quedarían pegados en móvil. */}
-          <span>{sitio.ubicacion}</span>
-          <span className="hidden text-papel/30 sm:inline">/</span>
-          <span>Agencia de viajes desde {sitio.desde}</span>
-          <span className="hidden text-papel/30 sm:inline">/</span>
-          <span>Legajo {sitio.legajo}</span>
-        </p>
-
-        <h1 className="mt-5 sm:mt-7" data-visible={listo}>
+        <h1 data-visible={listo}>
           <span className="display-ancho block text-[clamp(2.85rem,12.5vw,8.4rem)]">
             <span className="rev-linea" style={{ '--rev-d': '220ms' } as React.CSSProperties}>
               <span>Vos ya te</span>
@@ -280,26 +259,6 @@ export default function Hero({ quieto }: { quieto: boolean }) {
             Contame tu viaje
           </a>
         </div>
-      </div>
-
-      {/* ——— Pie del hero: sello y tagline heredada ——— */}
-      <div className="contenedor relative z-10 flex items-end justify-between gap-6 pb-7 sm:pb-9">
-        <a
-          href="#propuestas"
-          className="group flex items-center gap-2.5 text-papel/55 transition-colors hover:text-sol"
-          aria-label="Ir a las propuestas"
-        >
-          <span className="grid size-9 place-items-center rounded-full border border-current transition-transform duration-500 ease-[var(--ease-anticipa)] group-hover:translate-y-1">
-            <FlechaAbajo className="size-3.5" />
-          </span>
-          <span className="etiqueta">Bajá, hay siete</span>
-        </a>
-
-        <p className="etiqueta hidden text-right text-papel/45 sm:block">
-          Tu viaje
-          <br />
-          comienza acá
-        </p>
       </div>
 
       <div aria-hidden="true" className="grano-capa" />

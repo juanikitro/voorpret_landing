@@ -92,12 +92,12 @@ En `solHero` dentro de [`src/data/imagenes.ts`](../src/data/imagenes.ts):
 | Campo | Qué hace |
 |---|---|
 | `x`, `y` | Posición en % del hero. Hoy `64 / 46`: a la derecha del titular, apoyado en la sierra |
+| `movil` | Posición para el recorte vertical. Hoy `76 / 56`: en el cielo, sin invadir el titular |
 | `tamano` | Ancho en % del hero. Hoy `66` |
 | `opacidad` | Cuánta luz suma. Hoy `0.88` |
 
-El sol **no se muestra en celular**: ahí el titular está centrado y ocupa todo
-el ancho, no hay lado libre. Y si el archivo no existe, el hero se ve como
-ahora, sin sol y sin errores.
+En celular usa su propia posición, en el cielo y fuera del titular. Si el
+archivo no existe, el hero se ve como ahora, sin sol y sin errores.
 
 ---
 

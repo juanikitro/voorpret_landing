@@ -85,7 +85,7 @@ function Banda({
 
           {/* Miniatura: identidad del destino ya en estado cerrado */}
           <span
-            className={`shrink-0 overflow-hidden rounded-sm border border-papel/15 transition-all duration-600 ease-[var(--ease-anticipa)] ${
+            className={`aspect-video shrink-0 overflow-hidden rounded-sm border border-papel/15 transition-all duration-600 ease-[var(--ease-anticipa)] ${
               abierta
                 ? 'w-0 border-transparent opacity-0'
                 : 'w-[58px] opacity-80 group-hover:opacity-100 sm:w-[74px] sm:group-hover:w-[104px]'
@@ -97,7 +97,7 @@ function Banda({
               arte={p.arte}
               imagen={fotoPaquete(p.id, p.imagen, 'mini')}
               foco={p.foco}
-              className="aspect-16/10 w-full"
+              className="size-full"
             />
           </span>
 
@@ -126,15 +126,15 @@ function Banda({
         <div className="overflow-hidden" inert={!abierta}>
           <div className="grid gap-8 pb-12 pt-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-12 lg:pb-16">
             {/* Ilustración */}
-            <div className="relative overflow-hidden rounded-sm border border-papel/15">
+            <div className="relative aspect-video overflow-hidden rounded-sm border border-papel/15">
               <ArteDestino
                 arte={p.arte}
                 imagen={fotoPaquete(p.id, p.imagen)}
                 foco={p.foco}
                 alt={`${p.nombre} — ${p.recorrido.join(', ')}`}
                 activo={abierta}
-                /* 16/10 ≈ la relación del lienzo (1000×620): así casi no recorta */
-                className="aspect-16/11 w-full sm:aspect-16/10"
+                /* Las fotos publicadas son 16:9: comparten un único encuadre visible. */
+                className="size-full"
               />
               <div className="absolute inset-x-0 bottom-0 flex flex-wrap gap-1.5 bg-gradient-to-t from-tinta/85 to-transparent p-3 pt-10">
                 {p.recorrido.map((r) => (
@@ -194,10 +194,6 @@ function Banda({
                   Consultar por este viaje
                   <FlechaDer />
                 </a>
-                <p className="text-[0.8125rem] leading-snug text-papel/50">
-                  Se abre WhatsApp con el
-                  <br className="hidden sm:block" /> mensaje ya escrito.
-                </p>
               </div>
             </div>
           </div>

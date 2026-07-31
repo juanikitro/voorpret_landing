@@ -1,6 +1,7 @@
 import { confianza, sitio } from '../data/sitio'
 import { useRevelar } from '../lib/hooks'
 import { FlechaDer, Instagram, Pin } from './Iconos'
+import SpecularCard from './SpecularCard'
 
 /* ============================================================================
    NOSOTROS / CONFIANZA
@@ -39,10 +40,9 @@ export default function Confianza() {
       <div ref={ref} className="contenedor relative py-20 sm:py-28 lg:py-36">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-20">
           <div>
-            <p className="etiqueta rev text-sol">Quiénes somos</p>
             <h2
               id="titulo-nosotros"
-              className="rev display-ancho mt-4 text-[clamp(2.3rem,8vw,4.8rem)]"
+              className="rev display-ancho text-[clamp(2.3rem,8vw,4.8rem)]"
               style={{ '--rev-d': '80ms' } as React.CSSProperties}
             >
               Una agencia
@@ -92,18 +92,14 @@ export default function Confianza() {
           <div>
             <ul className="grid gap-px overflow-hidden rounded-sm border border-papel/16 bg-papel/16 sm:grid-cols-2">
               {confianza.map((c, i) => (
-                <li
+                <SpecularCard
                   key={c.dato}
-                  className="rev group relative bg-ciruela p-6 transition-colors duration-500 hover:bg-papel/[0.04] sm:p-7"
+                  className="rev bg-ciruela p-6 sm:p-7"
                   style={{ '--rev-d': `${200 + i * 80}ms` } as React.CSSProperties}
                 >
                   <p className="display-ancho text-[1.6rem] text-sol sm:text-[1.85rem]">{c.dato}</p>
                   <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-papel/70">{c.texto}</p>
-                  <span
-                    aria-hidden="true"
-                    className="trama pointer-events-none absolute inset-0 text-sol opacity-0 transition-opacity duration-500 group-hover:opacity-[0.07]"
-                  />
-                </li>
+                </SpecularCard>
               ))}
             </ul>
 

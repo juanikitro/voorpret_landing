@@ -179,6 +179,23 @@
   background-size: 18px 18px;
 }
 
+/* Dot Grid — trama animada en CSS, sin canvas ni trabajo de JS por frame. */
+.dot-grid {
+  --dot-grid-size: 1.35px;
+  --dot-grid-gap: 9px;
+  background-image: radial-gradient(circle, currentColor var(--dot-grid-size), transparent calc(var(--dot-grid-size) + 0.12px));
+  background-position: 0 0;
+  background-size: var(--dot-grid-gap) var(--dot-grid-gap);
+}
+
+.dot-grid--animated {
+  animation: deriva-dot-grid 24s ease-in-out infinite alternate;
+}
+
+.shape-grid {
+  display: block;
+}
+
 /** Disco de trama: el sol. Los puntos se abren hacia el borde, como en un
     halftone impreso de verdad. */
 @utility trama-disco {
@@ -210,6 +227,36 @@
    ========================================================================== */
 
 @layer components {
+  /* El trazo habilita cada etapa: en móvil baja y en escritorio avanza. */
+  .proceso-trazo {
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 1.45s var(--ease-anticipa);
+  }
+  [data-visible='true'] .proceso-trazo {
+    transform: scaleY(1);
+  }
+  .proceso-nodo {
+    opacity: 0;
+    transform: scale(0.55);
+    transition:
+      opacity 0.32s ease var(--rev-d),
+      transform 0.5s var(--ease-anticipa) var(--rev-d);
+  }
+  [data-visible='true'] .proceso-nodo {
+    opacity: 1;
+    transform: scale(1);
+  }
+  @media (width >= 64rem) {
+    .proceso-trazo {
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    [data-visible='true'] .proceso-trazo {
+      transform: scaleX(1);
+    }
+  }
+
   .rev {
     --rev-y: 22px;
     --rev-d: 0ms;
@@ -351,6 +398,15 @@
   }
 }
 
+@keyframes deriva-dot-grid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: var(--dot-grid-gap) calc(var(--dot-grid-gap) * 1.5);
+  }
+}
+
 @keyframes marquesina {
   from {
     transform: translate3d(0, 0, 0);
@@ -396,6 +452,24 @@
 @layer components {
   .anim-deriva {
     animation: deriva-trama 9s linear infinite;
+  }
+  .specular-card {
+    position: relative;
+  }
+  .specular-card__fx {
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+    inset: -20px;
+  }
+  .specular-card__fx canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .specular-card__content {
+    position: relative;
+    z-index: 2;
   }
   .anim-marquesina {
     animation: marquesina 42s linear infinite;

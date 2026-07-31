@@ -1,6 +1,7 @@
 import { proceso } from '../data/sitio'
 import { useRevelar } from '../lib/hooks'
 import { FlechaDer } from './Iconos'
+import DotGrid from './DotGrid'
 
 /* ============================================================================
    CÓMO TRABAJAMOS
@@ -17,17 +18,13 @@ export default function Proceso() {
       className="grano relative overflow-hidden bg-papel text-tinta"
       aria-labelledby="titulo-proceso"
     >
-      <div
-        aria-hidden="true"
-        className="trama pointer-events-none absolute inset-0 text-violeta opacity-[0.12]"
-      />
+      <DotGrid className="pointer-events-none absolute inset-0 text-violeta opacity-[0.12]" />
 
       <div ref={ref} className="contenedor relative py-20 sm:py-28 lg:py-36">
         <div className="max-w-[62ch]">
-          <p className="etiqueta rev text-violeta">Cómo trabajamos</p>
           <h2
             id="titulo-proceso"
-            className="rev display-ancho mt-4 text-[clamp(2.3rem,8vw,5rem)]"
+            className="rev display-ancho text-[clamp(2.3rem,8vw,5rem)]"
             style={{ '--rev-d': '80ms' } as React.CSSProperties}
           >
             Cuatro momentos,
@@ -47,20 +44,20 @@ export default function Proceso() {
         <div className="relative mt-14 sm:mt-20">
           <div
             aria-hidden="true"
-            className="absolute left-[19px] top-2 hidden h-[calc(100%-3rem)] w-0 border-l-[3px] border-dashed border-sol sm:block lg:left-0 lg:top-[19px] lg:h-0 lg:w-full lg:border-l-0 lg:border-t-[3px]"
+            className="proceso-trazo absolute left-[19px] top-2 hidden h-[calc(100%-3rem)] w-0 border-l-[3px] border-dashed border-sol sm:block lg:left-0 lg:top-[19px] lg:h-0 lg:w-full lg:border-l-0 lg:border-t-[3px]"
           />
 
           <ol className="relative grid gap-10 sm:gap-12 lg:grid-cols-4 lg:gap-8">
             {proceso.map((paso, i) => (
               <li
                 key={paso.n}
-                className="rev relative sm:pl-16 lg:pl-0 lg:pt-16"
-                style={{ '--rev-d': `${200 + i * 90}ms` } as React.CSSProperties}
+                className="rev proceso-paso relative sm:pl-16 lg:pl-0 lg:pt-16"
+                style={{ '--rev-d': `${160 + i * 420}ms` } as React.CSSProperties}
               >
                 {/* Nodo */}
                 <span
                   aria-hidden="true"
-                  className="absolute left-0 top-0 hidden size-10 place-items-center rounded-full border-[3px] border-tinta bg-sol sm:grid lg:top-0"
+                  className="proceso-nodo absolute left-0 top-0 hidden size-10 place-items-center rounded-full border-[3px] border-tinta bg-sol sm:grid lg:top-0"
                 >
                   <span className="size-2.5 rounded-full bg-tinta" />
                 </span>

@@ -43,12 +43,17 @@ export const heroFoto: Foto = {
   foco: 'center 58%',
 }
 
-export type SolHeroConfig = {
-  imagen: string
+export type SolHeroPosicion = {
   x: number
   y: number
   tamano: number
   opacidad: number
+}
+
+export type SolHeroConfig = SolHeroPosicion & {
+  imagen: string
+  /** Posición alternativa para el recorte vertical. */
+  movil?: SolHeroPosicion
 }
 
 /**
@@ -66,6 +71,12 @@ export const solHero: SolHeroConfig | null = {
   y: 46,
   tamano: 66,
   opacidad: 0.88,
+  movil: {
+    x: 76,
+    y: 56,
+    tamano: 66,
+    opacidad: 0.88,
+  },
 }
 
 /**

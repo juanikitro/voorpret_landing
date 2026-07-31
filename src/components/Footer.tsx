@@ -2,16 +2,14 @@ import Marca from './Marca'
 import { Facebook, FlechaDer, Instagram, Pin, WhatsApp } from './Iconos'
 import { sitio } from '../data/sitio'
 import { linkGeneral } from '../lib/whatsapp'
+import DotGrid from './DotGrid'
 
 export default function Footer() {
   const anio = new Date().getFullYear()
 
   return (
     <footer className="grano relative overflow-hidden bg-tinta text-papel">
-      <div
-        aria-hidden="true"
-        className="trama pointer-events-none absolute inset-0 text-violeta-cl opacity-[0.11]"
-      />
+      <DotGrid className="pointer-events-none absolute inset-0 text-violeta-cl opacity-[0.11]" />
 
       {/* Cierre: la frase histórica de la marca, en su lugar justo */}
       <div className="contenedor relative border-b border-papel/12 py-16 sm:py-24">
