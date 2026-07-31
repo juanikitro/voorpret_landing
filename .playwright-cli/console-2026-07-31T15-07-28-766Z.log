@@ -1,0 +1,14 @@
+[     166ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=06d74c61:20102
+[    7486ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4173/node_modules/.vite/deps/react-dom_client.js?v=06d74c61:20102
+[  252222ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:4173/src/components/BandaDefinicion.tsx?t=1785510700796:0
+[  252224ms] [ERROR] [vite] Failed to reload /src/components/BandaDefinicion.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:4173/@vite/client:808
+[  252273ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:4173/src/components/Proceso.tsx?t=1785510700799:0
+[  252275ms] [ERROR] [vite] Failed to reload /src/components/Proceso.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:4173/@vite/client:808
+[  252308ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:4173/src/components/Footer.tsx?t=1785510700803:0
+[  252310ms] [ERROR] [vite] Failed to reload /src/components/Footer.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:4173/@vite/client:808
+[  252338ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:4173/src/components/Cotizador.tsx?t=1785510700806:0
+[  252340ms] [ERROR] [vite] Failed to reload /src/components/Cotizador.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:4173/@vite/client:808
+[  294738ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:4173/src/components/Cotizador.tsx?t=1785510743466:0
+[  294739ms] [ERROR] [vite] Failed to reload /src/App.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:4173/@vite/client:808
+[  329580ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:4173/src/components/DotGrid.tsx?t=1785510778311:0
+[  330732ms] [ERROR] [vite] Failed to reload /src/components/DotGrid.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:4173/@vite/client:808

@@ -1,0 +1,2 @@
+[  372424ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:4173/images/paquetes/peru.webp:0
+[  372685ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:4173/images/paquetes/peru-mini.webp:0

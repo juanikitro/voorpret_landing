@@ -1,0 +1,544 @@
+- generic [ref=e2]:
+  - link "Saltar al contenido" [ref=e3] [cursor=pointer]:
+    - /url: "#propuestas"
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "Voorpret — inicio" [ref=e6] [cursor=pointer]:
+        - /url: "#inicio"
+        - img "Voorpret" [ref=e8]
+      - navigation "Secciones" [ref=e9]:
+        - link "Propuestas" [ref=e10] [cursor=pointer]:
+          - /url: "#propuestas"
+        - link "Cómo trabajamos" [ref=e11] [cursor=pointer]:
+          - /url: "#como-trabajamos"
+        - link "Nosotros" [ref=e12] [cursor=pointer]:
+          - /url: "#nosotros"
+      - link "Escribinos" [ref=e14] [cursor=pointer]:
+        - /url: https://wa.me/5492345684340?text=Hola%20Voorpret%2C%20vi%20la%20web%20y%20quiero%20hacer%20una%20consulta%20sobre%20un%20viaje.
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - img "Ruta de montaña al atardecer, con la cordillera y el cielo violeta en el horizonte" [ref=e22]
+      - generic [ref=e28]:
+        - heading "Vos ya te lo estás imaginando." [level=1] [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e31]: Vos ya te
+            - generic [ref=e33]: lo estás
+            - generic [ref=e35]: imaginando.
+        - generic [ref=e37]:
+          - paragraph [ref=e38]: Nosotros nos encargamos de todo lo demás.
+          - paragraph [ref=e39]: Comparamos alternativas reales, organizamos cada tramo y te acompañamos desde la primera charla hasta que volvés. Vos elegí a dónde.
+        - generic [ref=e40]:
+          - link "Ver propuestas" [ref=e41] [cursor=pointer]:
+            - /url: "#propuestas"
+          - link "Contame tu viaje" [ref=e44] [cursor=pointer]:
+            - /url: "#consulta"
+      - link "Ir a las propuestas" [ref=e46] [cursor=pointer]:
+        - /url: "#propuestas"
+        - generic [ref=e50]: Empezá
+    - generic [ref=e52]:
+      - generic [ref=e53]:
+        - generic [ref=e54]: Salidas grupales acompañadas
+        - generic [ref=e57]: Viajes internacionales
+        - generic [ref=e60]: Escapadas
+        - generic [ref=e63]: Viajes a medida
+        - generic [ref=e66]: Nacionales
+        - generic [ref=e69]: Luna de miel
+      - generic [ref=e72]:
+        - generic [ref=e73]: Salidas grupales acompañadas
+        - generic [ref=e76]: Viajes internacionales
+        - generic [ref=e79]: Escapadas
+        - generic [ref=e82]: Viajes a medida
+        - generic [ref=e85]: Nacionales
+        - generic [ref=e88]: Luna de miel
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - paragraph [ref=e94]: Por qué nos llamamos así
+        - paragraph [ref=e95]: voorpret
+        - paragraph [ref=e96]:
+          - generic [ref=e97]: /ˈvoːrprɛt/
+          - generic [ref=e99]: neerlandés · sustantivo
+        - paragraph [ref=e101]: Comparar aéreos, entender qué incluye cada tarifa, coordinar traslados, revisar requisitos de ingreso. Todo eso lo hacemos nosotros y te lo contamos en criollo, por WhatsApp, con nombre y apellido.
+      - generic [ref=e102]:
+        - paragraph [ref=e103]: La alegría que se siente antes de que algo bueno pase.
+        - generic [ref=e104]:
+          - paragraph [ref=e105]: "Le pusimos ese nombre porque es exactamente lo que queremos que te pase mientras armamos tu viaje. Elegir el destino, imaginarte allá, contarle a quién lo vas a sorprender: eso ya es parte del viaje."
+          - paragraph [ref=e106]: Nuestro trabajo es que esa parte no se te llene de trámites.
+    - region [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - generic [ref=e110]:
+            - paragraph [ref=e111]: Propuestas / 7 destinos
+            - heading "El índice de deseos" [level=2] [ref=e112]: El índicede deseos
+          - paragraph [ref=e113]: "Abrí la que te tiente y mirá qué incluye. No publicamos precios porque cada viaje cambia según fechas, cantidad de pasajeros y categoría: preferimos cotizarte lo que realmente vas a viajar."
+        - group "Filtrar propuestas por tipo" [ref=e114]:
+          - button "Todo" [pressed] [ref=e115]
+          - button "Salida grupal acompañada" [ref=e116]
+          - button "Escapada" [ref=e117]
+          - button "Viaje a medida" [ref=e118]
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - heading [level=3] [ref=e121]:
+              - button "Encantos del Perú Salida grupal acompañada / Octubre 2026 / 7 noches" [expanded] [ref=e122]:
+                - generic [ref=e123]: "01"
+                - generic [ref=e124]:
+                  - generic [ref=e125]: Encantos del Perú
+                  - generic [ref=e126]:
+                    - generic [ref=e127]: Salida grupal acompañada
+                    - generic [ref=e128]: /
+                    - generic [ref=e129]: Octubre 2026
+                    - generic [ref=e130]: /
+                    - generic [ref=e131]: 7 noches
+            - region "Encantos del Perú Salida grupal acompañada / Octubre 2026 / 7 noches" [ref=e136]:
+              - generic [ref=e138]:
+                - generic [ref=e139]:
+                  - img "Encantos del Perú — Lima, Cusco, Valle Sagrado, Machu Picchu, Aguas Calientes" [ref=e141]
+                  - generic [ref=e142]:
+                    - generic [ref=e143]: Lima
+                    - generic [ref=e144]: Cusco
+                    - generic [ref=e145]: Valle Sagrado
+                    - generic [ref=e146]: Machu Picchu
+                    - generic [ref=e147]: Aguas Calientes
+                - generic [ref=e148]:
+                  - paragraph [ref=e149]: Nuestra salida grupal de octubre 2026, con coordinador argentino desde Ezeiza hasta la vuelta.
+                  - generic [ref=e150]:
+                    - generic [ref=e151]:
+                      - term [ref=e152]: Cuándo
+                      - definition [ref=e153]: Octubre 2026
+                    - generic [ref=e154]:
+                      - term [ref=e155]: Duración
+                      - definition [ref=e156]: 7 noches
+                    - generic [ref=e157]:
+                      - term [ref=e158]: Salida
+                      - definition [ref=e159]: Buenos Aires · LATAM
+                  - paragraph [ref=e160]: Qué incluye
+                  - list [ref=e161]:
+                    - listitem [ref=e162]: Aéreos con LATAM desde Buenos Aires
+                    - listitem [ref=e165]: 7 noches de alojamiento con desayuno
+                    - listitem [ref=e168]: Traslados de llegada y salida
+                    - listitem [ref=e171]: Coordinador acompañante desde Argentina
+                    - listitem [ref=e174]: Asistencia al viajero
+                    - listitem [ref=e177]: Grupo reducido con salida garantizada
+                  - paragraph [ref=e180]: Cupos limitados. Escribinos y te pasamos el detalle completo del itinerario y las condiciones.
+                  - link "Consultar por este viaje" [ref=e182] [cursor=pointer]:
+                    - /url: https://wa.me/5492345684340?text=Hola%20Voorpret%2C%20vi%20%22Encantos%20del%20Per%C3%BA%22%20(Octubre%202026)%20en%20la%20web%20y%20quiero%20consultar%20disponibilidad%20y%20recibir%20una%20cotizaci%C3%B3n.
+          - generic [ref=e187]:
+            - heading [level=3] [ref=e188]:
+              - button "Caribe sin escalas mentales Escapada / Salidas todo el año / 7 a 10 noches" [ref=e189]:
+                - generic [ref=e190]: "02"
+                - generic [ref=e191]:
+                  - generic [ref=e192]: Caribe sin escalas mentales
+                  - generic [ref=e193]:
+                    - generic [ref=e194]: Escapada
+                    - generic [ref=e195]: /
+                    - generic [ref=e196]: Salidas todo el año
+                    - generic [ref=e197]: /
+                    - generic [ref=e198]: 7 a 10 noches
+            - region "Caribe sin escalas mentales Escapada / Salidas todo el año / 7 a 10 noches":
+              - generic [ref=e204]:
+                - generic [ref=e205]:
+                  - img "Caribe sin escalas mentales — Punta Cana, Puerto Plata, Riviera Maya" [ref=e207]
+                  - generic [ref=e208]:
+                    - generic [ref=e209]: Punta Cana
+                    - generic [ref=e210]: Puerto Plata
+                    - generic [ref=e211]: Riviera Maya
+                - generic [ref=e212]:
+                  - paragraph [ref=e213]: All inclusive, traslados resueltos y cero decisiones una vez que llegás.
+                  - generic [ref=e214]:
+                    - generic [ref=e215]:
+                      - term [ref=e216]: Cuándo
+                      - definition [ref=e217]: Salidas todo el año
+                    - generic [ref=e218]:
+                      - term [ref=e219]: Duración
+                      - definition [ref=e220]: 7 a 10 noches
+                    - generic [ref=e221]:
+                      - term [ref=e222]: Salida
+                      - definition [ref=e223]: Buenos Aires · Córdoba · Rosario
+                  - paragraph [ref=e224]: Qué incluye
+                  - list [ref=e225]:
+                    - listitem [ref=e226]: Aéreos con equipaje según tarifa elegida
+                    - listitem [ref=e229]: Hotel all inclusive frente al mar
+                    - listitem [ref=e232]: Traslados aeropuerto – hotel – aeropuerto
+                    - listitem [ref=e235]: Asistencia al viajero
+                  - paragraph [ref=e238]: Armamos la combinación de hotel y categoría según lo que buscás. Contanos fechas y cantidad de pasajeros.
+                  - link "Consultar por este viaje" [ref=e240] [cursor=pointer]:
+                    - /url: https://wa.me/5492345684340?text=Hola%20Voorpret%2C%20vi%20%22Caribe%20sin%20escalas%20mentales%22%20(Salidas%20todo%20el%20a%C3%B1o)%20en%20la%20web%20y%20quiero%20consultar%20disponibilidad%20y%20recibir%20una%20cotizaci%C3%B3n.
+          - generic [ref=e245]:
+            - heading [level=3] [ref=e246]:
+              - button "Europa clásica en grupo Salida grupal acompañada / Mayo y septiembre / 15 noches" [ref=e247]:
+                - generic [ref=e248]: "03"
+                - generic [ref=e249]:
+                  - generic [ref=e250]: Europa clásica en grupo
+                  - generic [ref=e251]:
+                    - generic [ref=e252]: Salida grupal acompañada
+                    - generic [ref=e253]: /
+                    - generic [ref=e254]: Mayo y septiembre
+                    - generic [ref=e255]: /
+                    - generic [ref=e256]: 15 noches
+            - region "Europa clásica en grupo Salida grupal acompañada / Mayo y septiembre / 15 noches":
+              - generic [ref=e262]:
+                - generic [ref=e263]:
+                  - img "Europa clásica en grupo — Madrid, París, Roma, Florencia, Venecia" [ref=e265]
+                  - generic [ref=e266]:
+                    - generic [ref=e267]: Madrid
+                    - generic [ref=e268]: París
+                    - generic [ref=e269]: Roma
+                    - generic [ref=e270]: Florencia
+                    - generic [ref=e271]: Venecia
+                - generic [ref=e272]:
+                  - paragraph [ref=e273]: Las ciudades que siempre quisiste, sin manejar ni descifrar horarios de tren.
+                  - generic [ref=e274]:
+                    - generic [ref=e275]:
+                      - term [ref=e276]: Cuándo
+                      - definition [ref=e277]: Mayo y septiembre
+                    - generic [ref=e278]:
+                      - term [ref=e279]: Duración
+                      - definition [ref=e280]: 15 noches
+                    - generic [ref=e281]:
+                      - term [ref=e282]: Salida
+                      - definition [ref=e283]: Buenos Aires
+                  - paragraph [ref=e284]: Qué incluye
+                  - list [ref=e285]:
+                    - listitem [ref=e286]: Aéreos internacionales
+                    - listitem [ref=e289]: Hoteles céntricos con desayuno
+                    - listitem [ref=e292]: Traslados y trayectos entre ciudades
+                    - listitem [ref=e295]: Coordinador acompañante desde Argentina
+                    - listitem [ref=e298]: Visitas guiadas en español
+                    - listitem [ref=e301]: Asistencia al viajero
+                  - link "Consultar por este viaje" [ref=e305] [cursor=pointer]:
+                    - /url: https://wa.me/5492345684340?text=Hola%20Voorpret%2C%20vi%20%22Europa%20cl%C3%A1sica%20en%20grupo%22%20(Mayo%20y%20septiembre)%20en%20la%20web%20y%20quiero%20consultar%20disponibilidad%20y%20recibir%20una%20cotizaci%C3%B3n.
+          - generic [ref=e310]:
+            - heading [level=3] [ref=e311]:
+              - button "Norte argentino Escapada / Abril a noviembre / 4 a 6 noches" [ref=e312]:
+                - generic [ref=e313]: "04"
+                - generic [ref=e314]:
+                  - generic [ref=e315]: Norte argentino
+                  - generic [ref=e316]:
+                    - generic [ref=e317]: Escapada
+                    - generic [ref=e318]: /
+                    - generic [ref=e319]: Abril a noviembre
+                    - generic [ref=e320]: /
+                    - generic [ref=e321]: 4 a 6 noches
+            - region "Norte argentino Escapada / Abril a noviembre / 4 a 6 noches":
+              - generic [ref=e327]:
+                - generic [ref=e328]:
+                  - img "Norte argentino — Salta, Purmamarca, Humahuaca, Salinas Grandes, Cafayate" [ref=e330]
+                  - generic [ref=e331]:
+                    - generic [ref=e332]: Salta
+                    - generic [ref=e333]: Purmamarca
+                    - generic [ref=e334]: Humahuaca
+                    - generic [ref=e335]: Salinas Grandes
+                    - generic [ref=e336]: Cafayate
+                - generic [ref=e337]:
+                  - paragraph [ref=e338]: Salta, Jujuy y los caminos que se ven mejor cuando alguien más maneja.
+                  - generic [ref=e339]:
+                    - generic [ref=e340]:
+                      - term [ref=e341]: Cuándo
+                      - definition [ref=e342]: Abril a noviembre
+                    - generic [ref=e343]:
+                      - term [ref=e344]: Duración
+                      - definition [ref=e345]: 4 a 6 noches
+                    - generic [ref=e346]:
+                      - term [ref=e347]: Salida
+                      - definition [ref=e348]: Aéreo o bus desde Buenos Aires
+                  - paragraph [ref=e349]: Qué incluye
+                  - list [ref=e350]:
+                    - listitem [ref=e351]: Traslados y transporte en destino
+                    - listitem [ref=e354]: Alojamiento con desayuno
+                    - listitem [ref=e357]: Excursiones con guía local
+                    - listitem [ref=e360]: Asistencia al viajero
+                  - paragraph [ref=e363]: También lo armamos como viaje nacional a medida, con auto propio o combinado con Cataratas.
+                  - link "Consultar por este viaje" [ref=e365] [cursor=pointer]:
+                    - /url: https://wa.me/5492345684340?text=Hola%20Voorpret%2C%20vi%20%22Norte%20argentino%22%20(Abril%20a%20noviembre)%20en%20la%20web%20y%20quiero%20consultar%20disponibilidad%20y%20recibir%20una%20cotizaci%C3%B3n.
+          - generic [ref=e370]:
+            - heading [level=3] [ref=e371]:
+              - button "Japón a medida Viaje a medida / Primavera y otoño japonés / A definir con vos" [ref=e372]:
+                - generic [ref=e373]: "05"
+                - generic [ref=e374]:
+                  - generic [ref=e375]: Japón a medida
+                  - generic [ref=e376]:
+                    - generic [ref=e377]: Viaje a medida
+                    - generic [ref=e378]: /
+                    - generic [ref=e379]: Primavera y otoño japonés
+                    - generic [ref=e380]: /
+                    - generic [ref=e381]: A definir con vos
+            - region "Japón a medida Viaje a medida / Primavera y otoño japonés / A definir con vos":
+              - generic [ref=e387]:
+                - generic [ref=e388]:
+                  - img "Japón a medida — Tokio, Kioto, Nara, Osaka, Hakone" [ref=e390]
+                  - generic [ref=e391]:
+                    - generic [ref=e392]: Tokio
+                    - generic [ref=e393]: Kioto
+                    - generic [ref=e394]: Nara
+                    - generic [ref=e395]: Osaka
+                    - generic [ref=e396]: Hakone
+                - generic [ref=e397]:
+                  - paragraph [ref=e398]: Un itinerario armado con vos, con los traslados internos y los pases ya resueltos.
+                  - generic [ref=e399]:
+                    - generic [ref=e400]:
+                      - term [ref=e401]: Cuándo
+                      - definition [ref=e402]: Primavera y otoño japonés
+                    - generic [ref=e403]:
+                      - term [ref=e404]: Duración
+                      - definition [ref=e405]: A definir con vos
+                    - generic [ref=e406]:
+                      - term [ref=e407]: Salida
+                      - definition [ref=e408]: Buenos Aires
+                  - paragraph [ref=e409]: Qué incluye
+                  - list [ref=e410]:
+                    - listitem [ref=e411]: Aéreos con la mejor combinación disponible
+                    - listitem [ref=e414]: Alojamiento elegido según zona y presupuesto
+                    - listitem [ref=e417]: Pase de tren y traslados internos
+                    - listitem [ref=e420]: Itinerario día por día en español
+                    - listitem [ref=e423]: Asistencia al viajero
+                  - paragraph [ref=e426]: Es el tipo de viaje donde más se nota tener a alguien que ya lo armó otras veces.
+                  - link "Consultar por este viaje" [ref=e428] [cursor=pointer]:
+                    - /url: https://wa.me/5492345684340?text=Hola%20Voorpret%2C%20vi%20%22Jap%C3%B3n%20a%20medida%22%20(Primavera%20y%20oto%C3%B1o%20japon%C3%A9s)%20en%20la%20web%20y%20quiero%20consultar%20disponibilidad%20y%20recibir%20una%20cotizaci%C3%B3n.
+          - generic [ref=e433]:
+            - heading [level=3] [ref=e434]:
+              - button "Egipto y Dubái Salida grupal acompañada / Marzo y noviembre / 12 noches" [ref=e435]:
+                - generic [ref=e436]: "06"
+                - generic [ref=e437]:
+                  - generic [ref=e438]: Egipto y Dubái
+                  - generic [ref=e439]:
+                    - generic [ref=e440]: Salida grupal acompañada
+                    - generic [ref=e441]: /
+                    - generic [ref=e442]: Marzo y noviembre
+                    - generic [ref=e443]: /
+                    - generic [ref=e444]: 12 noches
+            - region "Egipto y Dubái Salida grupal acompañada / Marzo y noviembre / 12 noches":
+              - generic [ref=e450]:
+                - generic [ref=e451]:
+                  - img "Egipto y Dubái — El Cairo, Luxor, Asuán, Abu Simbel, Dubái" [ref=e453]
+                  - generic [ref=e454]:
+                    - generic [ref=e455]: El Cairo
+                    - generic [ref=e456]: Luxor
+                    - generic [ref=e457]: Asuán
+                    - generic [ref=e458]: Abu Simbel
+                    - generic [ref=e459]: Dubái
+                - generic [ref=e460]:
+                  - paragraph [ref=e461]: Dos mundos en un solo viaje, con crucero por el Nilo y todo coordinado.
+                  - generic [ref=e462]:
+                    - generic [ref=e463]:
+                      - term [ref=e464]: Cuándo
+                      - definition [ref=e465]: Marzo y noviembre
+                    - generic [ref=e466]:
+                      - term [ref=e467]: Duración
+                      - definition [ref=e468]: 12 noches
+                    - generic [ref=e469]:
+                      - term [ref=e470]: Salida
+                      - definition [ref=e471]: Buenos Aires
+                  - paragraph [ref=e472]: Qué incluye
+                  - list [ref=e473]:
+                    - listitem [ref=e474]: Aéreos internacionales y vuelos internos
+                    - listitem [ref=e477]: Crucero por el Nilo con pensión completa
+                    - listitem [ref=e480]: Hoteles con desayuno en El Cairo y Dubái
+                    - listitem [ref=e483]: Guía en español y entradas principales
+                    - listitem [ref=e486]: Asistencia al viajero
+                  - link "Consultar por este viaje" [ref=e490] [cursor=pointer]:
+                    - /url: https://wa.me/5492345684340?text=Hola%20Voorpret%2C%20vi%20%22Egipto%20y%20Dub%C3%A1i%22%20(Marzo%20y%20noviembre)%20en%20la%20web%20y%20quiero%20consultar%20disponibilidad%20y%20recibir%20una%20cotizaci%C3%B3n.
+          - generic [ref=e495]:
+            - heading [level=3] [ref=e496]:
+              - button "Brasil de fin de semana largo Escapada / Feriados y verano / 3 a 5 noches" [ref=e497]:
+                - generic [ref=e498]: "07"
+                - generic [ref=e499]:
+                  - generic [ref=e500]: Brasil de fin de semana largo
+                  - generic [ref=e501]:
+                    - generic [ref=e502]: Escapada
+                    - generic [ref=e503]: /
+                    - generic [ref=e504]: Feriados y verano
+                    - generic [ref=e505]: /
+                    - generic [ref=e506]: 3 a 5 noches
+            - region "Brasil de fin de semana largo Escapada / Feriados y verano / 3 a 5 noches":
+              - generic [ref=e512]:
+                - generic [ref=e513]:
+                  - img "Brasil de fin de semana largo — Río de Janeiro, Búzios, Florianópolis" [ref=e515]
+                  - generic [ref=e516]:
+                    - generic [ref=e517]: Río de Janeiro
+                    - generic [ref=e518]: Búzios
+                    - generic [ref=e519]: Florianópolis
+                - generic [ref=e520]:
+                  - paragraph [ref=e521]: "Pocos días, bien usados: vuelo directo, hotel a metros de la playa y nada más que pensar."
+                  - generic [ref=e522]:
+                    - generic [ref=e523]:
+                      - term [ref=e524]: Cuándo
+                      - definition [ref=e525]: Feriados y verano
+                    - generic [ref=e526]:
+                      - term [ref=e527]: Duración
+                      - definition [ref=e528]: 3 a 5 noches
+                    - generic [ref=e529]:
+                      - term [ref=e530]: Salida
+                      - definition [ref=e531]: Buenos Aires · Rosario
+                  - paragraph [ref=e532]: Qué incluye
+                  - list [ref=e533]:
+                    - listitem [ref=e534]: Aéreos directos
+                    - listitem [ref=e537]: Alojamiento con desayuno
+                    - listitem [ref=e540]: Traslados incluidos
+                    - listitem [ref=e543]: Asistencia al viajero
+                  - link "Consultar por este viaje" [ref=e547] [cursor=pointer]:
+                    - /url: https://wa.me/5492345684340?text=Hola%20Voorpret%2C%20vi%20%22Brasil%20de%20fin%20de%20semana%20largo%22%20(Feriados%20y%20verano)%20en%20la%20web%20y%20quiero%20consultar%20disponibilidad%20y%20recibir%20una%20cotizaci%C3%B3n.
+        - paragraph [ref=e552]:
+          - text: ¿No está el destino que tenés en la cabeza?
+          - link "Contanos y lo armamos" [ref=e553] [cursor=pointer]:
+            - /url: "#consulta"
+          - text: .
+    - region [ref=e554]:
+      - generic [ref=e555]:
+        - generic [ref=e556]:
+          - paragraph [ref=e557]: Cómo trabajamos
+          - heading "Cuatro momentos, una sola persona" [level=2] [ref=e558]: Cuatro momentos,una sola persona
+          - paragraph [ref=e559]: No pasás de un sector a otro ni te atiende alguien distinto cada vez. Del primer mensaje al último, hablás siempre con la misma persona.
+        - list [ref=e561]:
+          - listitem [ref=e562]:
+            - paragraph [ref=e565]: Primera charla
+            - paragraph [ref=e566]: "01"
+            - heading "Nos contás la idea" [level=3] [ref=e567]
+            - paragraph [ref=e568]: "Aunque venga suelta: un destino, una fecha aproximada, con quién viajás. Sin formularios eternos ni cotizadores automáticos."
+          - listitem [ref=e569]:
+            - paragraph [ref=e572]: Alternativas
+            - paragraph [ref=e573]: "02"
+            - heading "Comparamos por vos" [level=3] [ref=e574]
+            - paragraph [ref=e575]: "Buscamos alternativas reales de aéreos, alojamiento y servicios, y te las explicamos en criollo: qué cambia entre una y otra, y qué conviene según tu viaje."
+          - listitem [ref=e576]:
+            - paragraph [ref=e579]: Organización
+            - paragraph [ref=e580]: "03"
+            - heading "Armamos todo" [level=3] [ref=e581]
+            - paragraph [ref=e582]: Reservas, traslados, asistencia al viajero, documentación y esos detalles que nadie te avisa hasta que estás en el aeropuerto. Todo confirmado y por escrito.
+          - listitem [ref=e583]:
+            - paragraph [ref=e586]: Antes, durante y después
+            - paragraph [ref=e587]: "04"
+            - heading "Viajás acompañado" [level=3] [ref=e588]
+            - paragraph [ref=e589]: Seguís teniendo con quién hablar durante el viaje. Y cuando volvés, también. Somos las mismas personas de la primera charla.
+        - generic [ref=e590]:
+          - paragraph [ref=e591]: Empezar no te compromete a nada.
+          - link "Contame tu viaje" [ref=e592] [cursor=pointer]:
+            - /url: "#consulta"
+    - region [ref=e595]:
+      - generic: "2013"
+      - generic [ref=e597]:
+        - generic [ref=e598]:
+          - paragraph [ref=e599]: Quiénes somos
+          - heading "Una agencia con nombre, no un formulario" [level=2] [ref=e600]: Una agenciacon nombre,no un formulario
+          - generic [ref=e601]:
+            - paragraph [ref=e602]: "Voorpret nació en 2013 en 25 de Mayo, Buenos Aires, y desde entonces armamos viajes para gente de todo el país. Somos una agencia chica y eso es a propósito: nos permite conocer cada viaje que vendemos."
+            - paragraph [ref=e603]: "Trabajamos viajes nacionales e internacionales, salidas grupales acompañadas y paquetes armados desde cero. La forma de empezar es siempre la misma: un mensaje."
+          - generic [ref=e604]:
+            - link "@voorpret25" [ref=e605] [cursor=pointer]:
+              - /url: https://www.instagram.com/voorpret25/
+            - paragraph [ref=e612]: 25 de Mayo, Buenos Aires
+        - generic [ref=e616]:
+          - list [ref=e617]:
+            - listitem [ref=e618]:
+              - generic [ref=e619]:
+                - paragraph [ref=e620]: Desde 2013
+                - paragraph [ref=e621]: Más de una década armando viajes desde 25 de Mayo para clientes de todo el país.
+            - listitem [ref=e622]:
+              - generic [ref=e623]:
+                - paragraph [ref=e624]: Legajo 16130
+                - paragraph [ref=e625]: Agencia de viajes registrada. Trabajamos con documentación y respaldo formal.
+            - listitem [ref=e626]:
+              - generic [ref=e627]:
+                - paragraph [ref=e628]: Una persona real
+                - paragraph [ref=e629]: No un chatbot ni un call center. La misma persona te atiende de la consulta al regreso.
+            - listitem [ref=e630]:
+              - generic [ref=e631]:
+                - paragraph [ref=e632]: Argentina entera
+                - paragraph [ref=e633]: Estamos en 25 de Mayo y coordinamos por WhatsApp con viajeros de todo el país.
+          - generic [ref=e634]:
+            - generic [ref=e635]: Legajo16130Registrada
+            - paragraph [ref=e639]: Agencia de viajes registrada. Cada reserva se confirma por escrito, con voucher y condiciones a la vista antes de que pagues nada.
+    - region [ref=e640]:
+      - generic [ref=e642]:
+        - generic [ref=e643]:
+          - paragraph [ref=e644]: Empecemos
+          - heading "Contame tu viaje" [level=2] [ref=e645]: Contametu viaje
+          - paragraph [ref=e646]: "Tres datos y listo. Con eso ya podemos empezar a buscarte alternativas reales. Si todavía no tenés nada definido, también sirve: lo pensamos juntos."
+          - generic [ref=e647]:
+            - generic [ref=e648]: Consultarno cuestanada
+            - paragraph [ref=e655]: +54 9 2345 68-4340Respondemos personas, no bots.
+        - generic [ref=e656]:
+          - generic [ref=e657]:
+            - generic [ref=e658]:
+              - generic [ref=e659]: "01"
+              - text: A dónde te gustaría ir
+            - textbox "01 A dónde te gustaría ir" [ref=e660]:
+              - /placeholder: Un destino o una idea suelta
+            - group "Destinos sugeridos" [ref=e661]:
+              - button "Perú" [ref=e662]
+              - button "Caribe" [ref=e663]
+              - button "Europa" [ref=e664]
+              - button "Brasil" [ref=e665]
+              - button "Norte argentino" [ref=e666]
+              - button "Japón" [ref=e667]
+              - button "Todavía no sé" [ref=e668]
+          - generic [ref=e669]:
+            - paragraph [ref=e670]:
+              - generic [ref=e671]: "02"
+              - text: Cuántos viajan
+            - generic [ref=e672]:
+              - group "02 Cuántos viajan" [ref=e673]:
+                - button "Quitar un pasajero" [ref=e674]
+                - status [ref=e676]: "2"
+                - button "Agregar un pasajero" [ref=e677]
+              - paragraph [ref=e680]: 2 personas
+          - generic [ref=e681]:
+            - generic [ref=e682]:
+              - generic [ref=e683]: "03"
+              - text: Más o menos cuándo
+            - textbox "03 Más o menos cuándo" [ref=e684]:
+              - /placeholder: Un mes, una temporada o una fecha
+            - group "Fechas sugeridas" [ref=e685]:
+              - button "los próximos meses" [ref=e686]
+              - button "fin de año" [ref=e687]
+              - button "el año que viene" [ref=e688]
+              - button "las vacaciones de invierno" [ref=e689]
+          - button "Abrir WhatsApp" [ref=e690]
+  - contentinfo [ref=e695]:
+    - generic [ref=e696]:
+      - paragraph [ref=e697]: Tu viajecomienza acá
+      - link "Escribinos por WhatsApp" [ref=e698] [cursor=pointer]:
+        - /url: https://wa.me/5492345684340?text=Hola%20Voorpret%2C%20vi%20la%20web%20y%20quiero%20hacer%20una%20consulta%20sobre%20un%20viaje.
+    - generic [ref=e703]:
+      - generic [ref=e704]:
+        - generic [ref=e705]:
+          - img "Voorpret" [ref=e706]
+          - generic [ref=e707]: 25 de Mayo
+        - paragraph [ref=e710]: Agencia de viajes en 25 de Mayo, Buenos Aires. Salidas grupales, viajes internacionales, escapadas y paquetes a medida desde 2013.
+      - generic [ref=e711]:
+        - paragraph [ref=e712]: Contacto
+        - list [ref=e713]:
+          - listitem [ref=e714]:
+            - link "+54 9 2345 68-4340" [ref=e715] [cursor=pointer]:
+              - /url: https://wa.me/5492345684340?text=Hola%20Voorpret%2C%20vi%20la%20web%20y%20quiero%20hacer%20una%20consulta%20sobre%20un%20viaje.
+          - listitem [ref=e718]: 25 de Mayo, Buenos Aires
+      - generic [ref=e722]:
+        - paragraph [ref=e723]: Seguinos
+        - list [ref=e724]:
+          - listitem [ref=e725]:
+            - link "@voorpret25" [ref=e726] [cursor=pointer]:
+              - /url: https://www.instagram.com/voorpret25/
+          - listitem [ref=e731]:
+            - link "Voorpret 25" [ref=e732] [cursor=pointer]:
+              - /url: https://www.facebook.com/Voorpret25/
+      - generic [ref=e735]:
+        - paragraph [ref=e736]: Secciones
+        - list [ref=e737]:
+          - listitem [ref=e738]:
+            - link "Propuestas" [ref=e739] [cursor=pointer]:
+              - /url: "#propuestas"
+          - listitem [ref=e740]:
+            - link "Cómo trabajamos" [ref=e741] [cursor=pointer]:
+              - /url: "#como-trabajamos"
+          - listitem [ref=e742]:
+            - link "Nosotros" [ref=e743] [cursor=pointer]:
+              - /url: "#nosotros"
+          - listitem [ref=e744]:
+            - link "Cotizá tu viaje" [ref=e745] [cursor=pointer]:
+              - /url: "#consulta"
+    - generic [ref=e746]:
+      - paragraph [ref=e747]: Legajo 16130. Los itinerarios, servicios y fechas publicados están sujetos a disponibilidad y confirmación al momento de la consulta, y no constituyen una oferta en firme. Las tarifas se informan por WhatsApp según fechas, cantidad de pasajeros y categoría elegida.
+      - generic [ref=e748]:
+        - paragraph [ref=e749]: © 2026 Voorpret 25 de Mayo
+        - paragraph [ref=e750]:
+          - text: Diseño y desarrollo
+          - link "Mayofy" [ref=e751] [cursor=pointer]:
+            - /url: https://mayofy.com
