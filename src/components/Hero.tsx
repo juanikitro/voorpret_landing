@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { FlechaAbajo, FlechaDer, Pin } from './Iconos'
+import SolHero from './SolHero'
 import { sitio } from '../data/sitio'
-import { gradeMarca, heroFoto, heroSolDeTrama, usarFotoHero } from '../data/imagenes'
+import { gradeMarca, heroFoto, heroSolDeTrama, solHero, usarFotoHero } from '../data/imagenes'
 import type { Foto } from '../data/imagenes'
 import { useAlMontar } from '../lib/hooks'
 
@@ -144,6 +145,10 @@ function FondoFoto({
         }}
       />
       <div aria-hidden="true" className="absolute inset-0 bg-ciruela/18 mix-blend-multiply" />
+
+      {/* Sol: luz aditiva sobre la foto. Va acá, antes de los velos, para que
+          el velo que protege el titular también lo apague. */}
+      {solHero && <SolHero config={solHero} quieto={quieto} />}
 
       {/* 2 — Velos de contraste */}
       <div

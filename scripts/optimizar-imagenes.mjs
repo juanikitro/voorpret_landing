@@ -19,16 +19,22 @@ const RESGUARDO = join(RAIZ, 'assets-fuente', 'imagenes-originales')
 /** Ancho máximo por carpeta, y por nombre de archivo cuando hace falta */
 const REGLAS = [
   { carpeta: 'public/images/hero', patron: /-alta$/, ancho: 1200, etiqueta: 'hero vertical' },
+  // El sol va SIN pérdida: con compresión el negro deja de ser #000 y el
+  // mix-blend-screen levanta todo el rectángulo del archivo, dibujando un
+  // borde visible sobre la foto.
+  { carpeta: 'public/images/hero', patron: /^sol$/, ancho: 1200, etiqueta: 'sol (sin pérdida)', sinPerdida: true },
   { carpeta: 'public/images/hero', patron: null, ancho: 2400, etiqueta: 'hero horizontal' },
   { carpeta: 'public/images/paquetes', patron: null, ancho: 1600, etiqueta: 'destino' },
 ]
 
 const CALIDAD = 80
+/** Ancho de la miniatura que usa el índice cerrado */
+const ANCHO_MINI = 320
 const ENTRADAS = new Set(['.png', '.jpg', '.jpeg', '.avif', '.tif', '.tiff'])
 
 /** Nombres que el sitio busca. Cualquier otro se convierte pero no se usa. */
 const NOMBRES = {
-  'public/images/hero': ['hero-ancha', 'hero-alta'],
+  'public/images/hero': ['hero-ancha', 'hero-alta', 'sol'],
   'public/images/paquetes': ['peru', 'caribe', 'europa', 'norte', 'japon', 'egipto', 'brasil'],
 }
 
@@ -62,8 +68,16 @@ for (const carpeta of ['public/images/hero', 'public/images/paquetes']) {
     const { width } = await img.metadata()
     await img
       .resize({ width: Math.min(width ?? r.ancho, r.ancho), withoutEnlargement: true })
-      .webp({ quality: CALIDAD, effort: 6 })
+      .webp(r.sinPerdida ? { lossless: true, effort: 6 } : { quality: CALIDAD, effort: 6 })
       .toFile(destino)
+
+    // Variante chica para la miniatura del índice cerrado
+    if (carpeta.endsWith('paquetes')) {
+      await sharp(origen)
+        .resize({ width: ANCHO_MINI, withoutEnlargement: true })
+        .webp({ quality: 78, effort: 6 })
+        .toFile(join(dir, `${nombre}-mini.webp`))
+    }
 
     const despues = (await stat(destino)).size
 

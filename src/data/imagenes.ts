@@ -14,8 +14,8 @@
 /** Ya está la foto del hero. */
 export const usarFotoHero = true
 
-/** Poné true cuando tengas las 7 fotos de los destinos en public/images/paquetes/ */
-export const usarFotosPaquetes = false
+/** Las 7 fotos de destinos están cargadas. */
+export const usarFotosPaquetes = true
 
 export type Foto = {
   /** Imagen para pantallas anchas */
@@ -37,19 +37,48 @@ export type Foto = {
 
 export const heroFoto: Foto = {
   ancha: '/images/hero/hero-ancha.webp',
-  // Recorte vertical nativo para celular. Mientras no exista, el celular usa
-  // `ancha` recortada al centro (queda bien: la ruta está centrada).
-  // alta: '/images/hero/hero-alta.webp',
+  /** Recorte vertical propio para celular: misma escena, cielo más alto. */
+  alta: '/images/hero/hero-alta.webp',
   alt: 'Ruta de montaña al atardecer, con la cordillera y el cielo violeta en el horizonte',
   foco: 'center 58%',
 }
 
+export type SolHeroConfig = {
+  imagen: string
+  x: number
+  y: number
+  tamano: number
+  opacidad: number
+}
+
 /**
- * El sol de trama se mantiene por encima de la foto: es la firma de la marca
- * y lo que evita que el hero parezca un banner de stock.
- * Ponelo en false si la foto ya tiene un sol marcado arriba a la derecha.
+ * Posición en porcentajes del hero, así el sol no se desacomoda cuando cambia
+ * el recorte entre la foto ancha y la alta.
+ *
+ * `x` NO es el centro de luz de la foto cruda (medido en 39%). El velo de
+ * contraste oscurece el 45% izquierdo para que se lea el titular, así que el
+ * punto que el ojo percibe como más luminoso queda bastante más a la derecha.
+ * Poner el sol en 39% lo metía detrás de "imaginando".
  */
-export const heroSolDeTrama = true
+export const solHero: SolHeroConfig | null = {
+  imagen: '/images/hero/sol.webp',
+  x: 63,
+  y: 44,
+  tamano: 52,
+  opacidad: 0.72,
+}
+
+/**
+ * Sol de trama (un div con CSS, no parte de la foto).
+ *
+ * Con la ilustración funcionaba: mismo lenguaje gráfico. Sobre una fotografía
+ * se lee como una calcomanía pegada encima, así que queda apagado. La firma de
+ * marca la sigue poniendo la trama de puntos que cubre toda la foto, que es
+ * textura de impresión y no un objeto flotando.
+ *
+ * Ponelo en true si volvés a la ilustración (usarFotoHero = false).
+ */
+export const heroSolDeTrama = false
 
 /**
  * Intensidad del teñido violeta/ámbar sobre las fotos (0 a 1). Es lo que hace
@@ -69,8 +98,14 @@ export const gradeMarca = 0.3
  * - `override` en `null`    → fuerza la ilustración, aunque haya foto
  * - sin `override`          → busca /images/paquetes/<id>.webp
  */
-export function fotoPaquete(id: string, override?: string | null): string | null {
+export function fotoPaquete(
+  id: string,
+  override?: string | null,
+  /** 'mini' = versión de 320 px para la miniatura del índice cerrado */
+  variante?: 'mini',
+): string | null {
   if (override) return override
   if (override === null) return null
-  return usarFotosPaquetes ? `/images/paquetes/${id}.webp` : null
+  if (!usarFotosPaquetes) return null
+  return `/images/paquetes/${id}${variante === 'mini' ? '-mini' : ''}.webp`
 }

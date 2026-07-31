@@ -207,7 +207,11 @@ export default function ArteDestino({
           width={1600}
           height={1000}
           className="size-full object-cover"
-          style={{ objectPosition: foco ?? 'center' }}
+          style={{
+            objectPosition: foco ?? 'center',
+            // Compensa el planchado que produce el grade en soft-light
+            filter: 'saturate(1.08) contrast(1.05)',
+          }}
           onError={() => setFotoFallo(true)}
         />
         <div
@@ -220,13 +224,10 @@ export default function ArteDestino({
         />
         <div
           aria-hidden="true"
-          className="trama pointer-events-none absolute inset-0 text-tinta opacity-20 mix-blend-multiply"
+          className="trama pointer-events-none absolute inset-0 text-tinta opacity-[0.14] mix-blend-multiply"
         />
-        {/* Base oscura: los chips del recorrido se apoyan siempre sobre algo */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-tinta/70 to-transparent"
-        />
+        {/* Sin velo inferior acá: el scrim de los chips ya lo pone IndiceDeseos.
+            Dos degradados apilados apagaban el tercio inferior de cada foto. */}
       </div>
     )
   }

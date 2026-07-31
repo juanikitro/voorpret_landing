@@ -50,6 +50,52 @@ y después descomentá la línea `alta:` en
 
 ---
 
+## Falta: el sol del hero → `sol.png`
+
+El sol se compone **encima** de la foto como luz aditiva. Va a
+`public/images/hero/`.
+
+```
+Imagen cuadrada sobre fondo NEGRO PURO (#000000) absoluto, sin ningún otro
+elemento. En el centro, solamente el sol y su luz: un núcleo dorado muy
+brillante, un halo ámbar que se difunde en anillos suaves, y neblina atmosférica
+cálida que se estira un poco en horizontal, como el aire cerca del horizonte al
+atardecer. La luz tiene que desvanecerse por completo hasta negro absoluto ANTES
+de llegar a los bordes: los cuatro bordes tienen que quedar 100% negros. Sin
+paisaje, sin nubes, sin montañas, sin siluetas, sin destellos hexagonales de
+lente, sin texto ni marcas. Fotorrealista, no ilustración. Formato cuadrado.
+```
+
+### Por qué fondo negro y no transparente
+
+Se compone con `mix-blend-mode: screen`, que es blending **aditivo**: el negro
+aporta cero y el resplandor suma luz. Es cómo se compone luz de verdad, y evita
+depender del canal alfa, que las IA generan de forma poco confiable.
+
+La frase de que **la luz se apague antes de los bordes** es la más importante
+del prompt: si el resplandor llega al borde, se ve el rectángulo del archivo
+recortado sobre la foto.
+
+`npm run imagenes` guarda este archivo **sin pérdida** (a diferencia del resto).
+Con compresión, el negro deja de ser exactamente `#000` y el screen levanta todo
+el rectángulo, dibujando un borde visible.
+
+### Ajustes
+
+En `solHero` dentro de [`src/data/imagenes.ts`](../src/data/imagenes.ts):
+
+| Campo | Qué hace |
+|---|---|
+| `x`, `y` | Posición en % del hero. Hoy `63 / 44`: a la derecha del titular |
+| `tamano` | Ancho en % del hero. Hoy `52` |
+| `opacidad` | Cuánta luz suma. Hoy `0.72` |
+
+El sol **no se muestra en celular**: ahí el titular está centrado y ocupa todo
+el ancho, no hay lado libre. Y si el archivo no existe, el hero se ve como
+ahora, sin sol y sin errores.
+
+---
+
 ## Los 7 destinos
 
 Todas van a `public/images/paquetes/`.

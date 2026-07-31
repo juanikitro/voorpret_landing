@@ -91,9 +91,11 @@ function Banda({
                 : 'w-[58px] opacity-80 group-hover:opacity-100 sm:w-[74px] sm:group-hover:w-[104px]'
             }`}
           >
+            {/* Miniatura: usa la variante de 320 px. Bajar la foto de 1600 px
+                para 74 px eran ~750 kB tirados en los destinos cerrados. */}
             <ArteDestino
               arte={p.arte}
-              imagen={fotoPaquete(p.id, p.imagen)}
+              imagen={fotoPaquete(p.id, p.imagen, 'mini')}
               foco={p.foco}
               className="aspect-16/10 w-full"
             />

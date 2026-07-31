@@ -39,12 +39,19 @@ componentes para actualizar la web.**
 
 ### Ilustraciones o fotos
 
-La página arranca con **ilustraciones vectoriales generadas por código**: no
-descargan nada y todos los destinos comparten la misma dirección visual.
+Hoy la página usa **fotos** en el hero y en los 7 destinos. Debajo siguen
+existiendo las **ilustraciones vectoriales generadas por código**, que actúan de
+respaldo automático: si una foto falta o está mal nombrada, ese lugar muestra su
+ilustración en vez de una imagen rota.
 
-Cada una se puede reemplazar por una **foto real de a una**, sin tocar el
-diseño: la foto hereda el encuadre, el grade de marca y la trama de puntos.
-Poner `null` de vuelta trae la ilustración. Es reversible siempre.
+Dos interruptores en `src/data/imagenes.ts` controlan todo:
+
+```ts
+export const usarFotoHero = true
+export const usarFotosPaquetes = true
+```
+
+Ponelos en `false` y vuelve la versión ilustrada completa. Es reversible siempre.
 
 👉 Medidas, nombres de archivo y prompts listos para copiar:
 [`docs/imagenes.md`](docs/imagenes.md)
@@ -75,12 +82,12 @@ una vez los 10 puntos de contacto de la página.
 | 1 | **Validar el legajo 16130** con el dueño | `src/data/sitio.ts` |
 | 2 | **Reemplazar los 6 paquetes con `demo: true`** por propuestas reales | `src/data/paquetes.ts` |
 | 3 | **Imagen para compartir** el link (og.jpg, 1200 × 630) | `public/brand/og.jpg` |
-| 4 | **Las 7 fotos de destinos** (el hero ya está) | `docs/imagenes.md` |
+| 4 | **El sol del hero** (`sol.png`) — es el único asset que falta | `docs/imagenes.md` |
 | 5 | **Dominio final** en `canonical`, `og:url` y el JSON-LD | `index.html` |
 | 6 | Confirmar la **dirección del local** si se quiere publicar calle y número | hoy sólo dice "25 de Mayo, Buenos Aires" a propósito |
 
 ✅ El **logo original** ya está integrado (transparente, con favicon aparte).
-✅ La **foto del hero** ya está integrada. Faltan las 7 de destinos → [`docs/imagenes.md`](docs/imagenes.md)
+✅ La **foto del hero** (ancha y vertical) y las **7 fotos de destinos** ya están integradas.
 
 ---
 
@@ -92,6 +99,8 @@ El repo tiene puntos de restauración con tag:
 |---|---|
 | `v1-ilustrado` | Todo con ilustraciones vectoriales, logo provisorio |
 | `v2-logo-real` | Logo original integrado + sistema de fotos listo (ilustraciones activas) |
+| `v3-hero-foto` | Foto del hero integrada, destinos todavía ilustrados |
+| `v4-fotografico` | Fotos en el hero y en los 7 destinos + sol compuesto |
 
 ```bash
 git checkout v1-ilustrado
@@ -150,8 +159,14 @@ docs/
   `aria-controls`), los paneles cerrados quedan `inert`, hay foco visible en
   todo, y `prefers-reduced-motion` desactiva el movimiento sin esconder nada ni
   romper la conversión.
-- **Peso**: ~77 kB gz de JS (casi todo React) y ~10 kB gz de CSS. Las
-  ilustraciones son SVG generados en el cliente, no descargan nada.
+- **Peso**: ~78 kB gz de JS (casi todo React) y ~10 kB gz de CSS. Las fotos van
+  con `loading="lazy"` salvo el hero, y el índice cerrado usa miniaturas de
+  320 px (`<id>-mini.webp`): bajar las fotos de 1600 px para mostrarlas a 74 px
+  costaba ~927 kB, ahora son 46 kB.
+- **El sol del hero** es una imagen compuesta con `mix-blend-mode: screen`
+  dentro de la capa fotográfica. Va antes de los velos de contraste, así el
+  mismo velo que protege la lectura del titular también lo atenúa. Ver
+  `src/components/SolHero.tsx`.
 - **Sin scroll-jacking**: el parallax escribe una custom property con `rAF` y
   el CSS hace el resto. Con movimiento reducido no se calcula nada.
 - Los enlaces de WhatsApp usan `wa.me`, que resuelve solo entre app móvil,
