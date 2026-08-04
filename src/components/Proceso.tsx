@@ -11,32 +11,27 @@ import DotGrid from './DotGrid'
 
 export default function Proceso() {
   const ref = useRef<HTMLDivElement>(null)
-  const disparadorRef = useRef<HTMLSpanElement>(null)
-  const procesoYaFueVisible = useRef(false)
+  const entradaRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
     const el = ref.current
-    const disparador = disparadorRef.current
-    if (!el || !disparador) return
+    const entrada = entradaRef.current
+    if (!el || !entrada) return
     if (!('IntersectionObserver' in window)) {
       el.dataset.visible = 'true'
       el.dataset.procesoVisible = 'true'
       return
     }
 
-    const io = new IntersectionObserver(([entrada]) => {
+    const entradaIo = new IntersectionObserver(([entrada]) => {
       if (entrada.isIntersecting) {
-        procesoYaFueVisible.current = true
         el.dataset.visible = 'true'
         el.dataset.procesoVisible = 'true'
-      } else if (procesoYaFueVisible.current) {
-        el.dataset.visible = 'false'
-        el.dataset.procesoVisible = 'false'
-        el.dataset.procesoSalio = 'true'
+        entradaIo.disconnect()
       }
     })
-    io.observe(disparador)
-    return () => io.disconnect()
+    entradaIo.observe(entrada)
+    return () => entradaIo.disconnect()
   }, [])
 
   return (
@@ -48,12 +43,12 @@ export default function Proceso() {
       <DotGrid className="pointer-events-none absolute inset-0 text-violeta opacity-[0.12]" />
 
       <div ref={ref} className="contenedor relative py-20 sm:py-28 lg:py-36">
-        <span ref={disparadorRef} aria-hidden="true" className="pointer-events-none absolute left-0 top-0 size-px" />
+        <span ref={entradaRef} aria-hidden="true" className="pointer-events-none absolute left-0 top-0 size-px" />
         <div className="max-w-[62ch]">
           <h2
             id="titulo-proceso"
             className="rev display-ancho text-[clamp(2.3rem,8vw,5rem)]"
-            style={{ '--rev-d': '80ms', '--rev-salida-d': '1760ms' } as React.CSSProperties}
+            style={{ '--rev-d': '80ms' } as React.CSSProperties}
           >
             De la idea
             <br />
@@ -61,7 +56,7 @@ export default function Proceso() {
           </h2>
           <p
             className="rev mt-6 max-w-[52ch] text-[1.0625rem] leading-relaxed text-tinta/72"
-            style={{ '--rev-d': '160ms', '--rev-salida-d': '1680ms' } as React.CSSProperties}
+            style={{ '--rev-d': '160ms' } as React.CSSProperties}
           >
             Una consulta directa, opciones para elegir y confirmaciones por escrito. Así ordenamos el
             viaje, paso a paso.
@@ -83,7 +78,6 @@ export default function Proceso() {
                 style={
                   {
                     '--rev-d': `${160 + i * 420}ms`,
-                    '--rev-salida-d': `${80 + (proceso.length - i - 1) * 420}ms`,
                   } as React.CSSProperties
                 }
               >
@@ -111,7 +105,7 @@ export default function Proceso() {
 
         <div
           className="rev mt-16 flex flex-wrap items-center gap-4 border-t-2 border-tinta/12 pt-10"
-          style={{ '--rev-d': '560ms', '--rev-salida-d': '920ms' } as React.CSSProperties}
+          style={{ '--rev-d': '560ms' } as React.CSSProperties}
         >
           <p className="max-w-[34ch] font-serif text-[1.5rem] leading-[1.2] italic sm:text-[1.85rem]">
             Una consulta puede ser el primer paso.
