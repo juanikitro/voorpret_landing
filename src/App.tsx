@@ -1,6 +1,6 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
-import BandaDefinicion from './components/BandaDefinicion'
+import BandaDefinicion, { CintaServicios } from './components/BandaDefinicion'
 import IndiceDeseos from './components/IndiceDeseos'
 import Proceso from './components/Proceso'
 import Confianza from './components/Confianza'
@@ -26,6 +26,7 @@ export default function App() {
 
       <main id="contenido">
         <Hero quieto={quieto} />
+        <CintaServicios />
         <Proceso />
         <IndiceDeseos />
         <BandaDefinicion />
