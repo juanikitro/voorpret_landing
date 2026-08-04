@@ -68,7 +68,7 @@ function Banda({
 
           <span className="min-w-0 flex-1">
             <span
-              className={`display-ancho block text-[clamp(1.4rem,5.7vw,3.6rem)] transition-colors duration-400 ${
+              className={`display-ancho block text-[clamp(1.2rem,4.6vw,2.9rem)] transition-colors duration-400 ${
                 abierta ? 'text-sol' : 'group-hover:text-papel'
               }`}
             >
