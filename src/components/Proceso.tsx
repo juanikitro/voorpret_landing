@@ -27,16 +27,16 @@ export default function Proceso() {
             className="rev display-ancho text-[clamp(2.3rem,8vw,5rem)]"
             style={{ '--rev-d': '80ms' } as React.CSSProperties}
           >
-            Cuatro momentos,
+            De la idea
             <br />
-            <span className="text-violeta">una sola persona</span>
+            <span className="text-violeta">a la reserva</span>
           </h2>
           <p
             className="rev mt-6 max-w-[52ch] text-[1.0625rem] leading-relaxed text-tinta/72"
             style={{ '--rev-d': '160ms' } as React.CSSProperties}
           >
-            No pasás de un sector a otro ni te atiende alguien distinto cada vez. Del primer mensaje
-            al último, hablás siempre con la misma persona.
+            Una consulta directa, opciones para elegir y confirmaciones por escrito. Así ordenamos el
+            viaje, paso a paso.
           </p>
         </div>
 
@@ -81,7 +81,7 @@ export default function Proceso() {
           style={{ '--rev-d': '560ms' } as React.CSSProperties}
         >
           <p className="max-w-[34ch] font-serif text-[1.5rem] leading-[1.2] italic sm:text-[1.85rem]">
-            Empezar no te compromete a nada.
+            Una consulta puede ser el primer paso.
           </p>
           <a href="#consulta" className="btn btn-papel ml-auto">
             Contame tu viaje

@@ -67,9 +67,9 @@ export default function BandaDefinicion() {
               style={{ '--rev-d': '380ms' } as React.CSSProperties}
             >
               <p className="max-w-[42ch] text-[0.9375rem] leading-relaxed text-tinta/70">
-                Comparar aéreos, entender qué incluye cada tarifa, coordinar traslados, revisar
-                requisitos de ingreso. Todo eso lo hacemos nosotros y te lo contamos en criollo, por
-                WhatsApp, con nombre y apellido.
+                Comparar aéreos, entender qué incluye cada tarifa, coordinar traslados y revisar
+                requisitos de ingreso. Te acompañamos en esas decisiones y te lo explicamos claro,
+                por WhatsApp.
               </p>
             </div>
           </div>
@@ -86,12 +86,11 @@ export default function BandaDefinicion() {
               style={{ '--rev-d': '300ms' } as React.CSSProperties}
             >
               <p>
-                Le pusimos ese nombre porque es exactamente lo que queremos que te pase mientras
-                armamos tu viaje. Elegir el destino, imaginarte allá, contarle a quién lo vas a
-                sorprender: eso ya es parte del viaje.
+                Le pusimos ese nombre porque resume una parte linda de planear un viaje: elegir el
+                destino, imaginarte allá y compartir la idea con quienes viajan con vos.
               </p>
               <p className="font-semibold text-tinta">
-                Nuestro trabajo es que esa parte no se te llene de trámites.
+                Nuestro trabajo es ordenar lo práctico para que puedas disfrutar también de la previa.
               </p>
             </div>
           </div>

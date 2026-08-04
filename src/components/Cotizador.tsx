@@ -93,8 +93,8 @@ export default function Cotizador() {
               className="rev mt-6 max-w-[42ch] text-[1.0625rem] leading-relaxed text-tinta/75"
               style={{ '--rev-d': '150ms' } as React.CSSProperties}
             >
-              Tres datos y listo. Con eso ya podemos empezar a buscarte alternativas reales. Si
-              todavía no tenés nada definido, también sirve: lo pensamos juntos.
+              Con destino, cantidad de pasajeros y una fecha aproximada ya podemos empezar a buscar.
+              Si todavía no definiste todo, escribinos igual: lo vemos juntos.
             </p>
 
             {/* Sello y teléfono agrupados al pie de la columna */}
@@ -107,10 +107,10 @@ export default function Cotizador() {
                   Consultar
                   <br />
                   <span className="font-display text-[1.45rem] leading-none tracking-tight text-tinta">
-                    no cuesta
+                    es el primer
                   </span>
                   <br />
-                  nada
+                  paso
                 </span>
               </span>
 
@@ -119,7 +119,7 @@ export default function Cotizador() {
                 <p className="text-[0.9375rem] leading-snug">
                   <span className="font-bold">{sitio.whatsapp.visible}</span>
                   <br />
-                  <span className="text-tinta/60">Respondemos personas, no bots.</span>
+                  <span className="text-tinta/60">Atención directa por WhatsApp.</span>
                 </p>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function Cotizador() {
                 type="text"
                 value={destino}
                 onChange={(e) => setDestino(e.target.value)}
-                placeholder="Un destino o una idea suelta"
+                placeholder="Un destino o una idea"
                 autoComplete="off"
                 className="mt-3 w-full border-b-2 border-tinta/25 bg-transparent pb-2.5 text-[1.0625rem] font-semibold text-tinta transition-colors placeholder:font-normal placeholder:text-tinta/40 focus:border-violeta focus:outline-none"
               />
