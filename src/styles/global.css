@@ -237,23 +237,16 @@
     transform: scaleY(1);
     transform-origin: top;
   }
-  [data-proceso-salio='true'][data-proceso-visible='false'] .proceso-trazo {
-    transform-origin: bottom;
-  }
   .proceso-nodo {
     opacity: 0;
     transform: scale(0.55);
     transition:
-      opacity 0.32s ease var(--proceso-rev-d, var(--rev-d)),
-      transform 0.5s var(--ease-anticipa) var(--proceso-rev-d, var(--rev-d));
+      opacity 0.32s ease var(--rev-d),
+      transform 0.5s var(--ease-anticipa) var(--rev-d);
   }
   [data-proceso-visible='true'] .proceso-nodo {
     opacity: 1;
     transform: scale(1);
-  }
-  [data-proceso-salio='true'][data-visible='false'] .rev,
-  [data-proceso-salio='true'][data-visible='false'] .proceso-nodo {
-    --proceso-rev-d: var(--rev-salida-d, 0ms);
   }
   @media (width >= 64rem) {
     .proceso-trazo {
@@ -264,9 +257,6 @@
       transform: scaleX(1);
       transform-origin: left;
     }
-    [data-proceso-salio='true'][data-proceso-visible='false'] .proceso-trazo {
-      transform-origin: right;
-    }
   }
 
   .rev {
@@ -275,8 +265,8 @@
     opacity: 0;
     transform: translate3d(0, var(--rev-y), 0);
     transition:
-      opacity 0.75s var(--ease-anticipa) var(--proceso-rev-d, var(--rev-d)),
-      transform 0.95s var(--ease-anticipa) var(--proceso-rev-d, var(--rev-d));
+      opacity 0.75s var(--ease-anticipa) var(--rev-d),
+      transform 0.95s var(--ease-anticipa) var(--rev-d);
     will-change: opacity, transform;
   }
   /* Se revela por sí mismo o cuando su sección se revela */
