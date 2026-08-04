@@ -227,6 +227,27 @@
    ========================================================================== */
 
 @layer components {
+  /* Resaltador de tinta: una pincelada irregular, no una caja genérica. */
+  .palabra-resaltada {
+    position: relative;
+    isolation: isolate;
+    display: inline-block;
+    margin-inline: -0.07em;
+    padding-inline: 0.07em;
+    white-space: nowrap;
+  }
+  .palabra-resaltada::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 12% -0.1em 7%;
+    background:
+      repeating-linear-gradient(92deg, rgb(255 255 255 / 0.14) 0 1px, transparent 1px 5px),
+      linear-gradient(104deg, #f6d24d 0%, var(--color-sol) 52%, #eeb51e 100%);
+    clip-path: polygon(1% 11%, 97% 0, 100% 86%, 4% 100%, 0 68%);
+    box-shadow: 0.055em 0.07em 0 color-mix(in srgb, var(--color-sol-2) 72%, var(--color-tinta));
+  }
+
   /* El trazo habilita cada etapa: en móvil baja y en escritorio avanza. */
   .proceso-trazo {
     transform: scaleY(0);
