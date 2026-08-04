@@ -218,6 +218,13 @@ export default function Hero({ quieto }: { quieto: boolean }) {
 
       {/* ——— Contenido ——— */}
       <div className="contenedor relative z-10 flex flex-1 flex-col justify-center py-10 sm:py-16">
+        <p
+          className="rev mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-papel/65 sm:mb-5"
+          data-visible={listo}
+          style={{ '--rev-d': '140ms' } as React.CSSProperties}
+        >
+          Agencia de viajes
+        </p>
         <h1 data-visible={listo}>
           <span className="display-ancho block text-[clamp(2.85rem,12.5vw,8.4rem)]">
             <span className="rev-linea" style={{ '--rev-d': '220ms' } as React.CSSProperties}>
@@ -256,7 +263,7 @@ export default function Hero({ quieto }: { quieto: boolean }) {
             <FlechaDer />
           </a>
           <a href="#consulta" className="btn btn-linea">
-            Contame tu viaje
+            Contanos tu viaje
           </a>
         </div>
       </div>

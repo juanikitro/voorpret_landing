@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { proceso } from '../data/sitio'
 import { useRevelar } from '../lib/hooks'
 import { FlechaDer } from './Iconos'
@@ -11,6 +12,29 @@ import DotGrid from './DotGrid'
 
 export default function Proceso() {
   const ref = useRevelar<HTMLDivElement>()
+  const lineaRef = useRef<HTMLDivElement>(null)
+  const lineaYaFueVisible = useRef(false)
+
+  useEffect(() => {
+    const el = lineaRef.current
+    if (!el) return
+    if (!('IntersectionObserver' in window)) {
+      el.dataset.procesoVisible = 'true'
+      return
+    }
+
+    const io = new IntersectionObserver(([entrada]) => {
+      if (entrada.isIntersecting) {
+        lineaYaFueVisible.current = true
+        el.dataset.procesoVisible = 'true'
+      } else if (lineaYaFueVisible.current) {
+        el.dataset.procesoVisible = 'false'
+        el.dataset.procesoSalio = 'true'
+      }
+    })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
 
   return (
     <section
@@ -41,7 +65,7 @@ export default function Proceso() {
         </div>
 
         {/* Hilo punteado */}
-        <div className="relative mt-14 sm:mt-20">
+        <div ref={lineaRef} className="relative mt-14 sm:mt-20">
           <div
             aria-hidden="true"
             className="proceso-trazo absolute left-[19px] top-2 hidden h-[calc(100%-3rem)] w-0 border-l-[3px] border-dashed border-sol sm:block lg:left-0 lg:top-[19px] lg:h-0 lg:w-full lg:border-l-0 lg:border-t-[3px]"
@@ -84,7 +108,7 @@ export default function Proceso() {
             Una consulta puede ser el primer paso.
           </p>
           <a href="#consulta" className="btn btn-papel ml-auto">
-            Contame tu viaje
+            Contanos tu viaje
             <FlechaDer />
           </a>
         </div>
