@@ -5,8 +5,8 @@ import { linkGeneral } from '../lib/whatsapp'
 import { sitio } from '../data/sitio'
 
 const enlaces = [
-  { href: '#propuestas', texto: 'Propuestas' },
   { href: '#como-trabajamos', texto: 'Cómo trabajamos' },
+  { href: '#propuestas', texto: 'Propuestas' },
   { href: '#nosotros', texto: 'Nosotros' },
 ]
 
