@@ -88,6 +88,44 @@ function Horizonte({ quieto }: { quieto: boolean }) {
   )
 }
 
+/** Bandada mínima: aporta escala y dirección al paisaje sin competir con el titular. */
+function AvesHero({ quieto }: { quieto: boolean }) {
+  const aves = [
+    { x: 766, y: 196, escala: 0.42, demora: '0ms', duracion: '4.8s' },
+    { x: 803, y: 180, escala: 0.28, demora: '-1.4s', duracion: '4.2s' },
+    { x: 835, y: 212, escala: 0.54, demora: '-2.6s', duracion: '5.1s' },
+    { x: 874, y: 184, escala: 0.34, demora: '-0.7s', duracion: '4.5s' },
+    { x: 908, y: 220, escala: 0.25, demora: '-3.3s', duracion: '3.9s' },
+  ]
+
+  return (
+    <svg
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 size-full overflow-visible"
+      viewBox="0 0 1000 620"
+      preserveAspectRatio="none"
+    >
+      {aves.map((ave) => (
+        <g key={`${ave.x}-${ave.y}`} transform={`translate(${ave.x} ${ave.y}) scale(${ave.escala})`}>
+          <g
+            className={quieto ? '' : 'anim-ave'}
+            style={{ '--ave-delay': ave.demora, '--ave-duration': ave.duracion } as React.CSSProperties}
+          >
+            <path
+              d="M 0 5 C 5 -1 11 -2 16 2 C 21 -3 28 -2 33 5"
+              fill="none"
+              stroke="#2A0D3C"
+              strokeWidth="2.6"
+              strokeOpacity="0.76"
+              strokeLinecap="round"
+            />
+          </g>
+        </g>
+      ))}
+    </svg>
+  )
+}
+
 /* ============================================================================
    FONDO FOTOGRÁFICO
    ----------------------------------------------------------------------------
@@ -132,6 +170,15 @@ function FondoFoto({
           }}
         />
       </picture>
+
+      {/* Dos halos en una capa hermana: nunca envuelven el sol porque cualquier
+          transform/filtro en un padre rompe su composición mix-blend-screen. */}
+      <div
+        aria-hidden="true"
+        className={`hero-aurora ${quieto ? '' : 'anim-aurora'}`}
+      />
+
+      <AvesHero quieto={quieto} />
 
       {/* 1 — Grade de marca */}
       <div
@@ -248,8 +295,8 @@ export default function Hero({ quieto }: { quieto: boolean }) {
             Después, lo armamos con vos.
           </p>
           <p className="mt-4 text-[0.975rem] leading-relaxed text-papel/72 sm:text-[1.0625rem]">
-            Nos contás qué querés hacer, buscamos opciones y te ayudamos a elegir. Luego coordinamos
-            cada parte del viaje para que tengas todo claro antes de salir.
+            Salidas grupales acompañadas y viajes a medida, organizados de punta a punta por una
+            persona que te acompaña de verdad.
           </p>
         </div>
 
@@ -259,11 +306,11 @@ export default function Hero({ quieto }: { quieto: boolean }) {
           style={{ '--rev-d': '780ms' } as React.CSSProperties}
         >
           <a href="#propuestas" className="btn btn-solido">
-            Ver ideas de viaje
+            Ver proximas salidas
             <FlechaDer />
           </a>
           <a href="#consulta" className="btn btn-linea">
-            Contanos tu viaje
+            Arma tu viaje
           </a>
         </div>
       </div>
