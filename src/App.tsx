@@ -26,9 +26,9 @@ export default function App() {
 
       <main id="contenido">
         <Hero quieto={quieto} />
-        <BandaDefinicion />
-        <IndiceDeseos />
         <Proceso />
+        <IndiceDeseos />
+        <BandaDefinicion />
         <Confianza />
         <Cotizador />
       </main>
