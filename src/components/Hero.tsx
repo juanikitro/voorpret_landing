@@ -237,7 +237,7 @@ export default function Hero({ quieto }: { quieto: boolean }) {
           data-visible={listo}
           style={{ '--rev-d': '640ms' } as React.CSSProperties}
         >
-          <p className="font-serif text-[1.35rem] leading-[1.28] text-papel sm:text-[1.7rem]">
+          <p className="font-sans text-[1.35rem] leading-[1.28] text-papel sm:text-[1.7rem]">
             Después, lo armamos con vos.
           </p>
           <p className="mt-4 text-[0.975rem] leading-relaxed text-papel/72 sm:text-[1.0625rem]">
