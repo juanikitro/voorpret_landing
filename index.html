@@ -29,12 +29,20 @@
     <meta property="og:image" content="https://voorpret.com.ar/brand/og.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Tipografías: Archivo (display, con eje de ancho), Instrument Sans + Serif -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Tipografías locales: solo se precargan las familias visibles en el hero. -->
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="preload"
+      href="/fonts/archivo-latin-v25.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/instrument-sans-latin-v4.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
     <!-- Datos estructurados: solo información verificable.

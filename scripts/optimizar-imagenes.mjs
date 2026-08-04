@@ -30,6 +30,9 @@ const REGLAS = [
 const CALIDAD = 80
 /** Ancho de la miniatura que usa el índice cerrado */
 const ANCHO_MINI = 320
+/** Ancho para paneles de paquete en mobile. Las fuentes son 16:9. */
+const ANCHO_MEDIO = 768
+const ANCHOS_LOGO = [128, 256]
 const ENTRADAS = new Set(['.png', '.jpg', '.jpeg', '.avif', '.tif', '.tiff'])
 
 /** Nombres que el sitio busca. Cualquier otro se convierte pero no se usa. */
@@ -40,12 +43,33 @@ const NOMBRES = {
 
 const kB = (b) => `${(b / 1024).toFixed(0)} kB`
 
+async function fuenteExistente(carpeta, nombre) {
+  for (const ext of ENTRADAS) {
+    const publica = join(RAIZ, carpeta, `${nombre}${ext}`)
+    if (existsSync(publica)) return publica
+
+    const resguardada = join(RESGUARDO, `${nombre}${ext}`)
+    if (existsSync(resguardada)) return resguardada
+  }
+
+  const webp = join(RAIZ, carpeta, `${nombre}.webp`)
+  return existsSync(webp) ? webp : null
+}
+
+async function crearVariante(origen, destino, ancho, calidad) {
+  await sharp(origen)
+    .resize({ width: ancho, withoutEnlargement: true })
+    .webp({ quality: calidad, effort: 6 })
+    .toFile(destino)
+}
+
 function regla(carpeta, nombre) {
   const candidatas = REGLAS.filter((r) => r.carpeta === carpeta)
   return candidatas.find((r) => r.patron?.test(nombre)) ?? candidatas.find((r) => !r.patron)
 }
 
 let convertidas = 0
+let variantes = 0
 const sinReconocer = []
 
 for (const carpeta of ['public/images/hero', 'public/images/paquetes']) {
@@ -95,6 +119,26 @@ for (const carpeta of ['public/images/hero', 'public/images/paquetes']) {
   }
 }
 
+// Las variantes se regeneran también cuando no entraron archivos nuevos: así
+// `npm run imagenes` deja completo un checkout recién clonado y no obliga a
+// editar código para corregir una imagen responsive faltante.
+for (const nombre of NOMBRES['public/images/paquetes']) {
+  const origen = await fuenteExistente('public/images/paquetes', nombre)
+  if (!origen) continue
+
+  await crearVariante(origen, join(RAIZ, 'public/images/paquetes', `${nombre}-mini.webp`), ANCHO_MINI, 78)
+  await crearVariante(origen, join(RAIZ, 'public/images/paquetes', `${nombre}-media.webp`), ANCHO_MEDIO, CALIDAD)
+  variantes += 2
+}
+
+const logo = join(RAIZ, 'public/brand/voorpret-logo.webp')
+if (existsSync(logo)) {
+  for (const ancho of ANCHOS_LOGO) {
+    await crearVariante(logo, join(RAIZ, 'public/brand', `voorpret-logo-${ancho}.webp`), ancho, 88)
+    variantes++
+  }
+}
+
 if (sinReconocer.length) {
   console.log('\n⚠ Estos nombres no los usa el sitio. Renombralos y volvé a correr:')
   for (const { carpeta, nombre } of sinReconocer) {
@@ -119,6 +163,7 @@ const faltan = ESPERADOS.filter(([c, f]) => !existsSync(join(RAIZ, c, f)))
 
 console.log('')
 console.log(convertidas === 0 ? 'No había imágenes nuevas.' : `${convertidas} imagen(es) convertida(s).`)
+console.log(`${variantes} variante(s) responsive generada(s).`)
 
 const faltanPaquetes = faltan.filter(([c]) => c.endsWith('paquetes'))
 if (faltanPaquetes.length === 0) {

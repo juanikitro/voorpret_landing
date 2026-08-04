@@ -1,6 +1,7 @@
 import { useId, useState } from 'react'
 import type { Arte } from '../data/paquetes'
 import { gradeMarca } from '../data/imagenes'
+import type { ImagenResponsive } from '../data/imagenes'
 
 /* ============================================================================
    ARTE DESTINO
@@ -166,14 +167,13 @@ function Detalle({ tipo, color }: { tipo: NonNullable<Arte['detalle']>; color: s
 
 type Props = {
   arte: Arte
-  imagen?: string | null
+  imagen?: ImagenResponsive | null
   /** `object-position` de la foto. No afecta a la ilustración. */
   foco?: string
   alt?: string
   className?: string
   /** Intensifica el sol y la trama cuando el destino está activo */
   activo?: boolean
-  prioridad?: boolean
 }
 
 export default function ArteDestino({
@@ -183,7 +183,6 @@ export default function ArteDestino({
   alt = '',
   className = '',
   activo = false,
-  prioridad = false,
 }: Props) {
   const uid = useId().replace(/:/g, '')
   const idCielo = `cielo-${uid}`
@@ -199,21 +198,28 @@ export default function ArteDestino({
   if (imagen && !fotoFallo) {
     return (
       <div className={`relative overflow-hidden bg-ciruela ${className}`}>
-        <img
-          src={imagen}
-          alt={alt}
-          loading={prioridad ? 'eager' : 'lazy'}
-          decoding="async"
-          width={1600}
-          height={1000}
-          className="size-full object-cover"
-          style={{
-            objectPosition: foco ?? 'center',
-            // Compensa el planchado que produce el grade en soft-light
-            filter: 'saturate(1.08) contrast(1.05)',
-          }}
-          onError={() => setFotoFallo(true)}
-        />
+        <picture className="block size-full">
+          {imagen.movilSrcSet && (
+            <source media={imagen.movilMedia} srcSet={imagen.movilSrcSet} sizes={imagen.sizes} />
+          )}
+          <img
+            src={imagen.src}
+            srcSet={imagen.srcSet}
+            sizes={imagen.sizes}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            width={imagen.width}
+            height={imagen.height}
+            className="size-full object-cover"
+            style={{
+              objectPosition: foco ?? 'center',
+              // Compensa el planchado que produce el grade en soft-light
+              filter: 'saturate(1.08) contrast(1.05)',
+            }}
+            onError={() => setFotoFallo(true)}
+          />
+        </picture>
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 mix-blend-soft-light"

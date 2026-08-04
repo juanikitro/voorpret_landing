@@ -6,7 +6,7 @@
  * "VOORPRET" con tipografía: se evita el doble wordmark.
  * Ver public/brand/README.md para los formatos disponibles.
  */
-const LOGO = '/brand/voorpret-logo.webp'
+import { logoMarca } from '../data/imagenes'
 
 type Props = {
   /** Muestra "25 de Mayo / Buenos Aires" al lado del logo */
@@ -16,7 +16,6 @@ type Props = {
   className?: string
   /** true sobre fondos oscuros */
   claro?: boolean
-  prioridad?: boolean
 }
 
 export default function Marca({
@@ -24,17 +23,17 @@ export default function Marca({
   alto = 'h-11 sm:h-14',
   className = '',
   claro = true,
-  prioridad = false,
 }: Props) {
   return (
     <span className={`flex items-center gap-3 ${className}`}>
       <img
-        src={LOGO}
+        src={logoMarca.src}
+        srcSet={logoMarca.srcSet}
+        sizes={logoMarca.sizes}
         alt="Voorpret"
-        width={888}
-        height={632}
+        width={logoMarca.width}
+        height={logoMarca.height}
         className={`${alto} w-auto shrink-0`}
-        fetchPriority={prioridad ? 'high' : 'auto'}
         decoding="async"
       />
       {sucursal && (

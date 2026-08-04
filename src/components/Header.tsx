@@ -56,7 +56,7 @@ export default function Header() {
       >
         <div className="contenedor flex h-[68px] items-center justify-between gap-4 sm:h-[84px]">
           <a href="#inicio" className="rounded-sm" aria-label="Voorpret — inicio">
-            <Marca sucursal={false} prioridad />
+            <Marca sucursal={false} />
           </a>
 
           <nav aria-label="Secciones" className="hidden items-center gap-1 lg:flex">
