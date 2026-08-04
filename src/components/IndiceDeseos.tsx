@@ -7,6 +7,54 @@ import { linkPaquete } from '../lib/whatsapp'
 import { fotoPaquete } from '../data/imagenes'
 import { useRevelar } from '../lib/hooks'
 
+const ALTURAS_RUTA = [58, 35, 63, 31, 54] as const
+
+function MiniRuta({ recorrido }: { recorrido: string[] }) {
+  const ultimaParada = Math.max(recorrido.length - 1, 1)
+  const paradas = recorrido.map((nombre, indice) => ({
+    nombre,
+    x: 4 + (indice / ultimaParada) * 92,
+    y: ALTURAS_RUTA[indice % ALTURAS_RUTA.length],
+  }))
+  const trazo = paradas.reduce((path, parada, indice) => {
+    if (indice === 0) return `M ${parada.x} ${parada.y}`
+
+    const anterior = paradas[indice - 1]
+    return `${path} C ${anterior.x + 8} ${anterior.y}, ${parada.x - 8} ${parada.y}, ${parada.x} ${parada.y}`
+  }, '')
+
+  return (
+    <section className="mt-5 border-t border-papel/12 pt-5" aria-label={`Ruta: ${recorrido.join(', ')}`}>
+      <p className="etiqueta text-sol">La ruta</p>
+      <div className="mt-4 overflow-x-auto pb-1">
+        <div className="relative h-[102px] min-w-[520px]">
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            className="absolute inset-x-0 top-0 h-[72px] w-full overflow-visible"
+          >
+            <path d={trazo} fill="none" stroke="currentColor" strokeWidth="1.25" className="text-sol" />
+          </svg>
+
+          {paradas.map((parada) => (
+            <div
+              key={parada.nombre}
+              className="absolute -translate-x-1/2"
+              style={{ left: `${parada.x}%`, top: `${(parada.y / 100) * 72}px` }}
+            >
+              <span aria-hidden="true" className="block size-3 rounded-full border-2 border-sol bg-ciruela shadow-[0_0_0_3px_rgb(48_16_65)]" />
+              <span className="etiqueta absolute left-1/2 mt-2 -translate-x-1/2 whitespace-nowrap text-[0.5625rem] text-papel/72">
+                {parada.nombre}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ============================================================================
    ÍNDICE DE DESEOS
    ----------------------------------------------------------------------------
@@ -126,26 +174,29 @@ function Banda({
         <div className="overflow-hidden" inert={!abierta}>
           <div className="grid gap-8 pb-12 pt-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-12 lg:pb-16">
             {/* Ilustración */}
-            <div className="relative aspect-video overflow-hidden rounded-sm border border-papel/15">
-              <ArteDestino
-                arte={p.arte}
-                imagen={fotoPaquete(p.id, p.imagen, 'panel')}
-                foco={p.foco}
-                alt={`${p.nombre} — ${p.recorrido.join(', ')}`}
-                activo={abierta}
-                /* Las fotos publicadas son 16:9: comparten un único encuadre visible. */
-                className="size-full"
-              />
-              <div className="absolute inset-x-0 bottom-0 flex flex-wrap gap-1.5 bg-gradient-to-t from-tinta/85 to-transparent p-3 pt-10">
-                {p.recorrido.map((r) => (
-                  <span
-                    key={r}
-                    className="etiqueta rounded-full border border-papel/25 bg-tinta/40 px-2.5 py-1 text-[0.625rem] text-papel/90 backdrop-blur-sm"
-                  >
-                    {r}
-                  </span>
-                ))}
+            <div>
+              <div className="relative aspect-video overflow-hidden rounded-sm border border-papel/15">
+                <ArteDestino
+                  arte={p.arte}
+                  imagen={fotoPaquete(p.id, p.imagen, 'panel')}
+                  foco={p.foco}
+                  alt={`${p.nombre} — ${p.recorrido.join(', ')}`}
+                  activo={abierta}
+                  /* Las fotos publicadas son 16:9: comparten un único encuadre visible. */
+                  className="size-full"
+                />
+                <div className="absolute inset-x-0 bottom-0 flex flex-wrap gap-1.5 bg-gradient-to-t from-tinta/85 to-transparent p-3 pt-10">
+                  {p.recorrido.map((r) => (
+                    <span
+                      key={r}
+                      className="etiqueta rounded-full border border-papel/25 bg-tinta/40 px-2.5 py-1 text-[0.625rem] text-papel/90 backdrop-blur-sm"
+                    >
+                      {r}
+                    </span>
+                  ))}
+                </div>
               </div>
+              <MiniRuta recorrido={p.recorrido} />
             </div>
 
             {/* Detalle */}
