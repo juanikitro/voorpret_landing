@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { proceso } from '../data/sitio'
+import { CintaServicios } from './BandaDefinicion'
 import { FlechaDer } from './Iconos'
 import DotGrid from './DotGrid'
 
@@ -42,9 +43,10 @@ export default function Proceso() {
     >
       <DotGrid className="pointer-events-none absolute inset-0 text-violeta opacity-[0.12]" />
 
-      <div ref={ref} className="contenedor relative py-20 sm:py-28 lg:py-36">
-        <span ref={entradaRef} aria-hidden="true" className="pointer-events-none absolute left-0 top-0 size-px" />
-        <div className="max-w-[62ch]">
+      <div ref={ref} className="relative">
+        <div className="contenedor relative pt-20 sm:pt-28 lg:pt-36">
+          <span ref={entradaRef} aria-hidden="true" className="pointer-events-none absolute left-0 top-0 size-px" />
+          <div className="max-w-[62ch]">
           <h2
             id="titulo-proceso"
             className="rev display-ancho text-[clamp(2.3rem,8vw,5rem)]"
@@ -61,10 +63,16 @@ export default function Proceso() {
             Una consulta directa, opciones para elegir y confirmaciones por escrito. Así ordenamos el
             viaje, paso a paso.
           </p>
+          </div>
         </div>
 
-        {/* Hilo punteado */}
-        <div className="relative mt-14 sm:mt-20">
+        <div className="mt-12 sm:mt-16">
+          <CintaServicios />
+        </div>
+
+        <div className="contenedor relative pb-20 pt-14 sm:pb-28 sm:pt-20 lg:pb-36">
+          {/* Hilo punteado */}
+          <div className="relative">
           <div
             aria-hidden="true"
             className="proceso-trazo absolute left-[19px] top-2 hidden h-[calc(100%-3rem)] w-0 border-l-[3px] border-dashed border-sol sm:block lg:left-0 lg:top-[19px] lg:h-0 lg:w-full lg:border-l-0 lg:border-t-[3px]"
@@ -115,6 +123,7 @@ export default function Proceso() {
             <FlechaDer />
           </a>
         </div>
+      </div>
       </div>
 
       <div aria-hidden="true" className="grano-capa opacity-20" />

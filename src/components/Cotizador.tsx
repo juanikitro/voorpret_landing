@@ -190,8 +190,7 @@ export default function Cotizador() {
                   </button>
                 </div>
                 <p className="text-[0.875rem] text-tinta/55">
-                  {pasajeros === 1 ? 'Viajás solo' : `${pasajeros} personas`}
-                  {pasajeros >= MAX_PAX && ' o más'}
+                  {pasajeros === 1 ? 'Viajás solo' : pasajeros >= MAX_PAX ? 'Grupo grande' : 'Viajan juntos'}
                 </p>
               </div>
             </div>
