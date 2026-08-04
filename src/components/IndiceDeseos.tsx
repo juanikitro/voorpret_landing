@@ -160,6 +160,8 @@ function Banda({
                 <div>
                   <dt className="etiqueta text-papel/45">Duración</dt>
                   <dd className="mt-1 font-semibold">{p.duracion}</dd>
+                  <dt className="etiqueta mt-4 text-sol/75">Precio</dt>
+                  <dd className="mt-1 text-[1.125rem] font-bold text-sol">{p.precio}</dd>
                 </div>
                 <div className="col-span-2">
                   <dt className="etiqueta text-papel/45">Salida</dt>
@@ -238,28 +240,19 @@ export default function IndiceDeseos() {
 
       <div ref={ref} className="contenedor relative">
         {/* Encabezado */}
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:items-end lg:gap-16">
-          <div>
-            <p className="etiqueta rev text-sol">
-              Ideas de viaje <span className="text-papel/30">/</span> {paquetes.length} destinos
-            </p>
-            <h2
-              id="titulo-propuestas"
-              className="rev display-ancho mt-4 text-[clamp(2.4rem,9vw,5.6rem)]"
-              style={{ '--rev-d': '80ms' } as React.CSSProperties}
-            >
-              Destinos para
-              <br />
-              <span className="display-contorno-grueso text-sol">empezar a pensar</span>
-            </h2>
-          </div>
-          <p
-            className="rev max-w-[48ch] text-[1.0625rem] leading-relaxed text-papel/72"
-            style={{ '--rev-d': '160ms' } as React.CSSProperties}
-          >
-            Son ideas de viajes que podemos ayudarte a armar. Abrí la que te interese y contanos qué
-            buscás: las fechas, los servicios y el presupuesto se definen al cotizar.
+        <div>
+          <p className="etiqueta rev text-sol">
+            Ideas de viaje <span className="text-papel/30">/</span> {paquetes.length} destinos
           </p>
+          <h2
+            id="titulo-propuestas"
+            className="rev display-ancho mt-4 text-[clamp(2.4rem,9vw,5.6rem)]"
+            style={{ '--rev-d': '80ms' } as React.CSSProperties}
+          >
+            Destinos para
+            <br />
+            <span className="display-contorno-grueso text-sol">empezar a pensar</span>
+          </h2>
         </div>
 
         {/* Filtros */}
