@@ -12,22 +12,24 @@ import DotGrid from './DotGrid'
 
 export default function Proceso() {
   const ref = useRevelar<HTMLDivElement>()
-  const lineaRef = useRef<HTMLDivElement>(null)
-  const lineaYaFueVisible = useRef(false)
+  const procesoYaFueVisible = useRef(false)
 
   useEffect(() => {
-    const el = lineaRef.current
+    const el = ref.current
     if (!el) return
     if (!('IntersectionObserver' in window)) {
+      el.dataset.visible = 'true'
       el.dataset.procesoVisible = 'true'
       return
     }
 
     const io = new IntersectionObserver(([entrada]) => {
       if (entrada.isIntersecting) {
-        lineaYaFueVisible.current = true
+        procesoYaFueVisible.current = true
+        el.dataset.visible = 'true'
         el.dataset.procesoVisible = 'true'
-      } else if (lineaYaFueVisible.current) {
+      } else if (procesoYaFueVisible.current) {
+        el.dataset.visible = 'false'
         el.dataset.procesoVisible = 'false'
         el.dataset.procesoSalio = 'true'
       }
@@ -49,7 +51,7 @@ export default function Proceso() {
           <h2
             id="titulo-proceso"
             className="rev display-ancho text-[clamp(2.3rem,8vw,5rem)]"
-            style={{ '--rev-d': '80ms' } as React.CSSProperties}
+            style={{ '--rev-d': '80ms', '--rev-salida-d': '1760ms' } as React.CSSProperties}
           >
             De la idea
             <br />
@@ -57,7 +59,7 @@ export default function Proceso() {
           </h2>
           <p
             className="rev mt-6 max-w-[52ch] text-[1.0625rem] leading-relaxed text-tinta/72"
-            style={{ '--rev-d': '160ms' } as React.CSSProperties}
+            style={{ '--rev-d': '160ms', '--rev-salida-d': '1680ms' } as React.CSSProperties}
           >
             Una consulta directa, opciones para elegir y confirmaciones por escrito. Así ordenamos el
             viaje, paso a paso.
@@ -65,7 +67,7 @@ export default function Proceso() {
         </div>
 
         {/* Hilo punteado */}
-        <div ref={lineaRef} className="relative mt-14 sm:mt-20">
+        <div className="relative mt-14 sm:mt-20">
           <div
             aria-hidden="true"
             className="proceso-trazo absolute left-[19px] top-2 hidden h-[calc(100%-3rem)] w-0 border-l-[3px] border-dashed border-sol sm:block lg:left-0 lg:top-[19px] lg:h-0 lg:w-full lg:border-l-0 lg:border-t-[3px]"
@@ -76,7 +78,12 @@ export default function Proceso() {
               <li
                 key={paso.n}
                 className="rev proceso-paso relative sm:pl-16 lg:pl-0 lg:pt-16"
-                style={{ '--rev-d': `${160 + i * 420}ms` } as React.CSSProperties}
+                style={
+                  {
+                    '--rev-d': `${160 + i * 420}ms`,
+                    '--rev-salida-d': `${80 + (proceso.length - i - 1) * 420}ms`,
+                  } as React.CSSProperties
+                }
               >
                 {/* Nodo */}
                 <span
@@ -102,7 +109,7 @@ export default function Proceso() {
 
         <div
           className="rev mt-16 flex flex-wrap items-center gap-4 border-t-2 border-tinta/12 pt-10"
-          style={{ '--rev-d': '560ms' } as React.CSSProperties}
+          style={{ '--rev-d': '560ms', '--rev-salida-d': '920ms' } as React.CSSProperties}
         >
           <p className="max-w-[34ch] font-serif text-[1.5rem] leading-[1.2] italic sm:text-[1.85rem]">
             Una consulta puede ser el primer paso.
