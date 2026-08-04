@@ -17,6 +17,30 @@ export const usarFotoHero = true
 /** Las 7 fotos de destinos están cargadas. */
 export const usarFotosPaquetes = true
 
+/** Rutas y tamaños de los recursos rasterizados de la marca. */
+const RUTA_PAQUETES = '/images/paquetes'
+const RUTA_MARCA = '/brand'
+
+export type ImagenResponsive = {
+  /** Fallback y fuente más grande disponible. */
+  src: string
+  srcSet: string
+  sizes: string
+  width: number
+  height: number
+  /** En mobile el panel no necesita descargar su original de 1600 px. */
+  movilSrcSet?: string
+  movilMedia?: string
+}
+
+export const logoMarca: ImagenResponsive = {
+  src: `${RUTA_MARCA}/voorpret-logo-256.webp`,
+  srcSet: `${RUTA_MARCA}/voorpret-logo-128.webp 128w, ${RUTA_MARCA}/voorpret-logo-256.webp 256w`,
+  sizes: '(max-width: 639px) 62px, 79px',
+  width: 256,
+  height: 182,
+}
+
 export type Foto = {
   /** Imagen para pantallas anchas */
   ancha: string
@@ -37,8 +61,8 @@ export type Foto = {
 
 export const heroFoto: Foto = {
   ancha: '/images/hero/hero-ancha.webp',
-  /** Recorte vertical propio para celular: misma escena, cielo más alto. */
-  alta: '/images/hero/hero-alta.webp',
+  /** Versión móvil ya graduada: evita aplicar otro grade sobre la foto. */
+  alta: '/images/hero/hero-mobile.webp',
   alt: 'Ruta de montaña al atardecer, con la cordillera y el cielo violeta en el horizonte',
   foco: 'center 58%',
 }
@@ -72,10 +96,10 @@ export const solHero: SolHeroConfig | null = {
   tamano: 66,
   opacidad: 0.88,
   movil: {
-    x: 76,
-    y: 56,
-    tamano: 66,
-    opacidad: 0.88,
+    x: 72,
+    y: 45,
+    tamano: 92,
+    opacidad: 1,
   },
 }
 
@@ -113,10 +137,34 @@ export function fotoPaquete(
   id: string,
   override?: string | null,
   /** 'mini' = versión de 320 px para la miniatura del índice cerrado */
-  variante?: 'mini',
-): string | null {
-  if (override) return override
+  variante: 'mini' | 'panel' = 'panel',
+): ImagenResponsive | null {
+  if (override) {
+    return {
+      src: override,
+      srcSet: override,
+      sizes: variante === 'mini' ? '104px' : '(max-width: 1023px) calc(100vw - 2rem), 50vw',
+      width: 1600,
+      height: 900,
+    }
+  }
   if (override === null) return null
   if (!usarFotosPaquetes) return null
-  return `/images/paquetes/${id}${variante === 'mini' ? '-mini' : ''}.webp`
+
+  if (variante === 'mini') {
+    const mini = `${RUTA_PAQUETES}/${id}-mini.webp`
+    return { src: mini, srcSet: `${mini} 320w`, sizes: '104px', width: 320, height: 180 }
+  }
+
+  const media = `${RUTA_PAQUETES}/${id}-media.webp`
+  const grande = `${RUTA_PAQUETES}/${id}.webp`
+  return {
+    src: grande,
+    srcSet: `${media} 768w, ${grande} 1600w`,
+    sizes: '(max-width: 1023px) calc(100vw - 2rem), 50vw',
+    width: 1600,
+    height: 900,
+    movilSrcSet: `${media} 768w`,
+    movilMedia: '(max-width: 1023px)',
+  }
 }

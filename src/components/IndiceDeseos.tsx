@@ -129,7 +129,7 @@ function Banda({
             <div className="relative aspect-video overflow-hidden rounded-sm border border-papel/15">
               <ArteDestino
                 arte={p.arte}
-                imagen={fotoPaquete(p.id, p.imagen)}
+                imagen={fotoPaquete(p.id, p.imagen, 'panel')}
                 foco={p.foco}
                 alt={`${p.nombre} — ${p.recorrido.join(', ')}`}
                 activo={abierta}

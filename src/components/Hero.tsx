@@ -158,7 +158,7 @@ function FondoFoto({
           fetchPriority="high"
           decoding="async"
           onError={onFallo}
-          className="size-full object-cover"
+          className="hero-foto size-full object-cover"
           style={{
             objectPosition: foto.foco ?? 'center 60%',
             ...(quieto
@@ -183,14 +183,14 @@ function FondoFoto({
       {/* 1 — Grade de marca */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 mix-blend-soft-light"
+        className="hero-grade absolute inset-0 mix-blend-soft-light"
         style={{
           opacity: gradeMarca,
           background:
             'linear-gradient(168deg, #6B1C93 0%, #2A0D3C 42%, #8A3A2A 78%, #F3C126 100%)',
         }}
       />
-      <div aria-hidden="true" className="absolute inset-0 bg-ciruela/18 mix-blend-multiply" />
+      <div aria-hidden="true" className="hero-grade-sombra absolute inset-0 bg-ciruela/18 mix-blend-multiply" />
 
       {/* Sol: luz aditiva sobre la foto. Va acá, antes de los velos, para que
           el velo que protege el titular también lo apague. */}
