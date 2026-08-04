@@ -61,7 +61,9 @@ export default function BandaDefinicion() {
               className="rev display-ancho max-w-[24ch] text-[clamp(1.85rem,5.2vw,3.05rem)] leading-[0.98]"
               style={{ '--rev-d': '200ms' } as React.CSSProperties}
             >
-              {definicion.texto}
+              {definicion.texto.antes}
+              <span className="palabra-resaltada">{definicion.texto.destacado}</span>
+              {definicion.texto.despues}
             </p>
             <div
               className="rev mt-8 max-w-[54ch] space-y-4 text-[1.0625rem] leading-relaxed text-tinta/75"

@@ -50,7 +50,11 @@ export const definicion = {
   palabra: 'voorpret',
   fonetica: '/ˈvoːrprɛt/',
   idioma: 'neerlandés · sustantivo',
-  texto: 'La alegría que se siente antes de que algo bueno pase.',
+  texto: {
+    antes: 'La ',
+    destacado: 'alegría',
+    despues: ' que se siente antes de que algo bueno pase.',
+  },
 } as const
 
 /* --------------------------------------------------------------------------
