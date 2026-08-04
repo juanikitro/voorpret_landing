@@ -241,12 +241,25 @@
     opacity: 0;
     transform: scale(0.55);
     transition:
-      opacity 0.32s ease var(--rev-d),
-      transform 0.5s var(--ease-anticipa) var(--rev-d);
+      opacity 0.32s ease var(--proceso-d),
+      transform 0.5s var(--ease-anticipa) var(--proceso-d);
   }
   [data-proceso-visible='true'] .proceso-nodo {
     opacity: 1;
     transform: scale(1);
+  }
+  .proceso-paso {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+    transition:
+      opacity 0.65s var(--ease-anticipa) var(--proceso-d),
+      transform 0.8s var(--ease-anticipa) var(--proceso-d);
+    will-change: opacity, transform;
+  }
+  [data-proceso-visible='true'] .proceso-paso {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
   }
   @media (width >= 64rem) {
     .proceso-trazo {

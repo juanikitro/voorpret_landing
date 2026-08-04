@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { proceso } from '../data/sitio'
-import { CintaServicios } from './BandaDefinicion'
 import { FlechaDer } from './Iconos'
 import DotGrid from './DotGrid'
 
@@ -13,11 +12,13 @@ import DotGrid from './DotGrid'
 export default function Proceso() {
   const ref = useRef<HTMLDivElement>(null)
   const entradaRef = useRef<HTMLSpanElement>(null)
+  const lineaDeTiempoRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const el = ref.current
     const entrada = entradaRef.current
-    if (!el || !entrada) return
+    const lineaDeTiempo = lineaDeTiempoRef.current
+    if (!el || !entrada || !lineaDeTiempo) return
     if (!('IntersectionObserver' in window)) {
       el.dataset.visible = 'true'
       el.dataset.procesoVisible = 'true'
@@ -27,12 +28,24 @@ export default function Proceso() {
     const entradaIo = new IntersectionObserver(([entrada]) => {
       if (entrada.isIntersecting) {
         el.dataset.visible = 'true'
-        el.dataset.procesoVisible = 'true'
         entradaIo.disconnect()
       }
     })
+    const procesoIo = new IntersectionObserver(
+      ([entrada]) => {
+        if (entrada.isIntersecting) {
+          el.dataset.procesoVisible = 'true'
+          procesoIo.disconnect()
+        }
+      },
+      { rootMargin: '0px 0px -16% 0px', threshold: 0.12 },
+    )
     entradaIo.observe(entrada)
-    return () => entradaIo.disconnect()
+    procesoIo.observe(lineaDeTiempo)
+    return () => {
+      entradaIo.disconnect()
+      procesoIo.disconnect()
+    }
   }, [])
 
   return (
@@ -66,13 +79,9 @@ export default function Proceso() {
           </div>
         </div>
 
-        <div className="mt-12 sm:mt-16">
-          <CintaServicios />
-        </div>
-
         <div className="contenedor relative pb-20 pt-14 sm:pb-28 sm:pt-20 lg:pb-36">
           {/* Hilo punteado */}
-          <div className="relative">
+          <div ref={lineaDeTiempoRef} className="relative">
           <div
             aria-hidden="true"
             className="proceso-trazo absolute left-[19px] top-2 hidden h-[calc(100%-3rem)] w-0 border-l-[3px] border-dashed border-sol sm:block lg:left-0 lg:top-[19px] lg:h-0 lg:w-full lg:border-l-0 lg:border-t-[3px]"
@@ -82,10 +91,10 @@ export default function Proceso() {
             {proceso.map((paso, i) => (
               <li
                 key={paso.n}
-                className="rev proceso-paso relative sm:pl-16 lg:pl-0 lg:pt-16"
+                className="proceso-paso relative sm:pl-16 lg:pl-0 lg:pt-16"
                 style={
                   {
-                    '--rev-d': `${160 + i * 420}ms`,
+                    '--proceso-d': `${180 + i * 300}ms`,
                   } as React.CSSProperties
                 }
               >
