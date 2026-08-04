@@ -167,7 +167,7 @@ function Banda({
                 </div>
               </dl>
 
-              <p className="etiqueta mt-6 text-sol">Qué incluye</p>
+              <p className="etiqueta mt-6 text-sol">{p.demo ? 'Qué podemos coordinar' : 'Qué incluye'}</p>
               <ul className="mt-3 grid gap-2 sm:grid-cols-2">
                 {p.incluye.map((i) => (
                   <li key={i} className="flex gap-2.5 text-[0.9375rem] leading-snug text-papel/82">
@@ -183,6 +183,12 @@ function Banda({
                 </p>
               )}
 
+              {p.demo && (
+                <p className="mt-4 text-[0.8125rem] leading-relaxed text-papel/50">
+                  Las fechas, servicios y tarifas se confirman al cotizar.
+                </p>
+              )}
+
               <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
                 <a
                   href={linkPaquete(p)}
@@ -191,7 +197,7 @@ function Banda({
                   className="btn btn-solido"
                 >
                   <WhatsApp className="size-[1.05rem]" />
-                  Consultar por este viaje
+                  {p.demo ? 'Consultar esta idea' : 'Consultar por este viaje'}
                   <FlechaDer />
                 </a>
               </div>
@@ -235,25 +241,24 @@ export default function IndiceDeseos() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:items-end lg:gap-16">
           <div>
             <p className="etiqueta rev text-sol">
-              Propuestas <span className="text-papel/30">/</span> {paquetes.length} destinos
+              Ideas de viaje <span className="text-papel/30">/</span> {paquetes.length} destinos
             </p>
             <h2
               id="titulo-propuestas"
               className="rev display-ancho mt-4 text-[clamp(2.4rem,9vw,5.6rem)]"
               style={{ '--rev-d': '80ms' } as React.CSSProperties}
             >
-              El índice
+              Destinos para
               <br />
-              de <span className="display-contorno-grueso text-sol">deseos</span>
+              <span className="display-contorno-grueso text-sol">empezar a pensar</span>
             </h2>
           </div>
           <p
             className="rev max-w-[48ch] text-[1.0625rem] leading-relaxed text-papel/72"
             style={{ '--rev-d': '160ms' } as React.CSSProperties}
           >
-            Abrí la que te tiente y mirá qué incluye. No publicamos precios porque cada viaje cambia
-            según fechas, cantidad de pasajeros y categoría: preferimos cotizarte lo que realmente
-            vas a viajar.
+            Son ideas de viajes que podemos ayudarte a armar. Abrí la que te interese y contanos qué
+            buscás: las fechas, los servicios y el presupuesto se definen al cotizar.
           </p>
         </div>
 
@@ -301,12 +306,12 @@ export default function IndiceDeseos() {
         </div>
 
         <p className="py-10 text-center text-[0.9375rem] text-papel/55 sm:py-14">
-          ¿No está el destino que tenés en la cabeza?{' '}
+          ¿No está el destino que tenés en mente?{' '}
           <a
             href="#consulta"
             className="font-semibold text-sol underline decoration-sol/40 decoration-2 underline-offset-4 transition-colors hover:decoration-sol"
           >
-            Contanos y lo armamos
+            Contanos qué buscás
           </a>
           .
         </p>

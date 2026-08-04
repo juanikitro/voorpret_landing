@@ -221,13 +221,13 @@ export default function Hero({ quieto }: { quieto: boolean }) {
         <h1 data-visible={listo}>
           <span className="display-ancho block text-[clamp(2.85rem,12.5vw,8.4rem)]">
             <span className="rev-linea" style={{ '--rev-d': '220ms' } as React.CSSProperties}>
-              <span>Vos ya te</span>
+              <span>Tu viaje</span>
             </span>
             <span className="rev-linea" style={{ '--rev-d': '320ms' } as React.CSSProperties}>
-              <span>lo estás</span>
+              <span>empieza con</span>
             </span>
             <span className="rev-linea text-sol" style={{ '--rev-d': '420ms' } as React.CSSProperties}>
-              <span>imaginando.</span>
+              <span>una charla.</span>
             </span>
           </span>
         </h1>
@@ -238,11 +238,11 @@ export default function Hero({ quieto }: { quieto: boolean }) {
           style={{ '--rev-d': '640ms' } as React.CSSProperties}
         >
           <p className="font-serif text-[1.35rem] leading-[1.28] text-papel sm:text-[1.7rem]">
-            Nosotros nos encargamos de todo lo demás.
+            Después, lo armamos con vos.
           </p>
           <p className="mt-4 text-[0.975rem] leading-relaxed text-papel/72 sm:text-[1.0625rem]">
-            Comparamos alternativas reales, organizamos cada tramo y te acompañamos desde la primera
-            charla hasta que volvés. Vos elegí a dónde.
+            Nos contás qué querés hacer, buscamos opciones y te ayudamos a elegir. Luego coordinamos
+            cada parte del viaje para que tengas todo claro antes de salir.
           </p>
         </div>
 
@@ -252,7 +252,7 @@ export default function Hero({ quieto }: { quieto: boolean }) {
           style={{ '--rev-d': '780ms' } as React.CSSProperties}
         >
           <a href="#propuestas" className="btn btn-solido">
-            Ver propuestas
+            Ver ideas de viaje
             <FlechaDer />
           </a>
           <a href="#consulta" className="btn btn-linea">

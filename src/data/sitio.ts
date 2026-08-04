@@ -35,9 +35,9 @@ export const sitio = {
   },
 
   seo: {
-    titulo: 'Voorpret 25 de Mayo — Agencia de viajes | Salidas grupales y viajes a medida',
+    titulo: 'Voorpret 25 de Mayo — Viajes a medida y salidas grupales',
     descripcion:
-      'Agencia de viajes en 25 de Mayo, Buenos Aires, desde 2013. Salidas grupales acompañadas, viajes internacionales, escapadas y paquetes a medida con asesoramiento personalizado de principio a fin.',
+      'Agencia de viajes en 25 de Mayo, Buenos Aires. Te ayudamos a comparar opciones y organizar salidas grupales, escapadas y viajes a medida.',
     url: 'https://voorpret.com.ar',
   },
 } as const
@@ -59,30 +59,30 @@ export const definicion = {
 export const proceso = [
   {
     n: '01',
-    titulo: 'Nos contás la idea',
+    titulo: 'Nos contás qué tenés en mente',
     texto:
-      'Aunque venga suelta: un destino, una fecha aproximada, con quién viajás. Sin formularios eternos ni cotizadores automáticos.',
+      'Puede ser un destino, una fecha aproximada o simplemente ganas de irte. Con eso alcanza para empezar la conversación.',
     label: 'Primera charla',
   },
   {
     n: '02',
-    titulo: 'Comparamos por vos',
+    titulo: 'Te mostramos opciones',
     texto:
-      'Buscamos alternativas reales de aéreos, alojamiento y servicios, y te las explicamos en criollo: qué cambia entre una y otra, y qué conviene según tu viaje.',
+      'Buscamos alternativas de aéreos, alojamiento y servicios, y te explicamos con claridad qué cambia entre una y otra.',
     label: 'Alternativas',
   },
   {
     n: '03',
     titulo: 'Armamos todo',
     texto:
-      'Reservas, traslados, asistencia al viajero, documentación y esos detalles que nadie te avisa hasta que estás en el aeropuerto. Todo confirmado y por escrito.',
+      'Cuando elegís, coordinamos reservas, traslados, asistencia al viajero y la documentación necesaria. Te enviamos cada confirmación por escrito.',
     label: 'Organización',
   },
   {
     n: '04',
     titulo: 'Viajás acompañado',
     texto:
-      'Seguís teniendo con quién hablar durante el viaje. Y cuando volvés, también. Somos las mismas personas de la primera charla.',
+      'Si necesitás consultarnos durante el viaje, seguís teniendo un contacto directo. La conversación no termina cuando se emite la reserva.',
     label: 'Antes, durante y después',
   },
 ] as const
@@ -93,18 +93,18 @@ export const proceso = [
 export const confianza = [
   {
     dato: 'Desde 2013',
-    texto: 'Más de una década armando viajes desde 25 de Mayo para clientes de todo el país.',
+    texto: 'Más de una década trabajando desde 25 de Mayo con viajes nacionales e internacionales.',
   },
   {
     dato: 'Legajo 16130',
     texto: 'Agencia de viajes registrada. Trabajamos con documentación y respaldo formal.',
   },
   {
-    dato: 'Una persona real',
-    texto: 'No un chatbot ni un call center. La misma persona te atiende de la consulta al regreso.',
+    dato: 'Atención directa',
+    texto: 'Hablás por WhatsApp con el equipo de la agencia, sin call center de por medio.',
   },
   {
     dato: 'Argentina entera',
-    texto: 'Estamos en 25 de Mayo y coordinamos por WhatsApp con viajeros de todo el país.',
+    texto: 'Estamos en 25 de Mayo y podemos coordinar la consulta por WhatsApp, estés donde estés.',
   },
 ] as const

@@ -47,9 +47,9 @@ export default function Confianza() {
             >
               Una agencia
               <br />
-              con nombre,
+              para hablar
               <br />
-              <span className="text-sol">no un formulario</span>
+              <span className="text-sol">de tu viaje</span>
             </h2>
 
             <div
@@ -58,12 +58,13 @@ export default function Confianza() {
             >
               <p>
                 Voorpret nació en {sitio.desde} en {sitio.ubicacion}, y desde entonces armamos viajes
-                para gente de todo el país. Somos una agencia chica y eso es a propósito: nos permite
-                conocer cada viaje que vendemos.
+                para viajeros de distintos lugares. Trabajamos de manera cercana para poder entender
+                qué necesita cada persona antes de ofrecerle alternativas.
               </p>
               <p>
                 Trabajamos viajes nacionales e internacionales, salidas grupales acompañadas y
-                paquetes armados desde cero. La forma de empezar es siempre la misma: un mensaje.
+                viajes a medida. La forma de empezar es simple: nos escribís y conversamos sobre la
+                idea.
               </p>
             </div>
 
@@ -118,8 +119,8 @@ export default function Confianza() {
                 </span>
               </span>
               <p className="max-w-[38ch] text-[0.875rem] leading-relaxed text-papel/55">
-                Agencia de viajes registrada. Cada reserva se confirma por escrito, con voucher y
-                condiciones a la vista antes de que pagues nada.
+                Agencia de viajes registrada. Antes de avanzar con una reserva, te enviamos por escrito
+                las condiciones y las confirmaciones correspondientes.
               </p>
             </div>
 
