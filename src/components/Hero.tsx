@@ -259,11 +259,11 @@ export default function Hero({ quieto }: { quieto: boolean }) {
           style={{ '--rev-d': '780ms' } as React.CSSProperties}
         >
           <a href="#propuestas" className="btn btn-solido">
-            Ver ideas de viaje
+            Ver proximas salidas
             <FlechaDer />
           </a>
           <a href="#consulta" className="btn btn-linea">
-            Contanos tu viaje
+            Arma tu viaje
           </a>
         </div>
       </div>
