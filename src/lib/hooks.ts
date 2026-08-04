@@ -44,6 +44,34 @@ export function useRevelar<T extends HTMLElement>(margen = '0px 0px -12% 0px') {
 }
 
 /**
+ * Indica si un elemento está cerca del viewport. Sirve para que los efectos
+ * costosos (canvas/WebGL) no se inicialicen mientras el usuario todavía está
+ * leyendo otra sección.
+ */
+export function useEnVista<T extends Element>(margen = '160px 0px') {
+  const ref = useRef<T>(null)
+  const [enVista, setEnVista] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (!('IntersectionObserver' in window)) {
+      setEnVista(true)
+      return
+    }
+
+    const io = new IntersectionObserver(([entrada]) => setEnVista(entrada.isIntersecting), {
+      rootMargin: margen,
+      threshold: 0.01,
+    })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [margen])
+
+  return [ref, enVista] as const
+}
+
+/**
  * Progreso de scroll de la página (0 → 1), actualizado con rAF y escrito
  * en una custom property para que lo consuma el CSS sin re-renders.
  */

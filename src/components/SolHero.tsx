@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import type { SolHeroConfig, SolHeroPosicion } from '../data/imagenes'
+import type { CSSProperties } from 'react'
+import type { SolHeroConfig } from '../data/imagenes'
 
 /* ============================================================================
    SOL DEL HERO
@@ -34,45 +35,36 @@ export default function SolHero({
   const [fallo, setFallo] = useState(false)
   if (fallo) return null
 
-  const estilo = (posicion: SolHeroPosicion) => ({
-    left: `${posicion.x}%`,
-    top: `${posicion.y}%`,
-    width: `${posicion.tamano}%`,
-    opacity: posicion.opacidad,
-    marginLeft: `-${posicion.tamano / 2}%`,
-    translate: '0 -50%',
-  })
+  const movil = config.movil ?? config
+  // Una sola imagen evita decodificar dos veces el raster de 1200 px. Las
+  // coordenadas por breakpoint viven en variables CSS; el movimiento sigue
+  // aplicado al <img> para no aislar su mix-blend-screen.
+  const estilo = {
+    '--sol-x': `${config.x}%`,
+    '--sol-y': `${config.y}%`,
+    '--sol-tamano': `${config.tamano}%`,
+    '--sol-opacidad': config.opacidad,
+    '--sol-desplazamiento': `-${config.tamano / 2}%`,
+    '--sol-x-movil': `${movil.x}%`,
+    '--sol-y-movil': `${movil.y}%`,
+    '--sol-tamano-movil': `${movil.tamano}%`,
+    '--sol-opacidad-movil': movil.opacidad,
+    '--sol-desplazamiento-movil': `-${movil.tamano / 2}%`,
+  } as CSSProperties
 
-  const claseBase = `pointer-events-none absolute max-w-none select-none mix-blend-screen ${
-    quieto ? '' : 'anim-sol'
-  }`
+  const claseBase = `sol-hero pointer-events-none absolute max-w-none select-none mix-blend-screen ${quieto ? '' : 'anim-sol'}`
 
   return (
-    <>
-      {config.movil && (
-        <img
-          src={config.imagen}
-          alt=""
-          aria-hidden="true"
-          tabIndex={-1}
-          draggable={false}
-          decoding="async"
-          onError={() => setFallo(true)}
-          className={`${claseBase} sm:hidden`}
-          style={estilo(config.movil)}
-        />
-      )}
-      <img
-        src={config.imagen}
-        alt=""
-        aria-hidden="true"
-        tabIndex={-1}
-        draggable={false}
-        decoding="async"
-        onError={() => setFallo(true)}
-        className={`${claseBase} hidden sm:block`}
-        style={estilo(config)}
-      />
-    </>
+    <img
+      src={config.imagen}
+      alt=""
+      aria-hidden="true"
+      tabIndex={-1}
+      draggable={false}
+      decoding="async"
+      onError={() => setFallo(true)}
+      className={claseBase}
+      style={estilo}
+    />
   )
 }
