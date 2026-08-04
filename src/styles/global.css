@@ -233,8 +233,12 @@
     transform-origin: top;
     transition: transform 1.45s var(--ease-anticipa);
   }
-  [data-visible='true'] .proceso-trazo {
+  [data-proceso-visible='true'] .proceso-trazo {
     transform: scaleY(1);
+    transform-origin: top;
+  }
+  [data-proceso-salio='true'][data-proceso-visible='false'] .proceso-trazo {
+    transform-origin: bottom;
   }
   .proceso-nodo {
     opacity: 0;
@@ -243,7 +247,7 @@
       opacity 0.32s ease var(--rev-d),
       transform 0.5s var(--ease-anticipa) var(--rev-d);
   }
-  [data-visible='true'] .proceso-nodo {
+  [data-proceso-visible='true'] .proceso-nodo {
     opacity: 1;
     transform: scale(1);
   }
@@ -252,8 +256,12 @@
       transform: scaleX(0);
       transform-origin: left;
     }
-    [data-visible='true'] .proceso-trazo {
+    [data-proceso-visible='true'] .proceso-trazo {
       transform: scaleX(1);
+      transform-origin: left;
+    }
+    [data-proceso-salio='true'][data-proceso-visible='false'] .proceso-trazo {
+      transform-origin: right;
     }
   }
 
