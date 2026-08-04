@@ -248,8 +248,8 @@ export default function Hero({ quieto }: { quieto: boolean }) {
             Después, lo armamos con vos.
           </p>
           <p className="mt-4 text-[0.975rem] leading-relaxed text-papel/72 sm:text-[1.0625rem]">
-            Nos contás qué querés hacer, buscamos opciones y te ayudamos a elegir. Luego coordinamos
-            cada parte del viaje para que tengas todo claro antes de salir.
+            Salidas grupales acompañadas y viajes a medida, organizados de punta a punta por una
+            persona que te acompaña de verdad.
           </p>
         </div>
 
