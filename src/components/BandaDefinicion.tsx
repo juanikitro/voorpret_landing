@@ -21,26 +21,8 @@ export default function BandaDefinicion() {
   const ref = useRevelar<HTMLDivElement>()
 
   return (
-    <>
-      {/* Cinta corrida — pie de cartel impreso */}
-      <div className="pausa-hover relative overflow-hidden border-y-2 border-tinta bg-sol py-3 text-tinta">
-        <div className="anim-marquesina flex w-max items-center gap-8 whitespace-nowrap will-change-transform">
-          {[0, 1].map((copia) => (
-            <div key={copia} className="flex items-center gap-8" aria-hidden={copia === 1}>
-              {CINTA.map((t) => (
-                <span key={t} className="flex items-center gap-8">
-                  <span className="etiqueta text-[0.8125rem] tracking-[0.2em]">{t}</span>
-                  <span className="size-2 shrink-0 rotate-45 bg-tinta" />
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Definición */}
-      <section className="grano relative overflow-hidden bg-papel text-tinta">
-        <DotGrid className="pointer-events-none absolute inset-0 text-tinta/70 opacity-[0.13]" />
+    <section className="grano relative overflow-hidden bg-papel text-tinta">
+      <DotGrid className="pointer-events-none absolute inset-0 text-tinta/70 opacity-[0.13]" />
 
         <div ref={ref} className="contenedor relative grid gap-10 py-20 sm:py-28 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16 lg:py-36">
           <div>
@@ -96,8 +78,26 @@ export default function BandaDefinicion() {
           </div>
         </div>
 
-        <div aria-hidden="true" className="grano-capa opacity-20" />
-      </section>
-    </>
+      <div aria-hidden="true" className="grano-capa opacity-20" />
+    </section>
+  )
+}
+
+export function CintaServicios() {
+  return (
+    <div className="pausa-hover relative overflow-hidden border-y-2 border-tinta bg-sol py-3 text-tinta">
+      <div className="anim-marquesina flex w-max items-center gap-8 whitespace-nowrap will-change-transform">
+        {[0, 1].map((copia) => (
+          <div key={copia} className="flex items-center gap-8" aria-hidden={copia === 1}>
+            {CINTA.map((t) => (
+              <span key={t} className="flex items-center gap-8">
+                <span className="etiqueta text-[0.8125rem] tracking-[0.2em]">{t}</span>
+                <span className="size-2 shrink-0 rotate-45 bg-tinta" />
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
