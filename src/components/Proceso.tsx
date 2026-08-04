@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { proceso } from '../data/sitio'
-import { useRevelar } from '../lib/hooks'
 import { FlechaDer } from './Iconos'
 import DotGrid from './DotGrid'
 
@@ -11,12 +10,14 @@ import DotGrid from './DotGrid'
    ========================================================================== */
 
 export default function Proceso() {
-  const ref = useRevelar<HTMLDivElement>()
+  const ref = useRef<HTMLDivElement>(null)
+  const disparadorRef = useRef<HTMLSpanElement>(null)
   const procesoYaFueVisible = useRef(false)
 
   useEffect(() => {
     const el = ref.current
-    if (!el) return
+    const disparador = disparadorRef.current
+    if (!el || !disparador) return
     if (!('IntersectionObserver' in window)) {
       el.dataset.visible = 'true'
       el.dataset.procesoVisible = 'true'
@@ -34,7 +35,7 @@ export default function Proceso() {
         el.dataset.procesoSalio = 'true'
       }
     })
-    io.observe(el)
+    io.observe(disparador)
     return () => io.disconnect()
   }, [])
 
@@ -47,6 +48,7 @@ export default function Proceso() {
       <DotGrid className="pointer-events-none absolute inset-0 text-violeta opacity-[0.12]" />
 
       <div ref={ref} className="contenedor relative py-20 sm:py-28 lg:py-36">
+        <span ref={disparadorRef} aria-hidden="true" className="pointer-events-none absolute left-0 top-0 size-px" />
         <div className="max-w-[62ch]">
           <h2
             id="titulo-proceso"
