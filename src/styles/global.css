@@ -532,6 +532,23 @@
     animation: latido-sol 6s ease-in-out infinite;
     transform-origin: center center;
   }
+  .sol-hero {
+    left: var(--sol-x);
+    top: var(--sol-y);
+    width: var(--sol-tamano);
+    opacity: var(--sol-opacidad);
+    margin-left: var(--sol-desplazamiento);
+    translate: 0 -50%;
+  }
+  @media (width < 40rem) {
+    .sol-hero {
+      left: var(--sol-x-movil);
+      top: var(--sol-y-movil);
+      width: var(--sol-tamano-movil);
+      opacity: var(--sol-opacidad-movil);
+      margin-left: var(--sol-desplazamiento-movil);
+    }
+  }
   .anim-flota {
     animation: flota 6s ease-in-out infinite;
   }

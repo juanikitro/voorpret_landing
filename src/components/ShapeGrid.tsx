@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
+import { useEnVista } from '../lib/hooks'
 type ShapeGridProps = {
   direction?: 'up' | 'right' | 'down' | 'left'
   speed?: number
@@ -13,23 +14,32 @@ export default function ShapeGrid({
   squareSize = 40,
   borderColor = '#999',
 }: ShapeGridProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [canvasRef, enVista] = useEnVista<HTMLCanvasElement>()
 
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
+    if (!canvas || !enVista) return
     const context = canvas.getContext('2d')
     if (!context) return
 
     const offset = { x: 0, y: 0 }
     let frame = 0
+    let ultimoDibujo = 0
 
     const resize = () => {
       canvas.width = canvas.offsetWidth
       canvas.height = canvas.offsetHeight
     }
-    const draw = () => {
-      const effectiveSpeed = Math.max(speed, 0.1)
+    const draw = (ahora: number) => {
+      // La deriva es ambiental: 30 fps mantiene el mismo movimiento y reduce
+      // a la mitad el trabajo del canvas, especialmente en móviles.
+      if (ahora - ultimoDibujo < 1000 / 30) {
+        frame = window.requestAnimationFrame(draw)
+        return
+      }
+      const delta = ultimoDibujo ? (ahora - ultimoDibujo) / (1000 / 60) : 1
+      ultimoDibujo = ahora
+      const effectiveSpeed = Math.max(speed, 0.1) * delta
       if (direction === 'up') offset.y = (offset.y - effectiveSpeed + squareSize) % squareSize
       if (direction === 'down') offset.y = (offset.y + effectiveSpeed + squareSize) % squareSize
       if (direction === 'left') offset.x = (offset.x - effectiveSpeed + squareSize) % squareSize
@@ -71,7 +81,7 @@ export default function ShapeGrid({
       window.cancelAnimationFrame(frame)
       window.removeEventListener('resize', resize)
     }
-  }, [borderColor, direction, speed, squareSize])
+  }, [borderColor, canvasRef, direction, enVista, speed, squareSize])
 
   return <canvas ref={canvasRef} className="shape-grid size-full" aria-hidden="true" />
 }

@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import type { ComponentPropsWithoutRef } from 'react'
-import { Color, Mesh, Program, Renderer, Triangle } from 'ogl'
+import { useEnVista } from '../lib/hooks'
 
 const PAD = 20
 
@@ -59,15 +59,30 @@ void main() {
 
 /** Adaptación estructural de SpecularButton para una tarjeta no interactiva. */
 export default function SpecularCard({ children, className = '', ...props }: ComponentPropsWithoutRef<'li'>) {
-  const cardRef = useRef<HTMLLIElement>(null)
-  const effectRef = useRef<HTMLSpanElement>(null)
+  const [cardRef, enVista] = useEnVista<HTMLLIElement>()
+  const [effectRef, efectoEnVista] = useEnVista<HTMLSpanElement>()
 
   useEffect(() => {
     const card = cardRef.current
     const effect = effectRef.current
-    if (!card || !effect || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    // No abrimos contextos WebGL ni dejamos rAF corriendo en tarjetas fuera de
+    // pantalla. El borde estático sigue presente; el brillo vuelve al acercarse.
+    if (!card || !effect || !enVista || !efectoEnVista || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    const dpr = window.devicePixelRatio || 1
+    const tarjeta = card
+    const efecto = effect
+    let cancelado = false
+    let liberar: (() => void) | undefined
+
+    async function iniciar() {
+      // OGL viaja en un chunk aparte: no bloquea el JS necesario para pintar
+      // el hero y solo se descarga al acercarse a esta sección.
+      const { Color, Mesh, Program, Renderer, Triangle } = await import('ogl')
+      if (cancelado) return
+
+    // El brillo es un detalle de borde: limitar la resolución evita cuatro
+    // canvases gigantes en pantallas retina sin cambiar la lectura visual.
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
     const renderer = new Renderer({ alpha: true, premultipliedAlpha: true, antialias: true, dpr })
     const gl = renderer.gl
     gl.clearColor(0, 0, 0, 0)
@@ -95,11 +110,11 @@ export default function SpecularCard({ children, className = '', ...props }: Com
       },
     })
     const mesh = new Mesh(gl, { geometry, program })
-    effect.appendChild(gl.canvas)
+    efecto.appendChild(gl.canvas)
 
     const size = { width: 1, height: 1 }
     const resize = () => {
-      const rect = card.getBoundingClientRect()
+      const rect = tarjeta.getBoundingClientRect()
       size.width = rect.width
       size.height = rect.height
       renderer.setSize(rect.width + PAD * 2, rect.height + PAD * 2)
@@ -107,13 +122,13 @@ export default function SpecularCard({ children, className = '', ...props }: Com
       program.uniforms.uHalfSize.value = [(rect.width / 2) * dpr, (rect.height / 2) * dpr]
     }
     const observer = new ResizeObserver(resize)
-    observer.observe(card)
+    observer.observe(tarjeta)
     resize()
 
     let pointerAngle: number | null = null
     let proximity = 0
     const onPointerMove = (event: PointerEvent) => {
-      const rect = card.getBoundingClientRect()
+      const rect = tarjeta.getBoundingClientRect()
       const centerX = rect.left + rect.width / 2
       const centerY = rect.top + rect.height / 2
       const dx = Math.max(rect.left - event.clientX, 0, event.clientX - rect.right)
@@ -138,7 +153,13 @@ export default function SpecularCard({ children, className = '', ...props }: Com
     let brightness = 0
     let previous = performance.now()
     let frame = 0
+    let ultimoDibujo = 0
     const render = (now: number) => {
+      if (now - ultimoDibujo < 1000 / 30) {
+        frame = window.requestAnimationFrame(render)
+        return
+      }
+      ultimoDibujo = now
       frame = window.requestAnimationFrame(render)
       const delta = Math.min((now - previous) / 1000, 0.05)
       previous = now
@@ -160,14 +181,21 @@ export default function SpecularCard({ children, className = '', ...props }: Com
     }
     frame = window.requestAnimationFrame(render)
 
-    return () => {
+    liberar = () => {
       window.cancelAnimationFrame(frame)
       observer.disconnect()
       window.removeEventListener('pointermove', onPointerMove)
-      if (gl.canvas.parentNode === effect) effect.removeChild(gl.canvas)
+      if (gl.canvas.parentNode === efecto) efecto.removeChild(gl.canvas)
       gl.getExtension('WEBGL_lose_context')?.loseContext()
     }
-  }, [])
+    }
+
+    void iniciar().catch(() => undefined)
+    return () => {
+      cancelado = true
+      liberar?.()
+    }
+  }, [cardRef, effectRef, efectoEnVista, enVista])
 
   return (
     <li ref={cardRef} className={`specular-card ${className}`} {...props}>
