@@ -21,6 +21,9 @@ export type Paquete = {
   nombre: string
   /** Bajada corta y concreta. Sin signos de exclamación. */
   subtitulo: string
+  /** Destinos o competencias que ayudan a imaginar la idea. */
+  posibilidades: string[]
+  etiquetaPosibilidades?: 'Posibles competencias'
   destacado?: boolean
   imagen?: string | null
   foco?: string
@@ -86,6 +89,7 @@ export const paquetes: Paquete[] = [
     id: 'argentina',
     nombre: 'Viajar por Argentina',
     subtitulo: 'Paisajes, ciudades y experiencias para descubrir el país a tu ritmo.',
+    posibilidades: ['Patagonia', 'Cataratas', 'Mendoza', 'Salta y Jujuy', 'Córdoba'],
     destacado: true,
     imagen: '/images/paquetes/norte.webp',
     arte: arteAndes,
@@ -94,46 +98,51 @@ export const paquetes: Paquete[] = [
     id: 'europa',
     nombre: 'Mi primer viaje a Europa',
     subtitulo: 'Una primera experiencia europea pensada alrededor de tus ciudades soñadas.',
+    posibilidades: ['Madrid', 'Barcelona', 'París', 'Roma', 'Florencia', 'Londres'],
     arte: arteEuropa,
   },
   {
     id: 'caribe',
     nombre: 'Mi primer viaje al Caribe',
     subtitulo: 'Playa, descanso y el tipo de escapada que imaginás.',
+    posibilidades: ['Punta Cana', 'Riviera Maya', 'Aruba', 'Curazao', 'Jamaica'],
     arte: arteCaribe,
   },
   {
     id: 'brasil',
-    nombre: 'Brasil',
+    nombre: 'Un viaje por Brasil',
     subtitulo: 'Playas, cultura, naturaleza o ciudades para vivir Brasil como más te guste.',
+    posibilidades: ['Río de Janeiro', 'Búzios', 'Florianópolis', 'Salvador', 'Porto de Galinhas'],
     arte: arteCaribe,
   },
   {
     id: 'disney',
     nombre: 'Disney en familia',
     subtitulo: 'Un viaje para disfrutar en familia, pensado según las edades y preferencias de cada uno.',
-    imagen: null,
+    posibilidades: ['Orlando', 'Walt Disney World', 'Disney Cruise Line', 'Disneyland California', 'Disneyland Paris'],
     arte: arteEuropa,
   },
   {
     id: 'destinos-exoticos',
     nombre: 'Destinos exóticos',
     subtitulo: 'India, Tailandia, China, Japón, Dubái y otros destinos para salir de lo conocido.',
+    posibilidades: ['India', 'Tailandia', 'China', 'Japón', 'Dubái', 'Vietnam'],
     imagen: '/images/paquetes/japon.webp',
     arte: arteJapon,
   },
   {
     id: 'safari',
-    nombre: 'Safari',
+    nombre: 'Un safari por África',
     subtitulo: 'Naturaleza, fauna y aventura en una experiencia diseñada a tu medida.',
-    imagen: null,
+    posibilidades: ['Kenia', 'Tanzania', 'Sudáfrica', 'Botsuana', 'Namibia'],
     arte: arteSafari,
   },
   {
     id: 'formula-1-y-automovilismo',
     nombre: 'Fórmula 1 y automovilismo',
     subtitulo: 'Carreras, circuitos y una escapada alrededor de la pasión por el motor.',
-    imagen: null,
+    posibilidades: ['Gran Premio de Mónaco', 'Gran Premio de Gran Bretaña', 'Gran Premio de Italia', 'Gran Premio de São Paulo', 'Gran Premio de Abu Dhabi'],
+    etiquetaPosibilidades: 'Posibles competencias',
     arte: arteAndes,
   },
 ]
