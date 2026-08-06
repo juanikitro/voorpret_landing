@@ -1,59 +1,11 @@
-import { useEffect, useState } from 'react'
-import { categorias, paquetes } from '../data/paquetes'
-import type { Categoria, Paquete } from '../data/paquetes'
+import { useState } from 'react'
+import { paquetes } from '../data/paquetes'
+import type { Paquete } from '../data/paquetes'
 import ArteDestino from './ArteDestino'
-import { FlechaDer, Mas, Tilde, WhatsApp } from './Iconos'
+import { FlechaDer, Mas, WhatsApp } from './Iconos'
 import { linkPaquete } from '../lib/whatsapp'
 import { fotoPaquete } from '../data/imagenes'
 import { useRevelar } from '../lib/hooks'
-
-const ALTURAS_RUTA = [58, 35, 63, 31, 54] as const
-
-function MiniRuta({ recorrido }: { recorrido: string[] }) {
-  const ultimaParada = Math.max(recorrido.length - 1, 1)
-  const paradas = recorrido.map((nombre, indice) => ({
-    nombre,
-    x: 4 + (indice / ultimaParada) * 92,
-    y: ALTURAS_RUTA[indice % ALTURAS_RUTA.length],
-  }))
-  const trazo = paradas.reduce((path, parada, indice) => {
-    if (indice === 0) return `M ${parada.x} ${parada.y}`
-
-    const anterior = paradas[indice - 1]
-    return `${path} C ${anterior.x + 8} ${anterior.y}, ${parada.x - 8} ${parada.y}, ${parada.x} ${parada.y}`
-  }, '')
-
-  return (
-    <section className="mt-5 border-t border-papel/12 pt-5" aria-label={`Ruta: ${recorrido.join(', ')}`}>
-      <p className="etiqueta text-sol">La ruta</p>
-      <div className="mt-4 overflow-x-auto pb-1">
-        <div className="relative h-[102px] min-w-[520px]">
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            className="absolute inset-x-0 top-0 h-[72px] w-full overflow-visible"
-          >
-            <path d={trazo} fill="none" stroke="currentColor" strokeWidth="1.25" className="text-sol" />
-          </svg>
-
-          {paradas.map((parada) => (
-            <div
-              key={parada.nombre}
-              className="absolute -translate-x-1/2"
-              style={{ left: `${parada.x}%`, top: `${(parada.y / 100) * 72}px` }}
-            >
-              <span aria-hidden="true" className="block size-3 rounded-full border-2 border-sol bg-ciruela shadow-[0_0_0_3px_rgb(48_16_65)]" />
-              <span className="etiqueta absolute left-1/2 mt-2 -translate-x-1/2 whitespace-nowrap text-[0.5625rem] text-papel/72">
-                {parada.nombre}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
 
 /* ============================================================================
    ÍNDICE DE DESEOS
@@ -122,13 +74,6 @@ function Banda({
             >
               {p.nombre}
             </span>
-            <span className="etiqueta mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-papel/55">
-              <span className={abierta ? 'text-sol/80' : ''}>{p.categoria}</span>
-              <span className="hidden text-papel/25 xs:inline">/</span>
-              <span className="hidden xs:inline">{p.temporada}</span>
-              <span className="hidden text-papel/25 sm:inline">/</span>
-              <span className="hidden sm:inline">{p.duracion}</span>
-            </span>
           </span>
 
           {/* Miniatura: identidad del destino ya en estado cerrado */}
@@ -180,65 +125,17 @@ function Banda({
                   arte={p.arte}
                   imagen={fotoPaquete(p.id, p.imagen, 'panel')}
                   foco={p.foco}
-                  alt={`${p.nombre} — ${p.recorrido.join(', ')}`}
+                  alt={p.nombre}
                   activo={abierta}
                   /* Las fotos publicadas son 16:9: comparten un único encuadre visible. */
                   className="size-full"
                 />
-                <div className="absolute inset-x-0 bottom-0 flex flex-wrap gap-1.5 bg-gradient-to-t from-tinta/85 to-transparent p-3 pt-10">
-                  {p.recorrido.map((r) => (
-                    <span
-                      key={r}
-                      className="etiqueta rounded-full border border-papel/25 bg-tinta/40 px-2.5 py-1 text-[0.625rem] text-papel/90 backdrop-blur-sm"
-                    >
-                      {r}
-                    </span>
-                  ))}
-                </div>
               </div>
-              <MiniRuta recorrido={p.recorrido} />
             </div>
 
             {/* Detalle */}
             <div className="flex flex-col">
               <p className="max-w-[46ch] text-[1.0625rem] leading-relaxed text-papel/80">{p.subtitulo}</p>
-
-              <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-4 border-y border-papel/14 py-5">
-                <div>
-                  <dt className="etiqueta text-papel/45">Cuándo</dt>
-                  <dd className="mt-1 font-semibold">{p.temporada}</dd>
-                </div>
-                <div>
-                  <dt className="etiqueta text-papel/45">Duración</dt>
-                  <dd className="mt-1 font-semibold">{p.duracion}</dd>
-                </div>
-                <div className="col-span-2">
-                  <dt className="etiqueta text-papel/45">Salida</dt>
-                  <dd className="mt-1 font-semibold">{p.salida}</dd>
-                </div>
-              </dl>
-
-              <p className="etiqueta mt-6 text-sol">{p.demo ? 'Qué podemos coordinar' : 'Qué incluye'}</p>
-              <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-                {p.incluye.map((i) => (
-                  <li key={i} className="flex gap-2.5 text-[0.9375rem] leading-snug text-papel/82">
-                    <Tilde className="mt-0.5 size-4 shrink-0 text-sol" />
-                    {i}
-                  </li>
-                ))}
-              </ul>
-
-              {p.nota && (
-                <p className="mt-6 border-l-2 border-violeta-cl pl-4 text-[0.875rem] leading-relaxed text-papel/60">
-                  {p.nota}
-                </p>
-              )}
-
-              {p.demo && (
-                <p className="mt-4 text-[0.8125rem] leading-relaxed text-papel/50">
-                  Las fechas, servicios y tarifas se confirman al cotizar.
-                </p>
-              )}
 
               <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
                 <a
@@ -248,7 +145,7 @@ function Banda({
                   className="btn btn-solido"
                 >
                   <WhatsApp className="size-[1.05rem]" />
-                  {p.demo ? 'Consultar esta idea' : 'Consultar por este viaje'}
+                  Hablemos de esta idea
                   <FlechaDer />
                 </a>
               </div>
@@ -265,16 +162,7 @@ function Banda({
 export default function IndiceDeseos() {
   const destacado = paquetes.find((p) => p.destacado) ?? paquetes[0]
   const [abierto, setAbierto] = useState<string | null>(destacado.id)
-  const [filtro, setFiltro] = useState<Categoria | null>(null)
   const ref = useRevelar<HTMLDivElement>()
-
-  const visibles = filtro ? paquetes.filter((p) => p.categoria === filtro) : paquetes
-
-  // Al filtrar, abrimos la primera propuesta que quedó a la vista.
-  // Depende sólo de `filtro`: no queremos reabrir nada al cerrar una banda.
-  useEffect(() => {
-    setAbierto(filtro ? paquetes.find((p) => p.categoria === filtro)?.id ?? null : destacado.id)
-  }, [filtro, destacado.id])
 
   return (
     <section
@@ -304,39 +192,12 @@ export default function IndiceDeseos() {
           </h2>
         </div>
 
-        {/* Filtros */}
-        <div
-          className="rev mt-12 flex flex-wrap items-center gap-2 sm:mt-16"
-          style={{ '--rev-d': '220ms' } as React.CSSProperties}
-          role="group"
-          aria-label="Filtrar propuestas por tipo"
-        >
-          {[null, ...categorias].map((c) => {
-            const activo = filtro === c
-            return (
-              <button
-                key={c ?? 'todo'}
-                type="button"
-                onClick={() => setFiltro(c)}
-                aria-pressed={activo}
-                className={`etiqueta rounded-full border-2 px-4 py-2.5 transition-all duration-300 ${
-                  activo
-                    ? 'border-sol bg-sol text-tinta'
-                    : 'border-papel/22 text-papel/70 hover:border-papel/50 hover:text-papel'
-                }`}
-              >
-                {c ?? 'Todo'}
-              </button>
-            )
-          })}
-        </div>
-
         {/* Índice */}
         <div
-          className="rev mt-6 border-t border-papel/14"
-          style={{ '--rev-d': '280ms' } as React.CSSProperties}
+          className="rev mt-12 border-t border-papel/14 sm:mt-16"
+          style={{ '--rev-d': '220ms' } as React.CSSProperties}
         >
-          {visibles.map((p, i) => (
+          {paquetes.map((p, i) => (
             <Banda
               key={p.id}
               p={p}
