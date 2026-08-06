@@ -44,19 +44,9 @@ export default function BandaDefinicion() {
               <span className="etiqueta">{definicion.idioma}</span>
             </p>
 
-            <div
-              className="rev mt-10 border-l-4 border-sol pl-5 lg:mt-16"
-              style={{ '--rev-d': '380ms' } as React.CSSProperties}
-            >
-              <p className="max-w-[42ch] text-[0.9375rem] leading-relaxed text-tinta/70">
-                Comparar aéreos, entender qué incluye cada tarifa, coordinar traslados y revisar
-                requisitos de ingreso. Te acompañamos en esas decisiones y te lo explicamos claro,
-                por WhatsApp.
-              </p>
-            </div>
           </div>
 
-          <div className="lg:pt-12">
+          <div>
             <p
               className="rev display-ancho max-w-[24ch] text-[clamp(1.85rem,5.2vw,3.05rem)] leading-[0.98]"
               style={{ '--rev-d': '200ms' } as React.CSSProperties}
