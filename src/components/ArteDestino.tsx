@@ -193,8 +193,8 @@ export default function ArteDestino({
   // Así nunca queda una imagen rota mientras se cargan los archivos.
   const [fotoFallo, setFotoFallo] = useState(false)
 
-  // Foto real: hereda el encuadre, el grade y la trama de la ilustración, así
-  // fotos e ilustraciones pueden convivir sin que se note el parche.
+  // Foto real: hereda el encuadre y el grade de la ilustración, sin sumar la
+  // trama punteada sobre la fotografía.
   if (imagen && !fotoFallo) {
     return (
       <div className={`relative overflow-hidden bg-ciruela ${className}`}>
@@ -227,10 +227,6 @@ export default function ArteDestino({
             background: `linear-gradient(172deg, ${arte.cielo.join(', ')})`,
             opacity: gradeMarca,
           }}
-        />
-        <div
-          aria-hidden="true"
-          className="trama pointer-events-none absolute inset-0 text-tinta opacity-[0.14] mix-blend-multiply"
         />
         {/* Sin velo inferior acá: el scrim de los chips ya lo pone IndiceDeseos.
             Dos degradados apilados apagaban el tercio inferior de cada foto. */}
