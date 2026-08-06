@@ -117,7 +117,7 @@ function Banda({
       >
         {/* inert: lo cerrado no recibe foco ni lectura de teclado */}
         <div className="overflow-hidden" inert={!abierta}>
-          <div className="grid gap-8 pb-12 pt-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-12 lg:pb-16">
+          <div className="grid gap-8 px-4 pb-12 pt-1 sm:px-0 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-12 lg:pb-16">
             {/* Ilustración */}
             <div>
               <div className="relative aspect-video overflow-hidden rounded-sm border border-papel/15">
