@@ -33,7 +33,7 @@ componentes para actualizar la web.**
 
 | Archivo | Qué contiene |
 |---|---|
-| `src/data/paquetes.ts` | Las propuestas: nombre, temporada, qué incluye, recorrido, ilustración o foto |
+| `src/data/paquetes.ts` | Las ideas de viaje: nombre, descripción corta, ilustración o foto |
 | `src/data/sitio.ts` | WhatsApp, redes, legajo, ubicación, textos del proceso y de confianza |
 | `src/data/imagenes.ts` | La foto del hero y la intensidad del grade de marca |
 
@@ -62,8 +62,6 @@ Abrí `src/data/paquetes.ts` y copiá un bloque existente. Los campos están
 comentados ahí mismo. Tres reglas:
 
 - **Nunca se publican precios.** Todo lleva a consultar por WhatsApp.
-- `demo: true` marca contenido inventado para la demo. Borralo o reemplazalo
-  antes de publicar.
 - **La foto no se declara acá.** Cada paquete busca solo
   `/images/paquetes/<id>.webp`. Ver [`docs/imagenes.md`](docs/imagenes.md).
 
@@ -80,7 +78,7 @@ una vez los 10 puntos de contacto de la página.
 | # | Qué | Dónde |
 |---|---|---|
 | 1 | **Validar el legajo 16130** con el dueño | `src/data/sitio.ts` |
-| 2 | **Reemplazar los 6 paquetes con `demo: true`** por propuestas reales | `src/data/paquetes.ts` |
+| 2 | **Actualizar las ideas de viaje** cuando cambie la propuesta comercial | `src/data/paquetes.ts` |
 | 3 | **Imagen para compartir** el link (og.jpg, 1200 × 630) | `public/brand/og.jpg` |
 | 4 | **Dominio final** en `canonical`, `og:url` y el JSON-LD | `index.html` |
 | 5 | Confirmar la **dirección del local** si se quiere publicar calle y número | hoy sólo dice "25 de Mayo, Buenos Aires" a propósito |

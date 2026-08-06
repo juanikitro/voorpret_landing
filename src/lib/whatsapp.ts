@@ -9,9 +9,9 @@ export function linkWhatsApp(mensaje: string): string {
   return `https://wa.me/${sitio.whatsapp.wa}?text=${encodeURIComponent(mensaje)}`
 }
 
-/** Consulta contextual: identifica el paquete que el usuario estaba viendo. */
+/** Consulta contextual: identifica la idea de viaje que el usuario estaba viendo. */
 export function mensajePaquete(p: Paquete): string {
-  return `Hola Voorpret, vi "${p.nombre}" (${p.temporada}) en la web y quiero consultar disponibilidad y recibir una cotización.`
+  return `Hola Voorpret, vi la idea "${p.nombre}" en la web y me gustaría armar un viaje a medida.`
 }
 
 export function linkPaquete(p: Paquete): string {
