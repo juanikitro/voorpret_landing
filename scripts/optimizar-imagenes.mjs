@@ -40,7 +40,7 @@ const NOMBRES = {
   'public/images/hero': ['hero-ancha', 'hero-alta', 'sol'],
   'public/images/paquetes': [
     'peru', 'caribe', 'europa', 'norte', 'japon', 'egipto', 'brasil',
-    'disney', 'safari', 'formula-1-y-automovilismo',
+    'disney', 'safari', 'formula-1-y-automovilismo', 'cruceros',
   ],
 }
 
@@ -163,6 +163,7 @@ const ESPERADOS = [
   ['public/images/paquetes', 'disney.webp'],
   ['public/images/paquetes', 'safari.webp'],
   ['public/images/paquetes', 'formula-1-y-automovilismo.webp'],
+  ['public/images/paquetes', 'cruceros.webp'],
 ]
 
 const faltan = ESPERADOS.filter(([c, f]) => !existsSync(join(RAIZ, c, f)))
@@ -173,10 +174,10 @@ console.log(`${variantes} variante(s) responsive generada(s).`)
 
 const faltanPaquetes = faltan.filter(([c]) => c.endsWith('paquetes'))
 if (faltanPaquetes.length === 0) {
-  console.log('\n✔ Están las 10 fotos de destinos.')
+  console.log('\n✔ Están las 11 fotos de destinos.')
   console.log('  Poné usarFotosPaquetes = true en src/data/imagenes.ts')
 } else {
-  console.log(`\nFaltan ${faltanPaquetes.length} de 10 destinos:`)
+  console.log(`\nFaltan ${faltanPaquetes.length} de 11 destinos:`)
   for (const [, f] of faltanPaquetes) console.log(`  · ${f}`)
   console.log('\nLos que falten siguen con su ilustración: no se rompe nada.')
 }

@@ -14,7 +14,7 @@
 /** Ya está la foto del hero. */
 export const usarFotoHero = true
 
-/** Las 10 fotos de destinos están cargadas. */
+/** Las 11 fotos de destinos están cargadas. */
 export const usarFotosPaquetes = true
 
 /** Rutas y tamaños de los recursos rasterizados de la marca. */

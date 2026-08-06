@@ -30,8 +30,8 @@ nombre no coincide, te avisa cuál usar.
 
 ## ✅ Todo integrado
 
-Las **12 imágenes** están cargadas y activas: hero ancha, hero vertical, el sol y
-los 10 destinos. Esta guía queda como referencia para cuando haya que rehacer o
+Las **13 imágenes** están cargadas y activas: hero ancha, hero vertical, el sol y
+los 11 destinos. Esta guía queda como referencia para cuando haya que rehacer o
 reemplazar alguna — por ejemplo al pasar a fotos propias de las salidas.
 
 Los prompts que se usaron, abajo.
@@ -101,7 +101,7 @@ archivo no existe, el hero se ve como ahora, sin sol y sin errores.
 
 ---
 
-## Los 10 destinos
+## Los 11 destinos
 
 Todas van a `public/images/paquetes/`.
 
@@ -196,6 +196,10 @@ Foto de [Harshil Gudka en Unsplash](https://unsplash.com/photos/kfxEUCTUeyg).
 ### 10 · `formula-1-y-automovilismo.jpg`
 
 Foto de [Isaac Maffeis en Unsplash](https://unsplash.com/photos/UU1txX-LtEA).
+
+### 11 · `cruceros.jpg`
+
+Foto de [Casey Horner en Unsplash](https://unsplash.com/photos/c0HGs-Kbnts).
 
 ---
 

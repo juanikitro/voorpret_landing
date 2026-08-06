@@ -39,7 +39,7 @@ componentes para actualizar la web.**
 
 ### Ilustraciones o fotos
 
-Hoy la página usa **fotos** en el hero y en los 10 destinos. Debajo siguen
+Hoy la página usa **fotos** en el hero y en los 11 destinos. Debajo siguen
 existiendo las **ilustraciones vectoriales generadas por código**, que actúan de
 respaldo automático: si una foto falta o está mal nombrada, ese lugar muestra su
 ilustración en vez de una imagen rota.
@@ -84,7 +84,7 @@ una vez los 10 puntos de contacto de la página.
 | 5 | Confirmar la **dirección del local** si se quiere publicar calle y número | hoy sólo dice "25 de Mayo, Buenos Aires" a propósito |
 
 ✅ El **logo original** ya está integrado (transparente, con favicon aparte).
-✅ Las **12 imágenes** están integradas: hero ancha y vertical, el sol y los 10 destinos.
+✅ Las **13 imágenes** están integradas: hero ancha y vertical, el sol y los 11 destinos.
 
 ---
 
@@ -97,7 +97,7 @@ El repo tiene puntos de restauración con tag:
 | `v1-ilustrado` | Todo con ilustraciones vectoriales, logo provisorio |
 | `v2-logo-real` | Logo original integrado + sistema de fotos listo (ilustraciones activas) |
 | `v3-hero-foto` | Foto del hero integrada, destinos todavía ilustrados |
-| `v4-fotografico` | Fotos en el hero y en los 10 destinos + sol compuesto |
+| `v4-fotografico` | Fotos en el hero y en los 11 destinos + sol compuesto |
 
 ```bash
 git checkout v1-ilustrado
@@ -142,7 +142,7 @@ src/
 public/                ← SÓLO lo que se sirve al navegador
   brand/               ← logo webp + favicons
   images/hero/         ← hero ancha, hero vertical y el sol
-  images/paquetes/     ← las 10 fotos + su miniatura de 320 px
+  images/paquetes/     ← las 11 fotos + su miniatura de 320 px
 
 assets-fuente/         ← no se publica: originales del logo y el trazado svg
 docs/

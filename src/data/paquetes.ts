@@ -109,6 +109,13 @@ export const paquetes: Paquete[] = [
     arte: arteCaribe,
   },
   {
+    id: 'cruceros',
+    nombre: 'Un viaje en crucero',
+    subtitulo: 'Una forma de descubrir varios destinos con el ritmo y el estilo que más te gusten.',
+    posibilidades: ['Caribe', 'Mediterráneo', 'Fiordos noruegos', 'Alaska', 'Brasil y Uruguay'],
+    arte: arteCaribe,
+  },
+  {
     id: 'brasil',
     nombre: 'Un viaje por Brasil',
     subtitulo: 'Playas, cultura, naturaleza o ciudades para vivir Brasil como más te guste.',
