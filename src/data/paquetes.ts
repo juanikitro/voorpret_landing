@@ -7,8 +7,6 @@
    ► FOTOS         → no se declaran acá. Cada paquete busca automáticamente
      /images/paquetes/<id>.webp cuando `usarFotos` está activo en
      src/data/imagenes.ts. Ver docs/imagenes.md
-   ► PRECIOS       → usar placeholders hasta contar con tarifas confirmadas.
-     Toda acción sigue llevando a consultar por WhatsApp.
    ========================================================================== */
 
 export type Categoria = 'Salida grupal acompañada' | 'Escapada' | 'Viaje a medida'
@@ -36,7 +34,6 @@ export type Paquete = {
   /** Cuándo. Puede ser un mes concreto o una temporada. */
   temporada: string
   duracion: string
-  precio: string
   salida: string
   recorrido: string[]
   incluye: string[]
@@ -74,7 +71,6 @@ export const paquetes: Paquete[] = [
     categoria: 'Salida grupal acompañada',
     temporada: 'Octubre 2026',
     duracion: '7 noches',
-    precio: 'Desde XXX USD',
     salida: 'Buenos Aires · LATAM',
     recorrido: ['Lima', 'Cusco', 'Valle Sagrado', 'Machu Picchu', 'Aguas Calientes'],
     incluye: [
@@ -127,7 +123,6 @@ export const paquetes: Paquete[] = [
     categoria: 'Escapada',
     temporada: 'Todo el año, según disponibilidad',
     duracion: 'A definir',
-    precio: 'Desde XXX USD',
     salida: 'A coordinar según tu ciudad',
     recorrido: ['Punta Cana', 'Puerto Plata', 'Riviera Maya'],
     incluye: [
@@ -158,7 +153,6 @@ export const paquetes: Paquete[] = [
     categoria: 'Salida grupal acompañada',
     temporada: 'A coordinar',
     duracion: 'A definir',
-    precio: 'Desde XXX USD',
     salida: 'Desde la ciudad que elijas',
     recorrido: ['Madrid', 'París', 'Roma', 'Florencia', 'Venecia'],
     incluye: [
@@ -204,7 +198,6 @@ export const paquetes: Paquete[] = [
     categoria: 'Escapada',
     temporada: 'A coordinar según la época',
     duracion: 'A definir',
-    precio: 'Desde XXX USD',
     salida: 'Desde tu ciudad',
     recorrido: ['Salta', 'Purmamarca', 'Humahuaca', 'Salinas Grandes', 'Cafayate'],
     incluye: [
@@ -235,7 +228,6 @@ export const paquetes: Paquete[] = [
     categoria: 'Viaje a medida',
     temporada: 'A coordinar según tu viaje',
     duracion: 'A definir',
-    precio: 'Desde XXX USD',
     salida: 'Desde la ciudad que elijas',
     recorrido: ['Tokio', 'Kioto', 'Nara', 'Osaka', 'Hakone'],
     incluye: [
@@ -271,7 +263,6 @@ export const paquetes: Paquete[] = [
     categoria: 'Salida grupal acompañada',
     temporada: 'A coordinar',
     duracion: 'A definir',
-    precio: 'Desde XXX USD',
     salida: 'Desde la ciudad que elijas',
     recorrido: ['El Cairo', 'Luxor', 'Asuán', 'Abu Simbel', 'Dubái'],
     incluye: [
@@ -301,7 +292,6 @@ export const paquetes: Paquete[] = [
     categoria: 'Escapada',
     temporada: 'Feriados y verano, según disponibilidad',
     duracion: 'A definir',
-    precio: 'Desde XXX USD',
     salida: 'A coordinar según tu ciudad',
     recorrido: ['Río de Janeiro', 'Búzios', 'Florianópolis'],
     incluye: [
