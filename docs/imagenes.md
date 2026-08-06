@@ -30,8 +30,8 @@ nombre no coincide, te avisa cuál usar.
 
 ## ✅ Todo integrado
 
-Las **9 imágenes** están cargadas y activas: hero ancha, hero vertical, el sol y
-los 7 destinos. Esta guía queda como referencia para cuando haya que rehacer o
+Las **12 imágenes** están cargadas y activas: hero ancha, hero vertical, el sol y
+los 10 destinos. Esta guía queda como referencia para cuando haya que rehacer o
 reemplazar alguna — por ejemplo al pasar a fotos propias de las salidas.
 
 Los prompts que se usaron, abajo.
@@ -101,7 +101,7 @@ archivo no existe, el hero se ve como ahora, sin sol y sin errores.
 
 ---
 
-## Los 7 destinos
+## Los 10 destinos
 
 Todas van a `public/images/paquetes/`.
 
@@ -184,6 +184,18 @@ izquierdo del encuadre. Cielo violeta profundo que se vuelve dorado cerca del
 horizonte. Plano general panorámico cinematográfico. Sin personas, sin carteles,
 sin marcas de agua y sin ningún texto en la imagen. Formato horizontal.
 ```
+
+### 8 · `disney.jpg`
+
+Foto de [Kitera Dent en Unsplash](https://unsplash.com/photos/z4ky2zXIjDM).
+
+### 9 · `safari.jpg`
+
+Foto de [Harshil Gudka en Unsplash](https://unsplash.com/photos/kfxEUCTUeyg).
+
+### 10 · `formula-1-y-automovilismo.jpg`
+
+Foto de [Isaac Maffeis en Unsplash](https://unsplash.com/photos/UU1txX-LtEA).
 
 ---
 

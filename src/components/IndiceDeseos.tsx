@@ -137,6 +137,15 @@ function Banda({
             <div className="flex flex-col">
               <p className="max-w-[46ch] text-[1.0625rem] leading-relaxed text-papel/80">{p.subtitulo}</p>
 
+              <div className="mt-6 border-y border-papel/14 py-5">
+                <p className="etiqueta text-sol">{p.etiquetaPosibilidades ?? 'Posibles destinos'}</p>
+                <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-[0.9375rem] leading-snug text-papel/82">
+                  {p.posibilidades.map((posibilidad) => (
+                    <li key={posibilidad}>{posibilidad}</li>
+                  ))}
+                </ul>
+              </div>
+
               <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
                 <a
                   href={linkPaquete(p)}
