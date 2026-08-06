@@ -211,8 +211,6 @@ function Banda({
                 <div>
                   <dt className="etiqueta text-papel/45">Duración</dt>
                   <dd className="mt-1 font-semibold">{p.duracion}</dd>
-                  <dt className="etiqueta mt-4 text-sol/75">Precio</dt>
-                  <dd className="mt-1 text-[1.125rem] font-bold text-sol">{p.precio}</dd>
                 </div>
                 <div className="col-span-2">
                   <dt className="etiqueta text-papel/45">Salida</dt>
