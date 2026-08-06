@@ -141,7 +141,12 @@ function Banda({
                 <p className="etiqueta text-sol">{p.etiquetaPosibilidades ?? 'Posibles destinos'}</p>
                 <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-[0.9375rem] leading-snug text-papel/82">
                   {p.posibilidades.map((posibilidad) => (
-                    <li key={posibilidad}>{posibilidad}</li>
+                    <li key={posibilidad} className="flex items-start gap-2">
+                      <span aria-hidden="true" className="mt-px text-sol">
+                        ✓
+                      </span>
+                      <span>{posibilidad}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
