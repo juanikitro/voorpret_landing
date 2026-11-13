@@ -1,0 +1,14 @@
+{
+ auto_https off
+ admin off
+}
+:{$PORT:8080} {
+ root * /srv
+ encode zstd gzip
+ header X-Content-Type-Options nosniff
+ @assets path /assets/* /fonts/*
+ header @assets Cache-Control "public, max-age=31536000, immutable"
+ @images path /images/* /brand/*
+ header @images Cache-Control "public, max-age=86400, stale-while-revalidate=604800"
+ file_server
+}
